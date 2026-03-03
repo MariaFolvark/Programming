@@ -44,7 +44,7 @@ namespace Programming
         
         }
 
-        void ValuesListBox_SelectedIndexChanged(Object sender, EventArgs e)
+        void ValuesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             int selectedIndex = EnumsListBox.SelectedIndex;
             if (selectedIndex < 0 || selectedIndex >= enumTypes.Length)
