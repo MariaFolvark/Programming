@@ -12,14 +12,13 @@ namespace Programming
             string[] enums = { "Colors", "EducationForm", "Genre", "Manufactures", "Season", "Weekday" };
             EnumsListBox.Items.AddRange(enums);
             EnumsListBox.SelectedIndex = 0;
-            //ValuesListBox.DataSource = Enum.GetValues(typeof(Colors));
-            //ValuesListBox.Items.AddRange()
-            //textBox1.Text = ((int)Enum.Parse(typeof(Colors), "Red")).ToString();
+            textBox1.Text = ((int)Enum.Parse(typeof(Colors), "Red")).ToString();
         }
         public MainForm()
         {
             InitializeComponent();
             EnumsListBox.SelectedIndexChanged += EnumsListBox_SelectedIndexChanged;
+            ValuesListBox.SelectedIndexChanged += ValuesListBox_SelectedIndexChanged;
 
         }
 
@@ -47,11 +46,19 @@ namespace Programming
 
         void ValuesListBox_SelectedIndexChanged(Object sender, EventArgs e)
         {
-            string selected_item = EnumsListBox.SelectedItem.ToString();
-            Type enumType = Type.GetType(selected_item);
-            object enumValue = Enum.Parse(enumType, selected_item); // Преобразовать имя в значение перечисления
-            int numberValue = (int)enumValue; // Преобразовать к числовому значению
-            textBox1.Text = numberValue.ToString(); // Отобразить в TextBox
+            int selectedIndex = EnumsListBox.SelectedIndex;
+            if (selectedIndex < 0 || selectedIndex >= enumTypes.Length)
+                return;
+
+            string selected_item = ValuesListBox.SelectedItem.ToString();
+            if (string.IsNullOrEmpty(selected_item))
+                return;
+
+            Type enumType = enumTypes[selectedIndex];
+            object enumValue = Enum.Parse(enumType, selected_item);
+            int numberValue = (int)enumValue;
+            textBox1.Text = numberValue.ToString();
+
         }
 
     }
