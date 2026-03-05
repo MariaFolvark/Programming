@@ -32,6 +32,7 @@ namespace Programming
         {
             tabControl1 = new TabControl();
             Enums = new TabPage();
+            groupBox2 = new GroupBox();
             groupBox1 = new GroupBox();
             EnumsListBox = new ListBox();
             IntValue = new Label();
@@ -39,8 +40,13 @@ namespace Programming
             textBox1 = new TextBox();
             ChooseValueLabel = new Label();
             ChooseEnumerationLabel = new Label();
+            label1 = new Label();
+            textBox2 = new TextBox();
+            button1 = new Button();
+            label2 = new Label();
             tabControl1.SuspendLayout();
             Enums.SuspendLayout();
+            groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -49,23 +55,35 @@ namespace Programming
             tabControl1.Controls.Add(Enums);
             tabControl1.Dock = DockStyle.Fill;
             tabControl1.Location = new Point(0, 0);
-            tabControl1.Margin = new Padding(3, 2, 3, 2);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(700, 338);
+            tabControl1.Size = new Size(800, 467);
             tabControl1.TabIndex = 0;
             // 
             // Enums
             // 
+            Enums.Controls.Add(groupBox2);
             Enums.Controls.Add(groupBox1);
-            Enums.Location = new Point(4, 24);
-            Enums.Margin = new Padding(3, 2, 3, 2);
+            Enums.Location = new Point(4, 29);
             Enums.Name = "Enums";
-            Enums.Padding = new Padding(3, 2, 3, 2);
-            Enums.Size = new Size(692, 310);
+            Enums.Padding = new Padding(3);
+            Enums.Size = new Size(792, 434);
             Enums.TabIndex = 0;
             Enums.Text = "Enums";
             Enums.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            groupBox2.Controls.Add(label2);
+            groupBox2.Controls.Add(button1);
+            groupBox2.Controls.Add(textBox2);
+            groupBox2.Controls.Add(label1);
+            groupBox2.Location = new Point(10, 273);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(336, 137);
+            groupBox2.TabIndex = 8;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Weekday Parsing";
             // 
             // groupBox1
             // 
@@ -75,9 +93,11 @@ namespace Programming
             groupBox1.Controls.Add(textBox1);
             groupBox1.Controls.Add(ChooseValueLabel);
             groupBox1.Controls.Add(ChooseEnumerationLabel);
-            groupBox1.Location = new Point(8, 5);
+            groupBox1.Location = new Point(9, 7);
+            groupBox1.Margin = new Padding(3, 4, 3, 4);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(676, 287);
+            groupBox1.Padding = new Padding(3, 4, 3, 4);
+            groupBox1.Size = new Size(773, 260);
             groupBox1.TabIndex = 7;
             groupBox1.TabStop = false;
             groupBox1.Text = "Enumerations";
@@ -85,72 +105,102 @@ namespace Programming
             // EnumsListBox
             // 
             EnumsListBox.FormattingEnabled = true;
-            EnumsListBox.ItemHeight = 15;
-            EnumsListBox.Location = new Point(15, 38);
-            EnumsListBox.Margin = new Padding(3, 2, 3, 2);
+            EnumsListBox.Location = new Point(17, 51);
             EnumsListBox.Name = "EnumsListBox";
             EnumsListBox.ScrollAlwaysVisible = true;
-            EnumsListBox.Size = new Size(132, 139);
+            EnumsListBox.Size = new Size(150, 184);
             EnumsListBox.TabIndex = 3;
             // 
             // IntValue
             // 
             IntValue.AutoSize = true;
-            IntValue.Location = new Point(302, 21);
+            IntValue.Location = new Point(345, 28);
             IntValue.Name = "IntValue";
-            IntValue.Size = new Size(55, 15);
+            IntValue.Size = new Size(68, 20);
             IntValue.TabIndex = 6;
             IntValue.Text = "Int value:";
             // 
             // ValuesListBox
             // 
             ValuesListBox.FormattingEnabled = true;
-            ValuesListBox.ItemHeight = 15;
-            ValuesListBox.Location = new Point(164, 38);
-            ValuesListBox.Margin = new Padding(3, 2, 3, 2);
+            ValuesListBox.Location = new Point(187, 51);
             ValuesListBox.Name = "ValuesListBox";
             ValuesListBox.ScrollAlwaysVisible = true;
-            ValuesListBox.Size = new Size(132, 139);
+            ValuesListBox.Size = new Size(150, 184);
             ValuesListBox.TabIndex = 1;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(302, 38);
-            textBox1.Margin = new Padding(3, 2, 3, 2);
+            textBox1.Location = new Point(345, 51);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(110, 23);
+            textBox1.Size = new Size(125, 27);
             textBox1.TabIndex = 2;
             // 
             // ChooseValueLabel
             // 
             ChooseValueLabel.AutoSize = true;
-            ChooseValueLabel.Location = new Point(164, 21);
+            ChooseValueLabel.Location = new Point(187, 28);
             ChooseValueLabel.Name = "ChooseValueLabel";
-            ChooseValueLabel.Size = new Size(81, 15);
+            ChooseValueLabel.Size = new Size(101, 20);
             ChooseValueLabel.TabIndex = 5;
             ChooseValueLabel.Text = "Choose Value:";
             // 
             // ChooseEnumerationLabel
             // 
             ChooseEnumerationLabel.AutoSize = true;
-            ChooseEnumerationLabel.Location = new Point(15, 21);
+            ChooseEnumerationLabel.Location = new Point(17, 28);
             ChooseEnumerationLabel.Name = "ChooseEnumerationLabel";
-            ChooseEnumerationLabel.Size = new Size(121, 15);
+            ChooseEnumerationLabel.Size = new Size(149, 20);
             ChooseEnumerationLabel.TabIndex = 4;
             ChooseEnumerationLabel.Text = "Choose Enumeration:";
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(16, 32);
+            label1.Name = "label1";
+            label1.Size = new Size(158, 20);
+            label1.TabIndex = 0;
+            label1.Text = "Type value for parsing:";
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(16, 55);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(194, 27);
+            textBox2.TabIndex = 1;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(216, 55);
+            button1.Name = "button1";
+            button1.Size = new Size(94, 29);
+            button1.TabIndex = 2;
+            button1.Text = "Parse";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(16, 102);
+            label2.Name = "label2";
+            label2.Size = new Size(50, 20);
+            label2.TabIndex = 3;
+            label2.Text = "label2";
+            // 
             // MainForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(700, 338);
+            ClientSize = new Size(800, 467);
             Controls.Add(tabControl1);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "MainForm";
             Text = "Programming";
             Load += MainForm_Load;
             tabControl1.ResumeLayout(false);
             Enums.ResumeLayout(false);
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);
@@ -165,6 +215,11 @@ namespace Programming
         private Label ChooseValueLabel;
         private Label ChooseEnumerationLabel;
         private GroupBox groupBox1;
+        private GroupBox groupBox2;
+        private Label label1;
+        private Button button1;
+        private TextBox textBox2;
+        private Label label2;
     }
 }
 #endregion
