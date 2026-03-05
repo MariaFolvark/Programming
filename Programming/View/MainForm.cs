@@ -1,6 +1,7 @@
 using Programming.Model.Enums;
 using System.Collections;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Programming
 {
@@ -19,7 +20,31 @@ namespace Programming
             InitializeComponent();
             EnumsListBox.SelectedIndexChanged += EnumsListBox_SelectedIndexChanged;
             ValuesListBox.SelectedIndexChanged += ValuesListBox_SelectedIndexChanged;
+            ParseButton.Click += ParseButton_Click;
 
+        }
+
+        private void ParseButton_Click(object? sender, EventArgs e)
+        {
+            string input = textBox2.Text.Trim();
+
+            try
+            {
+                Weekday day;
+                if (Enum.TryParse<Weekday>(input, true, out day) && Enum.IsDefined(typeof(Weekday), day))//true - игнор регистр букв
+                {
+                    label2.Text = $"Ёто день недели ({day} = {(int)day})";
+
+                }
+                else
+                {
+                    label2.Text = "Ќет такого дн€ недели";
+                }
+            }
+            catch (Exception ex)
+            {
+                label2.Text = "Ќет такого дн€ недели";
+            }
         }
 
         void EnumsListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -61,7 +86,6 @@ namespace Programming
 
         }
 
-        /**/
 
     }
 }
