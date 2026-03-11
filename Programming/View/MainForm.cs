@@ -14,6 +14,8 @@ namespace Programming
             EnumsListBox.Items.AddRange(enums);
             EnumsListBox.SelectedIndex = 0;
             textBox1.Text = ((int)Enum.Parse(typeof(Colors), "Red")).ToString();
+            SeasonComboBox.DataSource = Enum.GetValues(typeof(Season));
+            SeasonComboBox.SelectedIndex = 0;
         }
         public MainForm()
         {
@@ -21,6 +23,32 @@ namespace Programming
             EnumsListBox.SelectedIndexChanged += EnumsListBox_SelectedIndexChanged;
             ValuesListBox.SelectedIndexChanged += ValuesListBox_SelectedIndexChanged;
             ParseButton.Click += ParseButton_Click;
+            GoButton.Click += GoButton_Click;
+
+        }
+
+        private void GoButton_Click(object? sender, EventArgs e)
+        {
+            Season season = (Season)SeasonComboBox.SelectedItem;
+            if (season == null)
+                return;
+            switch (season)
+            {
+                case Season.Autumn:
+                    this.BackColor = System.Drawing.ColorTranslator.FromHtml("#e29c45");
+                    break;
+
+                case Season.Summer:
+                    MessageBox.Show("Ура! Солнце!");
+                    break;
+
+                case Season.Winter:
+                    MessageBox.Show("Брр! Холодно!");
+                    break;
+                case Season.Spring:
+                    this.BackColor = System.Drawing.ColorTranslator.FromHtml("#559c45");
+                    break;
+            }
 
         }
 

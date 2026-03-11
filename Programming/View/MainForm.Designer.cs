@@ -44,10 +44,15 @@ namespace Programming
             textBox1 = new TextBox();
             ChooseValueLabel = new Label();
             ChooseEnumerationLabel = new Label();
+            groupBox3 = new GroupBox();
+            label3 = new Label();
+            GoButton = new Button();
+            SeasonComboBox = new ComboBox();
             tabControl1.SuspendLayout();
             Enums.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
+            groupBox3.SuspendLayout();
             SuspendLayout();
             // 
             // tabControl1
@@ -62,6 +67,7 @@ namespace Programming
             // 
             // Enums
             // 
+            Enums.Controls.Add(groupBox3);
             Enums.Controls.Add(groupBox2);
             Enums.Controls.Add(groupBox1);
             Enums.Location = new Point(4, 29);
@@ -189,6 +195,44 @@ namespace Programming
             ChooseEnumerationLabel.TabIndex = 4;
             ChooseEnumerationLabel.Text = "Choose Enumeration:";
             // 
+            // groupBox3
+            // 
+            groupBox3.Controls.Add(SeasonComboBox);
+            groupBox3.Controls.Add(GoButton);
+            groupBox3.Controls.Add(label3);
+            groupBox3.Location = new Point(354, 273);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(428, 137);
+            groupBox3.TabIndex = 9;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Season Handle";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(16, 32);
+            label3.Name = "label3";
+            label3.Size = new Size(110, 20);
+            label3.TabIndex = 0;
+            label3.Text = "Choose season:";
+            // 
+            // button1
+            // 
+            GoButton.Location = new Point(209, 56);
+            GoButton.Name = "button1";
+            GoButton.Size = new Size(94, 29);
+            GoButton.TabIndex = 2;
+            GoButton.Text = "Go!";
+            GoButton.UseVisualStyleBackColor = true;
+            // 
+            // comboBox1
+            // 
+            SeasonComboBox.FormattingEnabled = true;
+            SeasonComboBox.Location = new Point(16, 56);
+            SeasonComboBox.Name = "comboBox1";
+            SeasonComboBox.Size = new Size(187, 28);
+            SeasonComboBox.TabIndex = 4;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -204,6 +248,8 @@ namespace Programming
             groupBox2.PerformLayout();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            groupBox3.ResumeLayout(false);
+            groupBox3.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -221,6 +267,10 @@ namespace Programming
         private Button ParseButton;
         private TextBox textBox2;
         private Label label2;
+        private GroupBox groupBox3;
+        private ComboBox SeasonComboBox;
+        private Button GoButton;
+        private Label label3;
     }
 }
 #endregion
