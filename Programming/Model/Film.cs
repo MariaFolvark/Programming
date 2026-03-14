@@ -50,5 +50,16 @@ namespace Programming.Model
                     throw new ArgumentOutOfRangeException(nameof(value), "Рейтинг должен быть между 0 и 10.");
             }
         }
+
+        public Film(string title, int duration_in_minutes, int year_of_release, string genre, double rating)
+        {
+            this.Title = title;
+            this.DurationInMinutes = duration_in_minutes;
+            this.YearOfRelease = year_of_release;
+            this.Genre = genre;
+            this.Rating = rating;
+        }
+        public Film() { }
+
     }
 }

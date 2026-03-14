@@ -15,5 +15,12 @@ namespace Programming.Model
         public string Name { get { return name; } set { name = value; } }
         public string Surname { get {  return surname; } set {  surname = value; } }
         public string PhoneNumber { get { return phone_number; } set { phone_number = value; } }
+        public Contact(string name, string surname, string phone_number)
+        {
+            this.Name = name;
+            this.Surname = surname;
+            this.PhoneNumber = phone_number;
+        }
+        public Contact() { }
     }
 }

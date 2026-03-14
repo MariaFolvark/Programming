@@ -40,5 +40,14 @@ namespace Programming.Model
             }
         }
 
+        public Discipline(string name, int academic_hours, int credit_hours, int grade) 
+        {
+            this.Name = name;
+            this.AcademicHours = academic_hours;
+            this.CreditUnits = credit_hours;
+            this.Grade = grade;
+        }
+        public Discipline() { }
+
     }
 }

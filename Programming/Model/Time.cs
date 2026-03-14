@@ -22,7 +22,6 @@ namespace Programming.Model
                     throw new ArgumentOutOfRangeException(nameof(value), "Часы должны быть в диапазоне от 0 до 24.");
             }
         }
-
         public int Minutes
         {
             get { return minutes; }
@@ -46,6 +45,12 @@ namespace Programming.Model
             }
         }
 
-
+        public Time(int hours, int minutes, int seconds)
+        {
+            this.Hours = hours;
+            this.Minutes = minutes;
+            this.Seconds = seconds;
+        }
+        public Time() { }
     }
 }

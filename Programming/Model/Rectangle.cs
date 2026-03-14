@@ -35,5 +35,16 @@ namespace Programming.Model
             }
         }
         public string Colour { get { return colour; } set { colour = value; } }
+        public Rectangle(double length, double width, string colour)
+        {
+            this.Length = length;
+            this.Width = width;
+            this.Colour = colour;
+        }
+        public Rectangle() { }
+
     }
+
+
+
 }

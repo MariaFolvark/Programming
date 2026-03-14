@@ -25,5 +25,12 @@ namespace Programming.Model
                     throw new ArgumentOutOfRangeException(nameof(value), "Время полёта не может быть отрицательным.");
             }
         }
+        public Flight(string departure_point, string destination, int flight_time_minutes)
+        {
+            this.DeparturePoint = departure_point;
+            this.Destination = destination;
+            this.FlightTimeMinutes = flight_time_minutes;
+        }
+        public Flight() { }
     }
 }

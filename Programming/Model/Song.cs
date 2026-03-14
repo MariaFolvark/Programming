@@ -25,5 +25,13 @@ namespace Programming.Model
                     throw new ArgumentOutOfRangeException(nameof(value), "Продолжительность фильма не может быть отрицательной.");
             }
         }
+
+        public Song(string name, string songwriter, int duration_in_minutes)
+        {
+            this.Name = name;
+            this.SongWriter = songwriter;
+            this.DurationInMinutes = duration_in_minutes;
+        }
+        public Song() { }
     }
 }
