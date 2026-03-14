@@ -85,7 +85,6 @@ namespace Programming
 
             Type enumType = enumTypes[selectedIndex];
 
-            // Получаем значения enum
             var values = Enum.GetValues(enumType);
             foreach (var value in values)
             {
@@ -117,4 +116,3 @@ namespace Programming
 
     }
 }
-//EnumsListBox_SelectedIndexChanged, ValuesListBox_SelectedIndexChanged
