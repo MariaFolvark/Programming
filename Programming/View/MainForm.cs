@@ -1,21 +1,43 @@
+using Programming.Model;
 using Programming.Model.Enums;
 using System.Collections;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace Programming
 {
     public partial class MainForm : Form
     {
         Type[] enumTypes = { typeof(Colors), typeof(EducationForm), typeof(Genre), typeof(Manufactures), typeof(Season), typeof(Weekday) };
+        private Rectangles[] _rectangles;
+        private Rectangles _currentRectangle;
+
         public void MainForm_Load(object sender, EventArgs e)
         {
             string[] enums = { "Colors", "EducationForm", "Genre", "Manufactures", "Season", "Weekday" };
             EnumsListBox.Items.AddRange(enums);
             EnumsListBox.SelectedIndex = 0;
-            textBox1.Text = ((int)Enum.Parse(typeof(Colors), "Red")).ToString();
+            IntValueTextBox.Text = ((int)Enum.Parse(typeof(Colors), "Red")).ToString();
             SeasonComboBox.DataSource = Enum.GetValues(typeof(Season));
             SeasonComboBox.SelectedIndex = 0;
+            ///
+            ///
+            _rectangles = new Rectangles[5];
+
+            Random rand = new Random();
+            int colorCount = Enum.GetNames(typeof(Colors)).Length;
+            for (int i = 0; i < 5; i++)
+            {
+                string name = "Rectangle " + (i+1).ToString();
+                double length = 1 + rand.NextDouble() * 19;
+                double width = 1 + rand.NextDouble() * 19;
+                string randomColor = ((Colors)rand.Next(colorCount)).ToString();
+                _rectangles[i] = new Rectangles(name, length, width, randomColor);
+                RectanglesListBox.Items.Add(name);
+            }
+            RectanglesListBox.SelectedIndex = 0;
+            
         }
         public MainForm()
         {
@@ -24,7 +46,19 @@ namespace Programming
             ValuesListBox.SelectedIndexChanged += ValuesListBox_SelectedIndexChanged;
             ParseButton.Click += ParseButton_Click;
             GoButton.Click += GoButton_Click;
+            RectanglesListBox.SelectedIndexChanged += RectanglesLlistBox_SelectedIndexChanged;
 
+        }
+
+        private void RectanglesLlistBox_SelectedIndexChanged(object? sender, EventArgs e)
+        {
+            if (RectanglesListBox.SelectedIndex < 0 || RectanglesListBox.SelectedIndex >= _rectangles.Length)
+                return;
+
+            _currentRectangle = _rectangles[RectanglesListBox.SelectedIndex];
+            LenghtTextBox.Text = _currentRectangle.Length.ToString("F2");//"F2" - 2 знака после зап€той
+            WidthTextBox.Text = _currentRectangle.Width.ToString("F2");
+            ColorTextBox.Text = _currentRectangle.Colour.ToString();
         }
 
         private void GoButton_Click(object? sender, EventArgs e)
@@ -54,24 +88,24 @@ namespace Programming
 
         private void ParseButton_Click(object? sender, EventArgs e)
         {
-            string input = textBox2.Text.Trim();
+            string input = WeekdayTextBox.Text.Trim();
 
             try
             {
                 Weekday day;
                 if (Enum.TryParse<Weekday>(input, true, out day) && Enum.IsDefined(typeof(Weekday), day))//true - игнор регистр букв
                 {
-                    label2.Text = $"Ёто день недели ({day} = {(int)day})";
+                    WeekDayLlabel2.Text = $"Ёто день недели ({day} = {(int)day})";
 
                 }
                 else
                 {
-                    label2.Text = "Ќет такого дн€ недели";
+                    WeekDayLlabel2.Text = "Ќет такого дн€ недели";
                 }
             }
             catch (Exception ex)
             {
-                label2.Text = "Ќет такого дн€ недели";
+                WeekDayLlabel2.Text = "Ќет такого дн€ недели";
             }
         }
 
@@ -109,10 +143,9 @@ namespace Programming
             Type enumType = enumTypes[selectedIndex];
             object enumValue = Enum.Parse(enumType, selected_item);
             int numberValue = (int)enumValue;
-            textBox1.Text = numberValue.ToString();
+            IntValueTextBox.Text = numberValue.ToString();
 
         }
-
 
     }
 }
