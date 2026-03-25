@@ -50,6 +50,7 @@ namespace Programming
             ChooseEnumerationLabel = new Label();
             ClassesTabPage = new TabPage();
             RectanglesGroupBox = new GroupBox();
+            FindButton = new Button();
             ColorTextBox = new TextBox();
             ColorLabel = new Label();
             WidthTextBox = new TextBox();
@@ -57,7 +58,6 @@ namespace Programming
             LenghtTextBox = new TextBox();
             LenghtLabel = new Label();
             RectanglesListBox = new ListBox();
-            FindButton = new Button();
             tabControl1.SuspendLayout();
             EnumsTabPage.SuspendLayout();
             SeasonHandleGroupBox.SuspendLayout();
@@ -269,10 +269,19 @@ namespace Programming
             RectanglesGroupBox.Controls.Add(RectanglesListBox);
             RectanglesGroupBox.Location = new Point(8, 6);
             RectanglesGroupBox.Name = "RectanglesGroupBox";
-            RectanglesGroupBox.Size = new Size(387, 291);
+            RectanglesGroupBox.Size = new Size(297, 291);
             RectanglesGroupBox.TabIndex = 0;
             RectanglesGroupBox.TabStop = false;
             RectanglesGroupBox.Text = "Rectangles";
+            // 
+            // FindButton
+            // 
+            FindButton.Location = new Point(162, 201);
+            FindButton.Name = "FindButton";
+            FindButton.Size = new Size(125, 29);
+            FindButton.TabIndex = 7;
+            FindButton.Text = "Find";
+            FindButton.UseVisualStyleBackColor = true;
             // 
             // ColorTextBox
             // 
@@ -286,7 +295,7 @@ namespace Programming
             ColorLabel.AutoSize = true;
             ColorLabel.Location = new Point(162, 132);
             ColorLabel.Name = "ColorLabel";
-            ColorLabel.Size = new Size(45, 20);
+            ColorLabel.Size = new Size(48, 20);
             ColorLabel.TabIndex = 5;
             ColorLabel.Text = "Color:";
             // 
@@ -302,7 +311,7 @@ namespace Programming
             WidthLabel.AutoSize = true;
             WidthLabel.Location = new Point(162, 79);
             WidthLabel.Name = "WidthLabel";
-            WidthLabel.Size = new Size(49, 20);
+            WidthLabel.Size = new Size(52, 20);
             WidthLabel.TabIndex = 3;
             WidthLabel.Text = "Width:";
             // 
@@ -318,26 +327,17 @@ namespace Programming
             LenghtLabel.AutoSize = true;
             LenghtLabel.Location = new Point(162, 26);
             LenghtLabel.Name = "LenghtLabel";
-            LenghtLabel.Size = new Size(54, 20);
+            LenghtLabel.Size = new Size(57, 20);
             LenghtLabel.TabIndex = 1;
             LenghtLabel.Text = "Lenght:";
             // 
-            // RectanglesLlistBox
+            // RectanglesListBox
             // 
             RectanglesListBox.FormattingEnabled = true;
             RectanglesListBox.Location = new Point(6, 26);
             RectanglesListBox.Name = "RectanglesListBox";
             RectanglesListBox.Size = new Size(150, 204);
             RectanglesListBox.TabIndex = 0;
-            // 
-            // FindButton
-            // 
-            FindButton.Location = new Point(162, 201);
-            FindButton.Name = "FindButton";
-            FindButton.Size = new Size(125, 29);
-            FindButton.TabIndex = 7;
-            FindButton.Text = "Find";
-            FindButton.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 

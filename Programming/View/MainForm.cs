@@ -47,7 +47,73 @@ namespace Programming
             ParseButton.Click += ParseButton_Click;
             GoButton.Click += GoButton_Click;
             RectanglesListBox.SelectedIndexChanged += RectanglesLlistBox_SelectedIndexChanged;
+            LenghtTextBox.TextChanged += LenghtTextBox_TextChanged;
+            WidthTextBox.TextChanged += WidthTextBox_TextChanged;
+            FindButton.Click += FindButton_Click;
+        }
 
+        private void FindButton_Click(object? sender, EventArgs e)
+        {
+            int index = FindRectangleWithMaxWidth(_rectangles);
+            if (index >= 0 && index < _rectangles.Length)
+            {
+                RectanglesListBox.SelectedIndex = index;
+            }
+            else
+            {
+                MessageBox.Show("Прямоугольники отсутствуют.");
+            }
+        }
+        private int FindRectangleWithMaxWidth(Rectangles[] rectangles)
+        {
+            if (rectangles == null || rectangles.Length == 0)
+                return -1;
+
+            int maxIndex = 0;
+            double maxWidth = rectangles[0].Width;
+
+            for (int i = 1; i < rectangles.Length; i++)
+            {
+                if (rectangles[i].Width > maxWidth)
+                {
+                    maxWidth = rectangles[i].Width;
+                    maxIndex = i;
+                }
+            }
+            return maxIndex;
+        }
+        private void WidthTextBox_TextChanged(object? sender, EventArgs e)
+        {
+            try
+            {
+                double value = double.Parse(WidthTextBox.Text);
+                if (value < 1 || value > 20)
+                    throw new ArgumentOutOfRangeException();
+
+                _currentRectangle.Width = value;
+                WidthTextBox.BackColor = Color.White;
+            }
+            catch
+            {
+                WidthTextBox.BackColor = Color.LightPink;
+            }
+        }
+
+        private void LenghtTextBox_TextChanged(object? sender, EventArgs e)
+        {
+            try
+            {
+                double value = double.Parse(LenghtTextBox.Text);
+                if (value < 1 || value > 20)
+                    throw new ArgumentOutOfRangeException();
+
+                _currentRectangle.Length = value;
+                LenghtTextBox.BackColor = Color.White;
+            }
+            catch
+            {
+                LenghtTextBox.BackColor = Color.LightPink;
+            }
         }
 
         private void RectanglesLlistBox_SelectedIndexChanged(object? sender, EventArgs e)
@@ -109,7 +175,7 @@ namespace Programming
             }
         }
 
-        void EnumsListBox_SelectedIndexChanged(object sender, EventArgs e)
+        void EnumsListBox_SelectedIndexChanged(object? sender, EventArgs e)
         {
             ValuesListBox.Items.Clear();
 
@@ -130,7 +196,7 @@ namespace Programming
         
         }
 
-        void ValuesListBox_SelectedIndexChanged(object sender, EventArgs e)
+        void ValuesListBox_SelectedIndexChanged(object? sender, EventArgs e)
         {
             int selectedIndex = EnumsListBox.SelectedIndex;
             if (selectedIndex < 0 || selectedIndex >= enumTypes.Length)
