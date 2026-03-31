@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Programming.Model.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -45,9 +46,22 @@ namespace Programming.Model
             this.Colour = colour;
         }
         public Rectangles() { }
+        public static Rectangles[] RandomRectanglesArray(int cnt)
+        {
+            Rectangles[] rectangles = new Rectangles[cnt];
+            Random rand = new Random();
+            int colorCount = Enum.GetNames(typeof(Colors)).Length;
+            for (int i = 0; i < cnt; i++)
+            {
+                string name = "Rectangle " + (i + 1).ToString();
+                double length = 1 + rand.NextDouble() * 19;
+                double width = 1 + rand.NextDouble() * 19;
+                string randomColor = ((Colors)rand.Next(colorCount)).ToString();
+                rectangles[i] = new Rectangles(name, length, width, randomColor);
+            }
+            return rectangles;
+        }
+
 
     }
-
-
-
 }

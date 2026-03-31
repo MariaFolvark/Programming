@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Programming.Model.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,19 @@ namespace Programming.Model
 {
     internal class Film
     {
+        private static string[] movieNames = {
+            "Побег из Шоушенка",
+            "Крестный отец",
+            "Темный рыцарь",
+            "Кумир",
+            "Форрест Гамп",
+            "Начало",
+            "Интерстеллар",
+            "Бойцовский клуб",
+            "Матрица",
+            "Леон"
+        };
+
         private string title = "Undefined"; //Название
         private int duration_in_minutes; //Продолжительность в минутах
         private int year_of_release; //Год выпуска (от 1900 до текущего года)
@@ -61,8 +75,37 @@ namespace Programming.Model
         }
         public Film() { }
 
+        public static Film[] RandomFilmsArray(int length)
+        {
+            Film[] movies = new Film[length];
+            Random rand = new Random();
+            int genreCount = Enum.GetNames(typeof(Genre)).Length;
+            for (int i = 0; i < length; i++)
+            {
+                //string title = movieNames[rand.Next(movieNames.Length)];
+                string title = "Film " + (i + 1).ToString();
+                int duration = rand.Next(4, 300);
+                int year = rand.Next(1900, DateTime.Now.Year + 1);
+                string genre = ((Genre)rand.Next(genreCount)).ToString();
+                double rating = Math.Round(rand.NextDouble() * 10, 1); // 0.0 - 10.0
+                movies[i] = new Film(title, duration, year, genre, rating);
+            }
+            return movies;
+        }
     }
 }
+/*
+Random rand = new Random();
+int colorCount = Enum.GetNames(typeof(Colors)).Length;
+for (int i = 0; i < 5; i++)
+{
+    string name = "Rectangle " + (i+1).ToString();
+    double length = 1 + rand.NextDouble() * 19;
+    double width = 1 + rand.NextDouble() * 19;
+    string randomColor = ((Colors)rand.Next(colorCount)).ToString();
+    _rectangles[i] = new Rectangles(name, length, width, randomColor);
+    RectanglesListBox.Items.Add(name);
+}*/
 
 
 

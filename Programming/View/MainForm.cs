@@ -2,6 +2,7 @@ using Programming.Model;
 using Programming.Model.Enums;
 using System.Collections;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
@@ -12,6 +13,8 @@ namespace Programming
         Type[] enumTypes = { typeof(Colors), typeof(EducationForm), typeof(Genre), typeof(Manufactures), typeof(Season), typeof(Weekday) };
         private Rectangles[] _rectangles;
         private Rectangles _currentRectangle;
+        private Film[] _films;
+        private Film _currentFilm;
 
         public void MainForm_Load(object sender, EventArgs e)
         {
@@ -23,20 +26,19 @@ namespace Programming
             SeasonComboBox.SelectedIndex = 0;
             ///
             ///
-            _rectangles = new Rectangles[5];
-
-            Random rand = new Random();
-            int colorCount = Enum.GetNames(typeof(Colors)).Length;
-            for (int i = 0; i < 5; i++)
+            _rectangles = Rectangles.RandomRectanglesArray(5);
+            for(int i = 0; i < _rectangles.Length; i++)
             {
-                string name = "Rectangle " + (i+1).ToString();
-                double length = 1 + rand.NextDouble() * 19;
-                double width = 1 + rand.NextDouble() * 19;
-                string randomColor = ((Colors)rand.Next(colorCount)).ToString();
-                _rectangles[i] = new Rectangles(name, length, width, randomColor);
-                RectanglesListBox.Items.Add(name);
+                RectanglesListBox.Items.Add(_rectangles[i].Name);
             }
             RectanglesListBox.SelectedIndex = 0;
+
+            _films = Film.RandomFilmsArray(5);
+            for(int i = 0; i < _films.Length; i++)
+            {
+                FilmListBox.Items.Add(_films[i].Title);
+            }
+            FilmListBox.SelectedIndex = 0;
             
         }
         public MainForm()
@@ -47,10 +49,156 @@ namespace Programming
             ParseButton.Click += ParseButton_Click;
             GoButton.Click += GoButton_Click;
             RectanglesListBox.SelectedIndexChanged += RectanglesLlistBox_SelectedIndexChanged;
-            LenghtTextBox.TextChanged += LenghtTextBox_TextChanged;
+            LenghtTextBox.TextChanged += LengthTextBox_TextChanged;
             WidthTextBox.TextChanged += WidthTextBox_TextChanged;
-            FindButton.Click += FindButton_Click;
+            RectangleFindButton.Click += FindButton_Click;
+            FilmListBox.SelectedIndexChanged += FilmListBox_SelectedIndexChanged;
+            TitleTextBox.TextChanged += TitleTextBox_TextChanged;
+            DurationTextBox.TextChanged += DurationTextBox_TextChanged;
+            YearOfReleaseTextBox.TextChanged += YearOfReleaseTextBox_TextChanged;
+            RatingTextBox.TextChanged += RatingTextBox_TextChanged;
+            FilmFindButton.Click += FilmFindButton_Click;
         }
+
+        private void RatingTextBox_TextChanged(object? sender, EventArgs e)
+        {
+            try
+            {
+                string input = RatingTextBox.Text;
+                if (string.IsNullOrWhiteSpace(input))
+                {
+                    throw new ArgumentException();
+                }
+                if (!double.TryParse(input, out double value))
+                {
+                    throw new ArgumentException();
+                }
+                double roundedValue = Math.Round(value, 1);
+                if (roundedValue < 0 || roundedValue > 10)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+                _currentFilm.Rating = roundedValue;
+                RatingTextBox.Text = roundedValue.ToString("0.0");
+                RatingTextBox.BackColor = Color.White;
+            }
+            catch
+            {
+                RatingTextBox.BackColor = Color.LightPink;
+            }
+        }
+        private void YearOfReleaseTextBox_TextChanged(object? sender, EventArgs e)
+        {
+            try
+            {
+                string input = YearOfReleaseTextBox.Text;
+                int year;
+
+                if (!int.TryParse(input, out year))
+                {
+                    throw new ArgumentException();
+                }
+
+                int currentYear = DateTime.Now.Year;
+                if (year < 1900 || year > currentYear)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+
+                _currentFilm.YearOfRelease = year;
+                YearOfReleaseTextBox.BackColor = Color.White;
+            }
+            catch
+            {
+                YearOfReleaseTextBox.BackColor = Color.LightPink;
+            }
+        }
+
+        private void DurationTextBox_TextChanged(object? sender, EventArgs e)
+        {
+            try
+            {
+                string input = DurationTextBox.Text;
+                int duration;
+                if (!int.TryParse(input, out duration) || duration <= 0)
+                {
+                    throw new ArgumentException();
+                }
+
+                _currentFilm.DurationInMinutes = duration;
+                DurationTextBox.BackColor = Color.White;
+            }
+            catch
+            {
+                DurationTextBox.BackColor = Color.LightPink;
+            }
+        }
+        private void TitleTextBox_TextChanged(object? sender, EventArgs e)
+        {
+            try
+            {
+                string input = TitleTextBox.Text;
+                if (input.Length > 40 || input.Length < 1)
+                {
+                    throw new ArgumentException();
+                }
+                if (input.Length > 0 && !char.IsLetter(input[0]))
+                {
+                    throw new ArgumentException();
+                }
+                _currentFilm.Title = input;
+                TitleTextBox.BackColor = Color.White;
+            }
+            catch
+            {
+                TitleTextBox.BackColor = Color.LightPink;
+            }
+        }
+
+        private void FilmListBox_SelectedIndexChanged(object? sender, EventArgs e)
+        {
+            if (FilmListBox.SelectedIndex < 0 || FilmListBox.SelectedIndex >= _films.Length)
+                return;
+
+            _currentFilm = _films[FilmListBox.SelectedIndex];
+            TitleTextBox.Text = _currentFilm.Title.ToString();
+            DurationTextBox.Text = _currentFilm.DurationInMinutes.ToString();
+            YearOfReleaseTextBox.Text = _currentFilm.YearOfRelease.ToString();
+            GenreTextBox.Text = _currentFilm.Genre.ToString();
+            RatingTextBox.Text = _currentFilm.Rating.ToString("F1");
+        }
+        
+        private void FilmFindButton_Click(object? sender, EventArgs e)
+        {
+            int index = FindFilmWithMaxRating(_films);
+            if (index >= 0 && index < _films.Length)
+            {
+                FilmListBox.SelectedIndex = index;
+            }
+            else
+            {
+                MessageBox.Show("Фильмы отсутствуют.");
+            }
+        }
+        private int FindFilmWithMaxRating(Film[] films)
+        {
+            if (films == null || films.Length == 0)
+                return -1;
+
+            int maxIndex = 0;
+            double maxRating = films[0].Rating;
+
+            for (int i = 1; i < films.Length; i++)
+            {
+                if (films[i].Rating > maxRating)
+                {
+                    maxRating = films[i].Rating;
+                    maxIndex = i;
+                }
+            }
+            return maxIndex;
+        }
+       
 
         private void FindButton_Click(object? sender, EventArgs e)
         {
@@ -86,9 +234,11 @@ namespace Programming
         {
             try
             {
-                double value = double.Parse(WidthTextBox.Text);
-                if (value < 1 || value > 20)
-                    throw new ArgumentOutOfRangeException();
+                string input = WidthTextBox.Text;
+                if (!double.TryParse(input, out double value) || value < 1 || value > 20)
+                {
+                    throw new ArgumentException();
+                }
 
                 _currentRectangle.Width = value;
                 WidthTextBox.BackColor = Color.White;
@@ -99,13 +249,15 @@ namespace Programming
             }
         }
 
-        private void LenghtTextBox_TextChanged(object? sender, EventArgs e)
+        private void LengthTextBox_TextChanged(object? sender, EventArgs e)
         {
             try
             {
-                double value = double.Parse(LenghtTextBox.Text);
-                if (value < 1 || value > 20)
-                    throw new ArgumentOutOfRangeException();
+                string input = LenghtTextBox.Text;
+                if (!double.TryParse(input, out double value) || value < 1 || value > 20)
+                {
+                    throw new ArgumentException();
+                }
 
                 _currentRectangle.Length = value;
                 LenghtTextBox.BackColor = Color.White;
@@ -215,3 +367,16 @@ namespace Programming
 
     }
 }
+
+/*
+Random rand = new Random();
+int colorCount = Enum.GetNames(typeof(Colors)).Length;
+for (int i = 0; i < 5; i++)
+{
+    string name = "Rectangle " + (i+1).ToString();
+    double length = 1 + rand.NextDouble() * 19;
+    double width = 1 + rand.NextDouble() * 19;
+    string randomColor = ((Colors)rand.Next(colorCount)).ToString();
+    _rectangles[i] = new Rectangles(name, length, width, randomColor);
+    RectanglesListBox.Items.Add(name);
+}*/

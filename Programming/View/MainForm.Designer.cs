@@ -1,6 +1,4 @@
-﻿using System.Windows.Forms;
-
-namespace Programming
+﻿namespace Programming
 {
     partial class MainForm
     {
@@ -49,8 +47,17 @@ namespace Programming
             ChooseValueLabel = new Label();
             ChooseEnumerationLabel = new Label();
             ClassesTabPage = new TabPage();
+            FilmGroupBox = new GroupBox();
+            FilmFindButton = new Button();
+            YearOfReleaseTextBox = new TextBox();
+            YearOfReleaseLabel = new Label();
+            DurationTextBox = new TextBox();
+            DurationLabel = new Label();
+            TitleTextBox = new TextBox();
+            TitleLabel = new Label();
+            FilmListBox = new ListBox();
             RectanglesGroupBox = new GroupBox();
-            FindButton = new Button();
+            RectangleFindButton = new Button();
             ColorTextBox = new TextBox();
             ColorLabel = new Label();
             WidthTextBox = new TextBox();
@@ -58,12 +65,17 @@ namespace Programming
             LenghtTextBox = new TextBox();
             LenghtLabel = new Label();
             RectanglesListBox = new ListBox();
+            RatingTextBox = new TextBox();
+            RatingLabel = new Label();
+            GenreTextBox = new TextBox();
+            GenreLabel = new Label();
             tabControl1.SuspendLayout();
             EnumsTabPage.SuspendLayout();
             SeasonHandleGroupBox.SuspendLayout();
             WeekdayParsingGroupBox.SuspendLayout();
             EnumerationsGroupBox.SuspendLayout();
             ClassesTabPage.SuspendLayout();
+            FilmGroupBox.SuspendLayout();
             RectanglesGroupBox.SuspendLayout();
             SuspendLayout();
             // 
@@ -248,6 +260,7 @@ namespace Programming
             // 
             // ClassesTabPage
             // 
+            ClassesTabPage.Controls.Add(FilmGroupBox);
             ClassesTabPage.Controls.Add(RectanglesGroupBox);
             ClassesTabPage.Location = new Point(4, 29);
             ClassesTabPage.Name = "ClassesTabPage";
@@ -257,9 +270,95 @@ namespace Programming
             ClassesTabPage.Text = "Classes";
             ClassesTabPage.UseVisualStyleBackColor = true;
             // 
+            // FilmGroupBox
+            // 
+            FilmGroupBox.Controls.Add(RatingTextBox);
+            FilmGroupBox.Controls.Add(RatingLabel);
+            FilmGroupBox.Controls.Add(GenreTextBox);
+            FilmGroupBox.Controls.Add(GenreLabel);
+            FilmGroupBox.Controls.Add(FilmFindButton);
+            FilmGroupBox.Controls.Add(YearOfReleaseTextBox);
+            FilmGroupBox.Controls.Add(YearOfReleaseLabel);
+            FilmGroupBox.Controls.Add(DurationTextBox);
+            FilmGroupBox.Controls.Add(DurationLabel);
+            FilmGroupBox.Controls.Add(TitleTextBox);
+            FilmGroupBox.Controls.Add(TitleLabel);
+            FilmGroupBox.Controls.Add(FilmListBox);
+            FilmGroupBox.Location = new Point(311, 6);
+            FilmGroupBox.Name = "FilmGroupBox";
+            FilmGroupBox.Size = new Size(297, 380);
+            FilmGroupBox.TabIndex = 1;
+            FilmGroupBox.TabStop = false;
+            FilmGroupBox.Text = "Film";
+            // 
+            // FilmFindButton
+            // 
+            FilmFindButton.Location = new Point(162, 301);
+            FilmFindButton.Name = "FilmFindButton";
+            FilmFindButton.Size = new Size(125, 29);
+            FilmFindButton.TabIndex = 7;
+            FilmFindButton.Text = "Find";
+            FilmFindButton.UseVisualStyleBackColor = true;
+            // 
+            // YearOfReleaseTextBox
+            // 
+            YearOfReleaseTextBox.Location = new Point(162, 155);
+            YearOfReleaseTextBox.Name = "YearOfReleaseTextBox";
+            YearOfReleaseTextBox.Size = new Size(125, 27);
+            YearOfReleaseTextBox.TabIndex = 6;
+            // 
+            // YearOfReleaseLabel
+            // 
+            YearOfReleaseLabel.AutoSize = true;
+            YearOfReleaseLabel.Location = new Point(162, 132);
+            YearOfReleaseLabel.Name = "YearOfReleaseLabel";
+            YearOfReleaseLabel.Size = new Size(109, 20);
+            YearOfReleaseLabel.TabIndex = 5;
+            YearOfReleaseLabel.Text = "Year of release:";
+            // 
+            // DurationTextBox
+            // 
+            DurationTextBox.Location = new Point(162, 102);
+            DurationTextBox.Name = "DurationTextBox";
+            DurationTextBox.Size = new Size(125, 27);
+            DurationTextBox.TabIndex = 4;
+            // 
+            // DurationLabel
+            // 
+            DurationLabel.AutoSize = true;
+            DurationLabel.Location = new Point(162, 79);
+            DurationLabel.Name = "DurationLabel";
+            DurationLabel.Size = new Size(70, 20);
+            DurationLabel.TabIndex = 3;
+            DurationLabel.Text = "Duration:";
+            // 
+            // TitleTextBox
+            // 
+            TitleTextBox.Location = new Point(162, 49);
+            TitleTextBox.Name = "TitleTextBox";
+            TitleTextBox.Size = new Size(125, 27);
+            TitleTextBox.TabIndex = 2;
+            // 
+            // TitleLabel
+            // 
+            TitleLabel.AutoSize = true;
+            TitleLabel.Location = new Point(162, 26);
+            TitleLabel.Name = "TitleLabel";
+            TitleLabel.Size = new Size(41, 20);
+            TitleLabel.TabIndex = 1;
+            TitleLabel.Text = "Title:";
+            // 
+            // FilmListBox
+            // 
+            FilmListBox.FormattingEnabled = true;
+            FilmListBox.Location = new Point(6, 26);
+            FilmListBox.Name = "FilmListBox";
+            FilmListBox.Size = new Size(150, 304);
+            FilmListBox.TabIndex = 0;
+            // 
             // RectanglesGroupBox
             // 
-            RectanglesGroupBox.Controls.Add(FindButton);
+            RectanglesGroupBox.Controls.Add(RectangleFindButton);
             RectanglesGroupBox.Controls.Add(ColorTextBox);
             RectanglesGroupBox.Controls.Add(ColorLabel);
             RectanglesGroupBox.Controls.Add(WidthTextBox);
@@ -269,19 +368,19 @@ namespace Programming
             RectanglesGroupBox.Controls.Add(RectanglesListBox);
             RectanglesGroupBox.Location = new Point(8, 6);
             RectanglesGroupBox.Name = "RectanglesGroupBox";
-            RectanglesGroupBox.Size = new Size(297, 291);
+            RectanglesGroupBox.Size = new Size(297, 380);
             RectanglesGroupBox.TabIndex = 0;
             RectanglesGroupBox.TabStop = false;
             RectanglesGroupBox.Text = "Rectangles";
             // 
-            // FindButton
+            // RectangleFindButton
             // 
-            FindButton.Location = new Point(162, 201);
-            FindButton.Name = "FindButton";
-            FindButton.Size = new Size(125, 29);
-            FindButton.TabIndex = 7;
-            FindButton.Text = "Find";
-            FindButton.UseVisualStyleBackColor = true;
+            RectangleFindButton.Location = new Point(162, 201);
+            RectangleFindButton.Name = "RectangleFindButton";
+            RectangleFindButton.Size = new Size(125, 29);
+            RectangleFindButton.TabIndex = 7;
+            RectangleFindButton.Text = "Find";
+            RectangleFindButton.UseVisualStyleBackColor = true;
             // 
             // ColorTextBox
             // 
@@ -339,6 +438,38 @@ namespace Programming
             RectanglesListBox.Size = new Size(150, 204);
             RectanglesListBox.TabIndex = 0;
             // 
+            // RatingTextBox
+            // 
+            RatingTextBox.Location = new Point(162, 261);
+            RatingTextBox.Name = "RatingTextBox";
+            RatingTextBox.Size = new Size(125, 27);
+            RatingTextBox.TabIndex = 11;
+            // 
+            // RatingLabel
+            // 
+            RatingLabel.AutoSize = true;
+            RatingLabel.Location = new Point(162, 238);
+            RatingLabel.Name = "RatingLabel";
+            RatingLabel.Size = new Size(55, 20);
+            RatingLabel.TabIndex = 10;
+            RatingLabel.Text = "Rating:";
+            // 
+            // GenreTextBox
+            // 
+            GenreTextBox.Location = new Point(162, 208);
+            GenreTextBox.Name = "GenreTextBox";
+            GenreTextBox.Size = new Size(125, 27);
+            GenreTextBox.TabIndex = 9;
+            // 
+            // GenreLabel
+            // 
+            GenreLabel.AutoSize = true;
+            GenreLabel.Location = new Point(162, 185);
+            GenreLabel.Name = "GenreLabel";
+            GenreLabel.Size = new Size(51, 20);
+            GenreLabel.TabIndex = 8;
+            GenreLabel.Text = "Genre:";
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -357,6 +488,8 @@ namespace Programming
             EnumerationsGroupBox.ResumeLayout(false);
             EnumerationsGroupBox.PerformLayout();
             ClassesTabPage.ResumeLayout(false);
+            FilmGroupBox.ResumeLayout(false);
+            FilmGroupBox.PerformLayout();
             RectanglesGroupBox.ResumeLayout(false);
             RectanglesGroupBox.PerformLayout();
             ResumeLayout(false);
@@ -389,7 +522,20 @@ namespace Programming
         private Label WidthLabel;
         private TextBox LenghtTextBox;
         private Label LenghtLabel;
-        private Button FindButton;
+        private Button RectangleFindButton;
+        private GroupBox FilmGroupBox;
+        private ListBox FilmListBox;
+        private Button FilmFindButton;
+        private TextBox YearOfReleaseTextBox;
+        private Label YearOfReleaseLabel;
+        private TextBox DurationTextBox;
+        private Label DurationLabel;
+        private TextBox TitleTextBox;
+        private Label TitleLabel;
+        private TextBox RatingTextBox;
+        private Label RatingLabel;
+        private TextBox GenreTextBox;
+        private Label GenreLabel;
     }
 }
 #endregion
