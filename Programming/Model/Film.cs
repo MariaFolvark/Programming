@@ -34,10 +34,7 @@ namespace Programming.Model
             get { return duration_in_minutes; }
             set
             {
-                if (value >= 0)
-                    duration_in_minutes = value;
-                else
-                    throw new ArgumentOutOfRangeException(nameof(value), "Продолжительность фильма не может быть отрицательной.");
+                duration_in_minutes = Validator.AssertOnPositiveValue(value, nameof(duration_in_minutes));
             }
         }
         public int YearOfRelease
@@ -46,10 +43,7 @@ namespace Programming.Model
             set
             {
                 int current_year = DateTime.Now.Year;
-                if (value >= 1900 && value <= current_year)
-                    year_of_release = value;
-                else
-                    throw new ArgumentOutOfRangeException(nameof(value), $"Год выпуска должен быть между 1900 и {current_year}.");
+                year_of_release = Validator.AssertValueInRange(value, 1900, current_year, nameof(year_of_release));
             }
         }
         public string Genre { get { return genre; } set { genre = value; } }
@@ -58,10 +52,7 @@ namespace Programming.Model
             get { return rating; }
             set
             {
-                if (value >= 0 && value <= 10)
-                    rating = value;
-                else
-                    throw new ArgumentOutOfRangeException(nameof(value), "Рейтинг должен быть между 0 и 10.");
+                rating = Validator.AssertValueInRange(value, 0, 10, nameof(rating));
             }
         }
 
@@ -94,8 +85,8 @@ namespace Programming.Model
         }
     }
 }
-/*
-Random rand = new Random();
+
+/*Random rand = new Random();
 int colorCount = Enum.GetNames(typeof(Colors)).Length;
 for (int i = 0; i < 5; i++)
 {
@@ -107,7 +98,15 @@ for (int i = 0; i < 5; i++)
     RectanglesListBox.Items.Add(name);
 }*/
 
-
-
-
-
+/*if (value >= 0)
+    duration_in_minutes = value;
+else
+    throw new ArgumentOutOfRangeException(nameof(value), "Продолжительность фильма не может быть отрицательной.");*/
+/*if (value >= 1900 && value <= current_year)
+    year_of_release = value;
+else
+    throw new ArgumentOutOfRangeException(nameof(value), $"Год выпуска должен быть между 1900 и {current_year}.");*/
+/*if (value >= 0 && value <= 10)
+    rating = value;
+else
+    throw new ArgumentOutOfRangeException(nameof(value), "Рейтинг должен быть между 0 и 10.");*/

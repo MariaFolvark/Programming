@@ -16,14 +16,14 @@ namespace Programming.Model
             get { return name; }
             set
             {
-                name = AssertStringContainsOnlyLetters(value, "name");
+                name = AssertStringContainsOnlyLetters(value, nameof(name));
             }
         }
         public string Surname {
             get {  return surname; }
             set
             {
-                surname = AssertStringContainsOnlyLetters(value, "surname");
+                surname = AssertStringContainsOnlyLetters(value, nameof(surname));
             }
         }
         public string PhoneNumber { get { return phone_number; } set { phone_number = value; } }

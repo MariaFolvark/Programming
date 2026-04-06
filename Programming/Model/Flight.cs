@@ -19,10 +19,7 @@ namespace Programming.Model
             get { return flight_time_minutes; }
             set
             {
-                if (value >= 0)
-                    flight_time_minutes = value;
-                else
-                    throw new ArgumentOutOfRangeException(nameof(value), "Время полёта не может быть отрицательным.");
+                flight_time_minutes = Validator.AssertOnPositiveValue(value, nameof(flight_time_minutes));
             }
         }
         public Flight(string departure_point, string destination, int flight_time_minutes)
@@ -34,3 +31,8 @@ namespace Programming.Model
         public Flight() { }
     }
 }
+
+/*if (value >= 0)
+    flight_time_minutes = value;
+else
+    throw new ArgumentOutOfRangeException(nameof(value), "Время полёта не может быть отрицательным.");*/

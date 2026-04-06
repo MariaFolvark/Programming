@@ -15,28 +15,22 @@ namespace Programming.Model
 
         public string Name { get { return name; } set { name = value; } }
 
-        public int AcademicHours { get {  return academic_hours; } set
+        public int AcademicHours { get { return academic_hours; }
+            set
             {
-                if (value >= 0)
-                    academic_hours = value;
-                else
-                    throw new ArgumentOutOfRangeException(nameof(value), "Количество часов должно быть не меньше 0.");
+                academic_hours = Validator.AssertOnPositiveValue(value, nameof(academic_hours));
             }
         }
-        public int CreditUnits { get { return credit_units; } set
+        public int CreditUnits { get { return credit_units; }
+            set
             {
-                if (value >= 0)
-                    credit_units = value;
-                else
-                    throw new ArgumentOutOfRangeException(nameof(value), "Количество зачётных единиц должно быть не меньше 0.");
+                credit_units = Validator.AssertOnPositiveValue(value, nameof(credit_units));
             }
         }
-        public int Grade { get { return grade; } set
+        public int Grade { get { return grade; }
+            set
             {
-                if (value > 2 && value < 6)
-                    grade = value;
-                else
-                    throw new ArgumentOutOfRangeException(nameof(value), "Оценка должна быть в диапазоне от 3 до 5.");
+                grade = Validator.AssertValueInRange(value, 3, 5, nameof(grade));
             }
         }
 
@@ -51,3 +45,16 @@ namespace Programming.Model
 
     }
 }
+
+/*if (value >= 0)
+    academic_hours = value;
+else
+    throw new ArgumentOutOfRangeException(nameof(value), "Количество часов должно быть не меньше 0.");*/
+/*if (value >= 0)
+    credit_units = value;
+else
+    throw new ArgumentOutOfRangeException(nameof(value), "Количество зачётных единиц должно быть не меньше 0.");*/
+/*if (value > 2 && value < 6)
+    grade = value;
+else
+    throw new ArgumentOutOfRangeException(nameof(value), "Оценка должна быть в диапазоне от 3 до 5.");*/

@@ -20,10 +20,7 @@ namespace Programming.Model
             get { return length; }
             set
             {
-                if (value >= 0)
-                    length = value;
-                else
-                    throw new ArgumentOutOfRangeException(nameof(value), "Длина прямоугольника не может быть отрицательной");
+                length = Validator.AssertOnPositiveValue(value, "length");
             }
         }
         public double Width
@@ -31,10 +28,7 @@ namespace Programming.Model
             get { return width; }
             set
             {
-                if (value >= 0)
-                    width = value;
-                else
-                    throw new ArgumentOutOfRangeException(nameof(value), "Ширина прямоугольника не может быть отрицательной");
+                width = Validator.AssertOnPositiveValue(value, "width");
             }
         }
         public string Colour { get { return colour; } set { colour = value; } }
@@ -65,3 +59,12 @@ namespace Programming.Model
 
     }
 }
+
+/*if (value >= 0)
+    length = value;
+else
+    throw new ArgumentOutOfRangeException(nameof(value), "Длина прямоугольника не может быть отрицательной");*/
+/*if (value >= 0)
+    width = value;
+else
+    throw new ArgumentOutOfRangeException(nameof(value), "Ширина прямоугольника не может быть отрицательной");*/

@@ -16,10 +16,7 @@ namespace Programming.Model
             get { return hours; }
             set
             {
-                if (value >= 0 && value < 24)
-                    hours = value;
-                else
-                    throw new ArgumentOutOfRangeException(nameof(value), "Часы должны быть в диапазоне от 0 до 24.");
+                hours = Validator.AssertValueInRange(value, 0, 24, nameof(hours));
             }
         }
         public int Minutes
@@ -27,10 +24,7 @@ namespace Programming.Model
             get { return minutes; }
             set
             {
-                if (value >= 0 && value < 60)
-                    minutes = value;
-                else
-                    throw new ArgumentOutOfRangeException(nameof(value), "Минуты должны быть в диапазоне от 0 до 60.");
+                minutes = Validator.AssertValueInRange(value, 0, 60, nameof(minutes));
             }
         }
         public int Seconds
@@ -38,10 +32,7 @@ namespace Programming.Model
             get { return seconds; }
             set
             {
-                if (value >= 0 && value < 60)
-                    seconds = value;
-                else
-                    throw new ArgumentOutOfRangeException(nameof(value), "Секунды должны быть в диапазоне от 0 до 60.");
+                seconds = Validator.AssertValueInRange(value, 0, 60, nameof(seconds));
             }
         }
 
@@ -54,3 +45,16 @@ namespace Programming.Model
         public Time() { }
     }
 }
+
+/*if (value >= 0 && value < 24)
+    hours = value;
+else
+    throw new ArgumentOutOfRangeException(nameof(value), "Часы должны быть в диапазоне от 0 до 24.");*/
+/*if (value >= 0 && value < 60)
+    minutes = value;
+else
+    throw new ArgumentOutOfRangeException(nameof(value), "Минуты должны быть в диапазоне от 0 до 60.");*/
+/*if (value >= 0 && value < 60)
+    seconds = value;
+else
+    throw new ArgumentOutOfRangeException(nameof(value), "Секунды должны быть в диапазоне от 0 до 60.");*/

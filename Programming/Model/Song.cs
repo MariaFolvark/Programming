@@ -19,10 +19,7 @@ namespace Programming.Model
             get { return duration_in_minutes; }
             set
             {
-                if (value >= 0)
-                    duration_in_minutes = value;
-                else
-                    throw new ArgumentOutOfRangeException(nameof(value), "Продолжительность фильма не может быть отрицательной.");
+                duration_in_minutes = Validator.AssertOnPositiveValue(value, nameof(duration_in_minutes));
             }
         }
 
@@ -35,3 +32,8 @@ namespace Programming.Model
         public Song() { }
     }
 }
+
+/*if (value >= 0)
+    duration_in_minutes = value;
+else
+    throw new ArgumentOutOfRangeException(nameof(value), "Продолжительность фильма не может быть отрицательной.");*/
