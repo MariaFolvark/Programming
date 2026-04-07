@@ -74,10 +74,7 @@ namespace Programming
                     throw new ArgumentException();
                 }
                 double roundedValue = Math.Round(value, 1);
-                if (roundedValue < 0 || roundedValue > 10)
-                {
-                    throw new ArgumentOutOfRangeException();
-                }
+                roundedValue = Validator.AssertValueInRange(roundedValue, 0, 10, nameof(roundedValue));
                 _currentFilm.Rating = roundedValue;
                 RatingTextBox.Text = roundedValue.ToString("0.0");
                 RatingTextBox.BackColor = Color.White;
@@ -100,10 +97,7 @@ namespace Programming
                 }
 
                 int currentYear = DateTime.Now.Year;
-                if (year < 1900 || year > currentYear)
-                {
-                    throw new ArgumentOutOfRangeException();
-                }
+                year = Validator.AssertValueInRange(year, 1900, currentYear, nameof(year));
 
                 _currentFilm.YearOfRelease = year;
                 YearOfReleaseTextBox.BackColor = Color.White;
