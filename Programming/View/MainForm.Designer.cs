@@ -48,6 +48,10 @@
             ChooseEnumerationLabel = new Label();
             ClassesTabPage = new TabPage();
             FilmGroupBox = new GroupBox();
+            RatingTextBox = new TextBox();
+            RatingLabel = new Label();
+            GenreTextBox = new TextBox();
+            GenreLabel = new Label();
             FilmFindButton = new Button();
             YearOfReleaseTextBox = new TextBox();
             YearOfReleaseLabel = new Label();
@@ -57,6 +61,11 @@
             TitleLabel = new Label();
             FilmListBox = new ListBox();
             RectanglesGroupBox = new GroupBox();
+            CenterCoordinatesTextBoxY = new TextBox();
+            CenterCoordinatesLabel = new Label();
+            CenterCoordinatesTextBoxX = new TextBox();
+            CenterCoordinatesLabelY = new Label();
+            CenterCoordinatesLabelX = new Label();
             RectangleFindButton = new Button();
             ColorTextBox = new TextBox();
             ColorLabel = new Label();
@@ -65,10 +74,6 @@
             LenghtTextBox = new TextBox();
             LenghtLabel = new Label();
             RectanglesListBox = new ListBox();
-            RatingTextBox = new TextBox();
-            RatingLabel = new Label();
-            GenreTextBox = new TextBox();
-            GenreLabel = new Label();
             tabControl1.SuspendLayout();
             EnumsTabPage.SuspendLayout();
             SeasonHandleGroupBox.SuspendLayout();
@@ -284,12 +289,44 @@
             FilmGroupBox.Controls.Add(TitleTextBox);
             FilmGroupBox.Controls.Add(TitleLabel);
             FilmGroupBox.Controls.Add(FilmListBox);
-            FilmGroupBox.Location = new Point(311, 6);
+            FilmGroupBox.Location = new Point(342, 6);
             FilmGroupBox.Name = "FilmGroupBox";
             FilmGroupBox.Size = new Size(297, 380);
             FilmGroupBox.TabIndex = 1;
             FilmGroupBox.TabStop = false;
             FilmGroupBox.Text = "Film";
+            // 
+            // RatingTextBox
+            // 
+            RatingTextBox.Location = new Point(162, 261);
+            RatingTextBox.Name = "RatingTextBox";
+            RatingTextBox.Size = new Size(125, 27);
+            RatingTextBox.TabIndex = 11;
+            // 
+            // RatingLabel
+            // 
+            RatingLabel.AutoSize = true;
+            RatingLabel.Location = new Point(162, 238);
+            RatingLabel.Name = "RatingLabel";
+            RatingLabel.Size = new Size(55, 20);
+            RatingLabel.TabIndex = 10;
+            RatingLabel.Text = "Rating:";
+            // 
+            // GenreTextBox
+            // 
+            GenreTextBox.Location = new Point(162, 208);
+            GenreTextBox.Name = "GenreTextBox";
+            GenreTextBox.Size = new Size(125, 27);
+            GenreTextBox.TabIndex = 9;
+            // 
+            // GenreLabel
+            // 
+            GenreLabel.AutoSize = true;
+            GenreLabel.Location = new Point(162, 185);
+            GenreLabel.Name = "GenreLabel";
+            GenreLabel.Size = new Size(51, 20);
+            GenreLabel.TabIndex = 8;
+            GenreLabel.Text = "Genre:";
             // 
             // FilmFindButton
             // 
@@ -358,6 +395,11 @@
             // 
             // RectanglesGroupBox
             // 
+            RectanglesGroupBox.Controls.Add(CenterCoordinatesTextBoxY);
+            RectanglesGroupBox.Controls.Add(CenterCoordinatesLabel);
+            RectanglesGroupBox.Controls.Add(CenterCoordinatesTextBoxX);
+            RectanglesGroupBox.Controls.Add(CenterCoordinatesLabelY);
+            RectanglesGroupBox.Controls.Add(CenterCoordinatesLabelX);
             RectanglesGroupBox.Controls.Add(RectangleFindButton);
             RectanglesGroupBox.Controls.Add(ColorTextBox);
             RectanglesGroupBox.Controls.Add(ColorLabel);
@@ -368,14 +410,57 @@
             RectanglesGroupBox.Controls.Add(RectanglesListBox);
             RectanglesGroupBox.Location = new Point(8, 6);
             RectanglesGroupBox.Name = "RectanglesGroupBox";
-            RectanglesGroupBox.Size = new Size(297, 380);
+            RectanglesGroupBox.Size = new Size(310, 380);
             RectanglesGroupBox.TabIndex = 0;
             RectanglesGroupBox.TabStop = false;
             RectanglesGroupBox.Text = "Rectangles";
             // 
+            // CenterCoordinatesTextBoxY
+            // 
+            CenterCoordinatesTextBoxY.Location = new Point(230, 231);
+            CenterCoordinatesTextBoxY.Name = "CenterCoordinatesTextBoxY";
+            CenterCoordinatesTextBoxY.ReadOnly = true;
+            CenterCoordinatesTextBoxY.Size = new Size(57, 27);
+            CenterCoordinatesTextBoxY.TabIndex = 13;
+            // 
+            // CenterCoordinatesLabel
+            // 
+            CenterCoordinatesLabel.AutoSize = true;
+            CenterCoordinatesLabel.Location = new Point(162, 185);
+            CenterCoordinatesLabel.Name = "CenterCoordinatesLabel";
+            CenterCoordinatesLabel.Size = new Size(137, 20);
+            CenterCoordinatesLabel.TabIndex = 12;
+            CenterCoordinatesLabel.Text = "Center coordinates:";
+            // 
+            // CenterCoordinatesTextBoxX
+            // 
+            CenterCoordinatesTextBoxX.Location = new Point(162, 231);
+            CenterCoordinatesTextBoxX.Name = "CenterCoordinatesTextBoxX";
+            CenterCoordinatesTextBoxX.ReadOnly = true;
+            CenterCoordinatesTextBoxX.Size = new Size(57, 27);
+            CenterCoordinatesTextBoxX.TabIndex = 10;
+            // 
+            // CenterCoordinatesLabelY
+            // 
+            CenterCoordinatesLabelY.AutoSize = true;
+            CenterCoordinatesLabelY.Location = new Point(230, 208);
+            CenterCoordinatesLabelY.Name = "CenterCoordinatesLabelY";
+            CenterCoordinatesLabelY.Size = new Size(17, 20);
+            CenterCoordinatesLabelY.TabIndex = 9;
+            CenterCoordinatesLabelY.Text = "Y";
+            // 
+            // CenterCoordinatesLabelX
+            // 
+            CenterCoordinatesLabelX.AutoSize = true;
+            CenterCoordinatesLabelX.Location = new Point(162, 208);
+            CenterCoordinatesLabelX.Name = "CenterCoordinatesLabelX";
+            CenterCoordinatesLabelX.Size = new Size(18, 20);
+            CenterCoordinatesLabelX.TabIndex = 8;
+            CenterCoordinatesLabelX.Text = "X";
+            // 
             // RectangleFindButton
             // 
-            RectangleFindButton.Location = new Point(162, 201);
+            RectangleFindButton.Location = new Point(162, 301);
             RectangleFindButton.Name = "RectangleFindButton";
             RectangleFindButton.Size = new Size(125, 29);
             RectangleFindButton.TabIndex = 7;
@@ -435,40 +520,8 @@
             RectanglesListBox.FormattingEnabled = true;
             RectanglesListBox.Location = new Point(6, 26);
             RectanglesListBox.Name = "RectanglesListBox";
-            RectanglesListBox.Size = new Size(150, 204);
+            RectanglesListBox.Size = new Size(150, 304);
             RectanglesListBox.TabIndex = 0;
-            // 
-            // RatingTextBox
-            // 
-            RatingTextBox.Location = new Point(162, 261);
-            RatingTextBox.Name = "RatingTextBox";
-            RatingTextBox.Size = new Size(125, 27);
-            RatingTextBox.TabIndex = 11;
-            // 
-            // RatingLabel
-            // 
-            RatingLabel.AutoSize = true;
-            RatingLabel.Location = new Point(162, 238);
-            RatingLabel.Name = "RatingLabel";
-            RatingLabel.Size = new Size(55, 20);
-            RatingLabel.TabIndex = 10;
-            RatingLabel.Text = "Rating:";
-            // 
-            // GenreTextBox
-            // 
-            GenreTextBox.Location = new Point(162, 208);
-            GenreTextBox.Name = "GenreTextBox";
-            GenreTextBox.Size = new Size(125, 27);
-            GenreTextBox.TabIndex = 9;
-            // 
-            // GenreLabel
-            // 
-            GenreLabel.AutoSize = true;
-            GenreLabel.Location = new Point(162, 185);
-            GenreLabel.Name = "GenreLabel";
-            GenreLabel.Size = new Size(51, 20);
-            GenreLabel.TabIndex = 8;
-            GenreLabel.Text = "Genre:";
             // 
             // MainForm
             // 
@@ -536,6 +589,11 @@
         private Label RatingLabel;
         private TextBox GenreTextBox;
         private Label GenreLabel;
+        private Label CenterCoordinatesLabel;
+        private TextBox CenterCoordinatesTextBoxX;
+        private Label CenterCoordinatesLabelY;
+        private Label CenterCoordinatesLabelX;
+        private TextBox CenterCoordinatesTextBoxY;
     }
 }
 #endregion

@@ -13,6 +13,7 @@ namespace Programming.Model
         private double length; //Длина
         private double width; //Ширина
         private string colour = "Undefined"; //Цвет
+        private Point2D center;
 
         public string Name { get { return name; } set { name = value; } }
         public double Length
@@ -32,12 +33,14 @@ namespace Programming.Model
             }
         }
         public string Colour { get { return colour; } set { colour = value; } }
-        public Rectangles(string name, double length, double width, string colour)
+        public Point2D Center { get; set; }
+        public Rectangles(string name, double length, double width, string colour, Point2D center)
         {
             this.Name = name;
             this.Length = length;
             this.Width = width;
             this.Colour = colour;
+            this.Center = center;
         }
         public Rectangles() { }
         public static Rectangles[] RandomRectanglesArray(int cnt)
@@ -51,7 +54,8 @@ namespace Programming.Model
                 double length = 1 + rand.NextDouble() * 19;
                 double width = 1 + rand.NextDouble() * 19;
                 string randomColor = ((Colors)rand.Next(colorCount)).ToString();
-                rectangles[i] = new Rectangles(name, length, width, randomColor);
+                Point2D center = new Point2D(rand.NextDouble() * 100, rand.NextDouble() * 100);
+                rectangles[i] = new Rectangles(name, length, width, randomColor, center);
             }
             return rectangles;
         }

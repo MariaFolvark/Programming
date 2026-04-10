@@ -271,6 +271,8 @@ namespace Programming
             LenghtTextBox.Text = _currentRectangle.Length.ToString("F2");//"F2" - 2 знака после запятой
             WidthTextBox.Text = _currentRectangle.Width.ToString("F2");
             ColorTextBox.Text = _currentRectangle.Colour.ToString();
+            CenterCoordinatesTextBoxX.Text = _currentRectangle.Center.X.ToString("F2");
+            CenterCoordinatesTextBoxY.Text = _currentRectangle.Center.Y.ToString("F2");
         }
 
         private void GoButton_Click(object? sender, EventArgs e)
