@@ -21,7 +21,7 @@ namespace Programming.Model
             get { return length; }
             set
             {
-                length = Validator.AssertOnPositiveValue(value, "length");
+                length = Validator.AssertOnPositiveValue(value, nameof(length));
             }
         }
         public double Width
@@ -29,7 +29,7 @@ namespace Programming.Model
             get { return width; }
             set
             {
-                width = Validator.AssertOnPositiveValue(value, "width");
+                width = Validator.AssertOnPositiveValue(value, nameof(width));
             }
         }
         public string Colour { get { return colour; } set { colour = value; } }

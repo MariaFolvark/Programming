@@ -16,7 +16,7 @@ namespace Programming.Model
             get { return x; }
             private set
             {
-                x = Validator.AssertValueInRange(value, 0, 100, nameof(value));
+                x = Validator.AssertValueInRange(value, 0, 100, nameof(x));
             }
         }
 
@@ -25,7 +25,7 @@ namespace Programming.Model
             get { return y; }
             private set
             {
-                y = Validator.AssertValueInRange(value, 0, 100, nameof(value));
+                y = Validator.AssertValueInRange(value, 0, 100, nameof(y));
             }
         }
 
