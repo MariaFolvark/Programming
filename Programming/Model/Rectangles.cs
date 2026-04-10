@@ -34,7 +34,7 @@ namespace Programming.Model
         public string Colour { get { return colour; } set { colour = value; } }
         public Rectangles(string name, double length, double width, string colour)
         {
-            this.name = name;
+            this.Name = name;
             this.Length = length;
             this.Width = width;
             this.Colour = colour;
