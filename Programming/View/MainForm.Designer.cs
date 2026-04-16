@@ -61,6 +61,8 @@
             TitleLabel = new Label();
             FilmListBox = new ListBox();
             RectanglesGroupBox = new GroupBox();
+            RectanglesIdTextBox = new TextBox();
+            RectanglesIdLabel = new Label();
             CenterCoordinatesTextBoxY = new TextBox();
             CenterCoordinatesLabel = new Label();
             CenterCoordinatesTextBoxX = new TextBox();
@@ -395,6 +397,8 @@
             // 
             // RectanglesGroupBox
             // 
+            RectanglesGroupBox.Controls.Add(RectanglesIdTextBox);
+            RectanglesGroupBox.Controls.Add(RectanglesIdLabel);
             RectanglesGroupBox.Controls.Add(CenterCoordinatesTextBoxY);
             RectanglesGroupBox.Controls.Add(CenterCoordinatesLabel);
             RectanglesGroupBox.Controls.Add(CenterCoordinatesTextBoxX);
@@ -415,9 +419,26 @@
             RectanglesGroupBox.TabStop = false;
             RectanglesGroupBox.Text = "Rectangles";
             // 
+            // RectanglesIdTextBox
+            // 
+            RectanglesIdTextBox.Location = new Point(162, 49);
+            RectanglesIdTextBox.Name = "RectanglesIdTextBox";
+            RectanglesIdTextBox.ReadOnly = true;
+            RectanglesIdTextBox.Size = new Size(125, 27);
+            RectanglesIdTextBox.TabIndex = 15;
+            // 
+            // RectanglesIdLabel
+            // 
+            RectanglesIdLabel.AutoSize = true;
+            RectanglesIdLabel.Location = new Point(162, 26);
+            RectanglesIdLabel.Name = "RectanglesIdLabel";
+            RectanglesIdLabel.Size = new Size(25, 20);
+            RectanglesIdLabel.TabIndex = 14;
+            RectanglesIdLabel.Text = "Id:";
+            // 
             // CenterCoordinatesTextBoxY
             // 
-            CenterCoordinatesTextBoxY.Location = new Point(230, 231);
+            CenterCoordinatesTextBoxY.Location = new Point(230, 284);
             CenterCoordinatesTextBoxY.Name = "CenterCoordinatesTextBoxY";
             CenterCoordinatesTextBoxY.ReadOnly = true;
             CenterCoordinatesTextBoxY.Size = new Size(57, 27);
@@ -426,7 +447,7 @@
             // CenterCoordinatesLabel
             // 
             CenterCoordinatesLabel.AutoSize = true;
-            CenterCoordinatesLabel.Location = new Point(162, 185);
+            CenterCoordinatesLabel.Location = new Point(162, 238);
             CenterCoordinatesLabel.Name = "CenterCoordinatesLabel";
             CenterCoordinatesLabel.Size = new Size(137, 20);
             CenterCoordinatesLabel.TabIndex = 12;
@@ -434,7 +455,7 @@
             // 
             // CenterCoordinatesTextBoxX
             // 
-            CenterCoordinatesTextBoxX.Location = new Point(162, 231);
+            CenterCoordinatesTextBoxX.Location = new Point(162, 284);
             CenterCoordinatesTextBoxX.Name = "CenterCoordinatesTextBoxX";
             CenterCoordinatesTextBoxX.ReadOnly = true;
             CenterCoordinatesTextBoxX.Size = new Size(57, 27);
@@ -443,7 +464,7 @@
             // CenterCoordinatesLabelY
             // 
             CenterCoordinatesLabelY.AutoSize = true;
-            CenterCoordinatesLabelY.Location = new Point(230, 208);
+            CenterCoordinatesLabelY.Location = new Point(230, 261);
             CenterCoordinatesLabelY.Name = "CenterCoordinatesLabelY";
             CenterCoordinatesLabelY.Size = new Size(17, 20);
             CenterCoordinatesLabelY.TabIndex = 9;
@@ -452,7 +473,7 @@
             // CenterCoordinatesLabelX
             // 
             CenterCoordinatesLabelX.AutoSize = true;
-            CenterCoordinatesLabelX.Location = new Point(162, 208);
+            CenterCoordinatesLabelX.Location = new Point(162, 261);
             CenterCoordinatesLabelX.Name = "CenterCoordinatesLabelX";
             CenterCoordinatesLabelX.Size = new Size(18, 20);
             CenterCoordinatesLabelX.TabIndex = 8;
@@ -460,7 +481,7 @@
             // 
             // RectangleFindButton
             // 
-            RectangleFindButton.Location = new Point(162, 301);
+            RectangleFindButton.Location = new Point(162, 324);
             RectangleFindButton.Name = "RectangleFindButton";
             RectangleFindButton.Size = new Size(125, 29);
             RectangleFindButton.TabIndex = 7;
@@ -469,7 +490,7 @@
             // 
             // ColorTextBox
             // 
-            ColorTextBox.Location = new Point(162, 155);
+            ColorTextBox.Location = new Point(162, 208);
             ColorTextBox.Name = "ColorTextBox";
             ColorTextBox.Size = new Size(125, 27);
             ColorTextBox.TabIndex = 6;
@@ -477,7 +498,7 @@
             // ColorLabel
             // 
             ColorLabel.AutoSize = true;
-            ColorLabel.Location = new Point(162, 132);
+            ColorLabel.Location = new Point(162, 185);
             ColorLabel.Name = "ColorLabel";
             ColorLabel.Size = new Size(48, 20);
             ColorLabel.TabIndex = 5;
@@ -485,7 +506,7 @@
             // 
             // WidthTextBox
             // 
-            WidthTextBox.Location = new Point(162, 102);
+            WidthTextBox.Location = new Point(162, 155);
             WidthTextBox.Name = "WidthTextBox";
             WidthTextBox.Size = new Size(125, 27);
             WidthTextBox.TabIndex = 4;
@@ -493,7 +514,7 @@
             // WidthLabel
             // 
             WidthLabel.AutoSize = true;
-            WidthLabel.Location = new Point(162, 79);
+            WidthLabel.Location = new Point(162, 132);
             WidthLabel.Name = "WidthLabel";
             WidthLabel.Size = new Size(52, 20);
             WidthLabel.TabIndex = 3;
@@ -501,7 +522,7 @@
             // 
             // LenghtTextBox
             // 
-            LenghtTextBox.Location = new Point(162, 49);
+            LenghtTextBox.Location = new Point(162, 102);
             LenghtTextBox.Name = "LenghtTextBox";
             LenghtTextBox.Size = new Size(125, 27);
             LenghtTextBox.TabIndex = 2;
@@ -509,7 +530,7 @@
             // LenghtLabel
             // 
             LenghtLabel.AutoSize = true;
-            LenghtLabel.Location = new Point(162, 26);
+            LenghtLabel.Location = new Point(162, 79);
             LenghtLabel.Name = "LenghtLabel";
             LenghtLabel.Size = new Size(57, 20);
             LenghtLabel.TabIndex = 1;
@@ -520,7 +541,7 @@
             RectanglesListBox.FormattingEnabled = true;
             RectanglesListBox.Location = new Point(6, 26);
             RectanglesListBox.Name = "RectanglesListBox";
-            RectanglesListBox.Size = new Size(150, 304);
+            RectanglesListBox.Size = new Size(150, 324);
             RectanglesListBox.TabIndex = 0;
             // 
             // MainForm
@@ -594,6 +615,8 @@
         private Label CenterCoordinatesLabelY;
         private Label CenterCoordinatesLabelX;
         private TextBox CenterCoordinatesTextBoxY;
+        private TextBox RectanglesIdTextBox;
+        private Label RectanglesIdLabel;
     }
 }
 #endregion

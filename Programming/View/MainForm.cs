@@ -268,6 +268,7 @@ namespace Programming
                 return;
 
             _currentRectangle = _rectangles[RectanglesListBox.SelectedIndex];
+            RectanglesIdTextBox.Text = _currentRectangle.Id.ToString();
             LenghtTextBox.Text = _currentRectangle.Length.ToString("F2");//"F2" - 2 знака после запятой
             WidthTextBox.Text = _currentRectangle.Width.ToString("F2");
             ColorTextBox.Text = _currentRectangle.Colour.ToString();

@@ -9,12 +9,15 @@ namespace Programming.Model
 {
     internal class Rectangles
     {
+        private static int _allRectanglesCount = 0;
+        private readonly int _id;
         private string name = "Undefined";
         private double length; //Длина
         private double width; //Ширина
         private string colour = "Undefined"; //Цвет
         private Point2D center;
 
+        public int Id {get { return _id; } }
         public string Name { get { return name; } set { name = value; } }
         public double Length
         {
@@ -41,8 +44,14 @@ namespace Programming.Model
             this.Width = width;
             this.Colour = colour;
             this.Center = center;
+            _allRectanglesCount += 1;
+            _id = AllRectanglesCount();
         }
-        public Rectangles() { }
+        public Rectangles()
+        {
+            _allRectanglesCount += 1;
+            _id = AllRectanglesCount();
+        }
         public static Rectangles[] RandomRectanglesArray(int cnt)
         {
             Rectangles[] rectangles = new Rectangles[cnt];
@@ -60,6 +69,10 @@ namespace Programming.Model
             return rectangles;
         }
 
+        public static int AllRectanglesCount()
+        {
+            return _allRectanglesCount;
+        }
 
     }
 }
