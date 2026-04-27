@@ -37,6 +37,7 @@ namespace Programming.Model
         }
         public string Colour { get { return colour; } set { colour = value; } }
         public Point2D Center { get; set; }
+
         public Rectangles(string name, double length, double width, string colour, Point2D center)
         {
             this.Name = name;
@@ -51,6 +52,19 @@ namespace Programming.Model
         {
             _allRectanglesCount += 1;
             _id = AllRectanglesCount();
+        }
+        public static Rectangles RandomRectangle()
+        {
+            Random rand = new Random();
+            int colorCount = Enum.GetNames(typeof(Colors)).Length;
+
+            double length = 1 + rand.NextDouble() * 19;
+            double width = 1 + rand.NextDouble() * 19;
+            string randomColor = ((Colors)rand.Next(colorCount)).ToString();
+            Point2D center = new Point2D(rand.NextDouble() * 100, rand.NextDouble() * 100);
+            Rectangles rectangle = new Rectangles("", length, width, randomColor, center);
+          
+            return rectangle;
         }
         public static Rectangles[] RandomRectanglesArray(int cnt)
         {

@@ -11,10 +11,12 @@ namespace Programming
     public partial class MainForm : Form
     {
         Type[] enumTypes = { typeof(Colors), typeof(EducationForm), typeof(Genre), typeof(Manufactures), typeof(Season), typeof(Weekday) };
-        private Rectangles[] _rectangles;
-        private Rectangles _currentRectangle;
+        private Rectangles[] _rectangles_in_classes;
+        private Rectangles _currentRectangle_in_classes;
         private Film[] _films;
         private Film _currentFilm;
+        private Rectangles _currentRectangle;
+        private List<Rectangles> _rectangles = new List<Rectangles>();
 
         public void MainForm_Load(object sender, EventArgs e)
         {
@@ -26,38 +28,152 @@ namespace Programming
             SeasonComboBox.SelectedIndex = 0;
             ///
             ///
-            _rectangles = Rectangles.RandomRectanglesArray(5);
-            for(int i = 0; i < _rectangles.Length; i++)
+            _rectangles_in_classes = Model.Rectangles.RandomRectanglesArray(5);
+            for (int i = 0; i < _rectangles_in_classes.Length; i++)
             {
-                RectanglesListBox.Items.Add(_rectangles[i].Name);
+                RectanglesListBox_in_Classes.Items.Add(_rectangles_in_classes[i].Name);
             }
-            RectanglesListBox.SelectedIndex = 0;
+            RectanglesListBox_in_Classes.SelectedIndex = 0;
 
             _films = Film.RandomFilmsArray(5);
-            for(int i = 0; i < _films.Length; i++)
+            for (int i = 0; i < _films.Length; i++)
             {
                 FilmListBox.Items.Add(_films[i].Title);
             }
             FilmListBox.SelectedIndex = 0;
-            
+
         }
         public MainForm()
         {
             InitializeComponent();
+            this.MinimumSize = new Size(1000, 600);
             EnumsListBox.SelectedIndexChanged += EnumsListBox_SelectedIndexChanged;
             ValuesListBox.SelectedIndexChanged += ValuesListBox_SelectedIndexChanged;
             ParseButton.Click += ParseButton_Click;
             GoButton.Click += GoButton_Click;
-            RectanglesListBox.SelectedIndexChanged += RectanglesLlistBox_SelectedIndexChanged;
-            LenghtTextBox.TextChanged += LengthTextBox_TextChanged;
-            WidthTextBox.TextChanged += WidthTextBox_TextChanged;
-            RectangleFindButton.Click += FindButton_Click;
+            RectanglesListBox_in_Classes.SelectedIndexChanged += RectanglesLlistBox_SelectedIndexChanged;
+            LengthTextBox_in_Classes.TextChanged += LengthTextBox_TextChanged;
+            WidthTextBox_in_Classes.TextChanged += WidthTextBox_TextChanged;
+            RectangleFindButton_in_Classes.Click += FindButton_Click;
             FilmListBox.SelectedIndexChanged += FilmListBox_SelectedIndexChanged;
             TitleTextBox.TextChanged += TitleTextBox_TextChanged;
             DurationTextBox.TextChanged += DurationTextBox_TextChanged;
             YearOfReleaseTextBox.TextChanged += YearOfReleaseTextBox_TextChanged;
             RatingTextBox.TextChanged += RatingTextBox_TextChanged;
             FilmFindButton.Click += FilmFindButton_Click;
+            AddButton_in_Rectangles.Click += AddButton_in_Rectangles_Click;
+            DeleteButton_in_Rectangles.Click += DeleteButton_in_Rectangles_Click;
+            ListBox_in_Rectangles.SelectedIndexChanged += ListBox_in_Rectangles_SelectedIndexChanged;
+            WidthTextBox_in_Rectangles.TextChanged += WidthTextBox_in_Rectangles_TextChanged;
+            HeightTextBox_in_Rectangles.TextChanged += HeightTextBox_in_Rectangles_TextChanged;
+            XTextBox_in_Rectangles.TextChanged += XTextBox_in_Rectangles_TextChanged;
+            YTextBox_in_Rectangles.TextChanged += YTextBox_in_Rectangles_TextChanged;
+        }
+
+        private void XTextBox_in_Rectangles_TextChanged(object sender, EventArgs e)
+        {
+            if (_currentRectangle != null && double.TryParse(XTextBox_in_Rectangles.Text, out double newX))
+            {
+                _currentRectangle.Center.SetX(newX);
+                UpdateRectangleInListBox();
+            }
+        }
+        private void YTextBox_in_Rectangles_TextChanged(object sender, EventArgs e)
+        {
+            if (_currentRectangle != null && double.TryParse(YTextBox_in_Rectangles.Text, out double newY))
+            {
+                _currentRectangle.Center.SetY(newY);
+                UpdateRectangleInListBox();
+            }
+        }
+        private void UpdateRectangleInListBox()
+        {
+            if (_currentRectangle == null) return;
+
+            int selectedIndex = ListBox_in_Rectangles.SelectedIndex;
+            string _rectangle_str = _currentRectangle.Id.ToString() + ": (" +
+                                "X= " + _currentRectangle.Center.X.ToString("F2") +
+                                "; Y= " + _currentRectangle.Center.Y.ToString("F2") +
+                                "; W= " + _currentRectangle.Width.ToString("F2") +
+                                "; H= " + _currentRectangle.Length.ToString("F2") + ")";
+            ListBox_in_Rectangles.Items[selectedIndex] = _rectangle_str;
+        }
+        private void WidthTextBox_in_Rectangles_TextChanged(object sender, EventArgs e)
+        {
+            if (_currentRectangle == null)
+            {
+                return;
+            }           
+            try
+            {
+                double newW = double.Parse(WidthTextBox_in_Rectangles.Text);
+                _currentRectangle.Width = newW;
+                UpdateRectangleInListBox();
+            }
+            catch (ArgumentException)
+            {
+                WidthTextBox_in_Rectangles.Text = _currentRectangle.Width.ToString("F2");
+            }
+        }
+        private void HeightTextBox_in_Rectangles_TextChanged(object sender, EventArgs e)
+        {
+            if (_currentRectangle == null)
+            {
+                return;
+            }
+            try
+            {
+                double newH = double.Parse(HeightTextBox_in_Rectangles.Text);
+                _currentRectangle.Length = newH;
+                UpdateRectangleInListBox();
+            }
+            catch (ArgumentException)
+            {
+                HeightTextBox_in_Rectangles.Text = _currentRectangle.Length.ToString("F2");
+            }
+        }
+        private void ListBox_in_Rectangles_SelectedIndexChanged(object? sender, EventArgs e)
+        {
+            int selectedIndex = ListBox_in_Rectangles.SelectedIndex;
+
+            if (selectedIndex >= 0 && selectedIndex < _rectangles.Count)
+            {
+                _currentRectangle = _rectangles[selectedIndex];
+
+                IdTextBox_in_Rectangles.Text = _currentRectangle.Id.ToString();
+                XTextBox_in_Rectangles.Text = _currentRectangle.Center.X.ToString("F2");
+                YTextBox_in_Rectangles.Text = _currentRectangle.Center.Y.ToString("F2");
+                WidthTextBox_in_Rectangles.Text = _currentRectangle.Width.ToString("F2");
+                HeightTextBox_in_Rectangles.Text = _currentRectangle.Length.ToString("F2");
+            }
+            else
+            {
+                _currentRectangle = null;
+                IdTextBox_in_Rectangles.Text = "";
+                XTextBox_in_Rectangles.Text = "";
+                YTextBox_in_Rectangles.Text = "";
+                WidthTextBox_in_Rectangles.Text = "";
+                HeightTextBox_in_Rectangles.Text = "";
+            }
+        }
+        private void DeleteButton_in_Rectangles_Click(object? sender, EventArgs e)
+        {
+            int selectedIndex = ListBox_in_Rectangles.SelectedIndex;
+            if (selectedIndex < 0 || selectedIndex >= _rectangles.Count)
+            {
+                return;
+            }
+            _rectangles.RemoveAt(selectedIndex);
+            ListBox_in_Rectangles.Items.RemoveAt(selectedIndex);
+        }
+        private void AddButton_in_Rectangles_Click(object? sender, EventArgs e)
+        {
+            Rectangles _rectangle = Model.Rectangles.RandomRectangle();
+            _rectangles.Add(_rectangle);
+            string _rectangle_str = _rectangle.Id.ToString() + ": (" +
+                "X= " + _rectangle.Center.X.ToString("F2") + "; Y= " + _rectangle.Center.Y.ToString("F2") + 
+                "; W= " + _rectangle.Width.ToString("F2") + "; H=" + _rectangle.Length.ToString("F2") + ")";
+            ListBox_in_Rectangles.Items.Add(_rectangle_str);
         }
 
         private void RatingTextBox_TextChanged(object? sender, EventArgs e)
@@ -161,7 +277,7 @@ namespace Programming
             GenreTextBox.Text = _currentFilm.Genre.ToString();
             RatingTextBox.Text = _currentFilm.Rating.ToString("F1");
         }
-        
+
         private void FilmFindButton_Click(object? sender, EventArgs e)
         {
             int index = FindFilmWithMaxRating(_films);
@@ -192,14 +308,14 @@ namespace Programming
             }
             return maxIndex;
         }
-       
+
 
         private void FindButton_Click(object? sender, EventArgs e)
         {
-            int index = FindRectangleWithMaxWidth(_rectangles);
-            if (index >= 0 && index < _rectangles.Length)
+            int index = FindRectangleWithMaxWidth(_rectangles_in_classes);
+            if (index >= 0 && index < _rectangles_in_classes.Length)
             {
-                RectanglesListBox.SelectedIndex = index;
+                RectanglesListBox_in_Classes.SelectedIndex = index;
             }
             else
             {
@@ -228,18 +344,18 @@ namespace Programming
         {
             try
             {
-                string input = WidthTextBox.Text;
+                string input = WidthTextBox_in_Classes.Text;
                 if (!double.TryParse(input, out double value) || value < 1 || value > 20)
                 {
                     throw new ArgumentException();
                 }
 
-                _currentRectangle.Width = value;
-                WidthTextBox.BackColor = Color.White;
+                _currentRectangle_in_classes.Width = value;
+                WidthTextBox_in_Classes.BackColor = Color.White;
             }
             catch
             {
-                WidthTextBox.BackColor = Color.LightPink;
+                WidthTextBox_in_Classes.BackColor = Color.LightPink;
             }
         }
 
@@ -247,33 +363,33 @@ namespace Programming
         {
             try
             {
-                string input = LenghtTextBox.Text;
+                string input = LengthTextBox_in_Classes.Text;
                 if (!double.TryParse(input, out double value) || value < 1 || value > 20)
                 {
                     throw new ArgumentException();
                 }
 
-                _currentRectangle.Length = value;
-                LenghtTextBox.BackColor = Color.White;
+                _currentRectangle_in_classes.Length = value;
+                LengthTextBox_in_Classes.BackColor = Color.White;
             }
             catch
             {
-                LenghtTextBox.BackColor = Color.LightPink;
+                LengthTextBox_in_Classes.BackColor = Color.LightPink;
             }
         }
 
         private void RectanglesLlistBox_SelectedIndexChanged(object? sender, EventArgs e)
         {
-            if (RectanglesListBox.SelectedIndex < 0 || RectanglesListBox.SelectedIndex >= _rectangles.Length)
+            if (RectanglesListBox_in_Classes.SelectedIndex < 0 || RectanglesListBox_in_Classes.SelectedIndex >= _rectangles_in_classes.Length)
                 return;
 
-            _currentRectangle = _rectangles[RectanglesListBox.SelectedIndex];
-            RectanglesIdTextBox.Text = _currentRectangle.Id.ToString();
-            LenghtTextBox.Text = _currentRectangle.Length.ToString("F2");//"F2" - 2 знака после запятой
-            WidthTextBox.Text = _currentRectangle.Width.ToString("F2");
-            ColorTextBox.Text = _currentRectangle.Colour.ToString();
-            CenterCoordinatesTextBoxX.Text = _currentRectangle.Center.X.ToString("F2");
-            CenterCoordinatesTextBoxY.Text = _currentRectangle.Center.Y.ToString("F2");
+            _currentRectangle_in_classes = _rectangles_in_classes[RectanglesListBox_in_Classes.SelectedIndex];
+            RectanglesIdTextBox_in_Classes.Text = _currentRectangle_in_classes.Id.ToString();
+            LengthTextBox_in_Classes.Text = _currentRectangle_in_classes.Length.ToString("F2");//"F2" - 2 знака после запятой
+            WidthTextBox_in_Classes.Text = _currentRectangle_in_classes.Width.ToString("F2");
+            ColorTextBox_in_Classes.Text = _currentRectangle_in_classes.Colour.ToString();
+            CenterCoordinatesTextBoxX_in_Classes.Text = _currentRectangle_in_classes.Center.X.ToString("F2");
+            CenterCoordinatesTextBoxY_in_Classes.Text = _currentRectangle_in_classes.Center.Y.ToString("F2");
         }
 
         private void GoButton_Click(object? sender, EventArgs e)
@@ -342,7 +458,7 @@ namespace Programming
 
             //string selected_item = EnumsListBox.SelectedItem.ToString();
             //Type enumType = Type.GetType(selected_item);
-        
+
         }
 
         void ValuesListBox_SelectedIndexChanged(object? sender, EventArgs e)

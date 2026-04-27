@@ -19,7 +19,6 @@ namespace Programming.Model
                 x = Validator.AssertValueInRange(value, 0, 100, nameof(x));
             }
         }
-
         public double Y
         {
             get { return y; }
@@ -33,6 +32,15 @@ namespace Programming.Model
         {
             X = x;
             Y = y;
+        }
+
+        public void SetX(double x)
+        {
+            this.X = Validator.AssertValueInRange(x, 0, 100, nameof(x));
+        }
+        public void SetY(double y)
+        {
+            this.Y = Validator.AssertValueInRange(y, 0, 100, nameof(y));
         }
     }
 }
