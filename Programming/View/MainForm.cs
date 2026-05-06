@@ -72,19 +72,61 @@ namespace Programming
 
         private void XTextBox_in_Rectangles_TextChanged(object sender, EventArgs e)
         {
-            if (_currentRectangle != null && double.TryParse(XTextBox_in_Rectangles.Text, out double newX))
+            if (_currentRectangle == null)
             {
-                _currentRectangle.Center.SetX(newX);
+                return;
+            }
+            try
+            {
+                string input = XTextBox_in_Rectangles.Text;
+                if (!double.TryParse(input, out double value))
+                {
+                    throw new ArgumentException();
+                }
+                _currentRectangle.Center.SetX(value);
                 UpdateRectangleInListBox();
+            }
+            catch
+            {
+                XTextBox_in_Rectangles.Text = _currentRectangle.Center.X.ToString("F2");
             }
         }
         private void YTextBox_in_Rectangles_TextChanged(object sender, EventArgs e)
         {
-            if (_currentRectangle != null && double.TryParse(YTextBox_in_Rectangles.Text, out double newY))
+            if (_currentRectangle == null)
             {
-                _currentRectangle.Center.SetY(newY);
+                return;
+            }
+            try
+            {
+                string input = YTextBox_in_Rectangles.Text;
+                if (!double.TryParse(input, out double value))
+                {
+                    throw new ArgumentException();
+                }
+                _currentRectangle.Center.SetY(value);
                 UpdateRectangleInListBox();
             }
+            catch
+            {
+                YTextBox_in_Rectangles.Text = _currentRectangle.Center.Y.ToString("F2");
+            }
+            /*try
+            {
+                string input = YTextBox_in_Rectangles.Text;
+                if (!double.TryParse(input, out double value) || value < 0 || value > 100)
+                {
+                    throw new ArgumentException();
+                }
+
+                _currentRectangle.Center.SetY(value);
+                YTextBox_in_Rectangles.BackColor = Color.White;
+                UpdateRectangleInListBox();
+            }
+            catch
+            {
+                YTextBox_in_Rectangles.BackColor = Color.LightPink;
+            }*/
         }
         private void UpdateRectangleInListBox()
         {
@@ -103,14 +145,18 @@ namespace Programming
             if (_currentRectangle == null)
             {
                 return;
-            }           
+            }
             try
             {
-                double newW = double.Parse(WidthTextBox_in_Rectangles.Text);
-                _currentRectangle.Width = newW;
+                string input = WidthTextBox_in_Rectangles.Text;
+                if (!double.TryParse(input, out double value))
+                {
+                    throw new ArgumentException();
+                }
+                _currentRectangle.Width = value;
                 UpdateRectangleInListBox();
             }
-            catch (ArgumentException)
+            catch
             {
                 WidthTextBox_in_Rectangles.Text = _currentRectangle.Width.ToString("F2");
             }
@@ -123,11 +169,15 @@ namespace Programming
             }
             try
             {
-                double newH = double.Parse(HeightTextBox_in_Rectangles.Text);
-                _currentRectangle.Length = newH;
+                string input = HeightTextBox_in_Rectangles.Text;
+                if (!double.TryParse(input, out double value))
+                {
+                    throw new ArgumentException();
+                }
+                _currentRectangle.Length = value;
                 UpdateRectangleInListBox();
             }
-            catch (ArgumentException)
+            catch
             {
                 HeightTextBox_in_Rectangles.Text = _currentRectangle.Length.ToString("F2");
             }
@@ -176,6 +226,7 @@ namespace Programming
             ListBox_in_Rectangles.Items.Add(_rectangle_str);
         }
 
+// Classes
         private void RatingTextBox_TextChanged(object? sender, EventArgs e)
         {
             try
@@ -206,15 +257,12 @@ namespace Programming
             {
                 string input = YearOfReleaseTextBox.Text;
                 int year;
-
                 if (!int.TryParse(input, out year))
                 {
                     throw new ArgumentException();
                 }
-
                 int currentYear = DateTime.Now.Year;
                 year = Validator.AssertValueInRange(year, 1900, currentYear, nameof(year));
-
                 _currentFilm.YearOfRelease = year;
                 YearOfReleaseTextBox.BackColor = Color.White;
             }
@@ -223,7 +271,6 @@ namespace Programming
                 YearOfReleaseTextBox.BackColor = Color.LightPink;
             }
         }
-
         private void DurationTextBox_TextChanged(object? sender, EventArgs e)
         {
             try
@@ -234,7 +281,6 @@ namespace Programming
                 {
                     throw new ArgumentException();
                 }
-
                 _currentFilm.DurationInMinutes = duration;
                 DurationTextBox.BackColor = Color.White;
             }
@@ -264,7 +310,6 @@ namespace Programming
                 TitleTextBox.BackColor = Color.LightPink;
             }
         }
-
         private void FilmListBox_SelectedIndexChanged(object? sender, EventArgs e)
         {
             if (FilmListBox.SelectedIndex < 0 || FilmListBox.SelectedIndex >= _films.Length)
@@ -277,7 +322,6 @@ namespace Programming
             GenreTextBox.Text = _currentFilm.Genre.ToString();
             RatingTextBox.Text = _currentFilm.Rating.ToString("F1");
         }
-
         private void FilmFindButton_Click(object? sender, EventArgs e)
         {
             int index = FindFilmWithMaxRating(_films);
@@ -308,8 +352,6 @@ namespace Programming
             }
             return maxIndex;
         }
-
-
         private void FindButton_Click(object? sender, EventArgs e)
         {
             int index = FindRectangleWithMaxWidth(_rectangles_in_classes);
@@ -329,7 +371,6 @@ namespace Programming
 
             int maxIndex = 0;
             double maxWidth = rectangles[0].Width;
-
             for (int i = 1; i < rectangles.Length; i++)
             {
                 if (rectangles[i].Width > maxWidth)
@@ -349,7 +390,6 @@ namespace Programming
                 {
                     throw new ArgumentException();
                 }
-
                 _currentRectangle_in_classes.Width = value;
                 WidthTextBox_in_Classes.BackColor = Color.White;
             }
@@ -358,7 +398,6 @@ namespace Programming
                 WidthTextBox_in_Classes.BackColor = Color.LightPink;
             }
         }
-
         private void LengthTextBox_TextChanged(object? sender, EventArgs e)
         {
             try
@@ -368,7 +407,6 @@ namespace Programming
                 {
                     throw new ArgumentException();
                 }
-
                 _currentRectangle_in_classes.Length = value;
                 LengthTextBox_in_Classes.BackColor = Color.White;
             }
@@ -377,7 +415,6 @@ namespace Programming
                 LengthTextBox_in_Classes.BackColor = Color.LightPink;
             }
         }
-
         private void RectanglesLlistBox_SelectedIndexChanged(object? sender, EventArgs e)
         {
             if (RectanglesListBox_in_Classes.SelectedIndex < 0 || RectanglesListBox_in_Classes.SelectedIndex >= _rectangles_in_classes.Length)
@@ -392,6 +429,7 @@ namespace Programming
             CenterCoordinatesTextBoxY_in_Classes.Text = _currentRectangle_in_classes.Center.Y.ToString("F2");
         }
 
+// Enums
         private void GoButton_Click(object? sender, EventArgs e)
         {
             Season season = (Season)SeasonComboBox.SelectedItem;
@@ -402,11 +440,9 @@ namespace Programming
                 case Season.Autumn:
                     this.BackColor = System.Drawing.ColorTranslator.FromHtml("#e29c45");
                     break;
-
                 case Season.Summer:
                     MessageBox.Show("Ура! Солнце!");
                     break;
-
                 case Season.Winter:
                     MessageBox.Show("Брр! Холодно!");
                     break;
@@ -414,13 +450,10 @@ namespace Programming
                     this.BackColor = System.Drawing.ColorTranslator.FromHtml("#559c45");
                     break;
             }
-
         }
-
         private void ParseButton_Click(object? sender, EventArgs e)
         {
             string input = WeekdayTextBox.Text.Trim();
-
             try
             {
                 Weekday day;
@@ -439,7 +472,6 @@ namespace Programming
                 WeekDayLlabel2.Text = "Нет такого дня недели";
             }
         }
-
         void EnumsListBox_SelectedIndexChanged(object? sender, EventArgs e)
         {
             ValuesListBox.Items.Clear();
@@ -455,12 +487,9 @@ namespace Programming
             {
                 ValuesListBox.Items.Add(value.ToString());
             }
-
             //string selected_item = EnumsListBox.SelectedItem.ToString();
             //Type enumType = Type.GetType(selected_item);
-
         }
-
         void ValuesListBox_SelectedIndexChanged(object? sender, EventArgs e)
         {
             int selectedIndex = EnumsListBox.SelectedIndex;
@@ -475,7 +504,6 @@ namespace Programming
             object enumValue = Enum.Parse(enumType, selected_item);
             int numberValue = (int)enumValue;
             IntValueTextBox.Text = numberValue.ToString();
-
         }
 
     }
