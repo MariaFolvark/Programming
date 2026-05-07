@@ -17,6 +17,7 @@ namespace Programming
         private Film _currentFilm;
         private Rectangles _currentRectangle;
         private List<Rectangles> _rectangles = new List<Rectangles>();
+        private List<Panel> _rectanglePanels = new List<Panel>();
 
         public void MainForm_Load(object sender, EventArgs e)
         {
@@ -47,6 +48,7 @@ namespace Programming
         {
             InitializeComponent();
             this.MinimumSize = new Size(1000, 600);
+            this.MaximumSize = new Size(1000, 600);
             EnumsListBox.SelectedIndexChanged += EnumsListBox_SelectedIndexChanged;
             ValuesListBox.SelectedIndexChanged += ValuesListBox_SelectedIndexChanged;
             ParseButton.Click += ParseButton_Click;
@@ -186,6 +188,12 @@ namespace Programming
         {
             int selectedIndex = ListBox_in_Rectangles.SelectedIndex;
 
+            for (int i = 0; i < _rectanglePanels.Count; i++)
+            {
+                _rectanglePanels[i].BackColor = Color.FromArgb(127, 127, 255, 127);
+            }
+            FindCollisions();
+
             if (selectedIndex >= 0 && selectedIndex < _rectangles.Count)
             {
                 _currentRectangle = _rectangles[selectedIndex];
@@ -195,6 +203,7 @@ namespace Programming
                 YTextBox_in_Rectangles.Text = _currentRectangle.Center.Y.ToString("F2");
                 WidthTextBox_in_Rectangles.Text = _currentRectangle.Width.ToString("F2");
                 HeightTextBox_in_Rectangles.Text = _currentRectangle.Length.ToString("F2");
+                _rectanglePanels[selectedIndex].BackColor = Color.FromArgb(200, 255, 255, 0);
             }
             else
             {
@@ -213,8 +222,13 @@ namespace Programming
             {
                 return;
             }
+            RectanglesPanel.Controls.RemoveAt(selectedIndex);
+            _rectanglePanels.RemoveAt(selectedIndex);
             _rectangles.RemoveAt(selectedIndex);
             ListBox_in_Rectangles.Items.RemoveAt(selectedIndex);
+            FindCollisions();
+            // Вариант удаления панели по объекту
+            //RectanglesPanel.Controls.Remove(panel);
         }
         private void AddButton_in_Rectangles_Click(object? sender, EventArgs e)
         {
@@ -224,9 +238,44 @@ namespace Programming
                 "X= " + _rectangle.Center.X.ToString("F2") + "; Y= " + _rectangle.Center.Y.ToString("F2") + 
                 "; W= " + _rectangle.Width.ToString("F2") + "; H=" + _rectangle.Length.ToString("F2") + ")";
             ListBox_in_Rectangles.Items.Add(_rectangle_str);
+
+            Panel panel = new Panel();
+            int canvasHeight = RectanglesPanel.Height;
+            int left = (int)(_rectangle.Center.X - _rectangle.Width / 2);
+            int top = (int)(canvasHeight - (_rectangle.Center.Y + _rectangle.Length / 2));
+            panel.Location = new Point(left, top);
+            panel.Size = new Size((int)_rectangle.Width, (int)_rectangle.Length);
+            panel.Size = new Size((int)_rectangle.Width, (int)_rectangle.Length);
+            panel.BackColor = Color.FromArgb(127, 127, 255, 127);
+            panel.BorderStyle = BorderStyle.FixedSingle;
+            RectanglesPanel.Controls.Add(panel);
+            _rectanglePanels.Add(panel);
+            FindCollisions();
+
         }
 
-// Classes
+        private void FindCollisions()
+        {
+            for (int i = 0; i < _rectanglePanels.Count; i++)
+            {
+                _rectanglePanels[i].BackColor = Color.FromArgb(127, 127, 255, 127); // зелёный
+            }
+            for (int i = 0; i < _rectangles.Count; i++)
+            {
+                for (int j = 0; j < _rectangles.Count; j++)
+                {
+                    if (i == j) continue;
+
+                    if (CollisionManager.IsCollision(_rectangles[i], _rectangles[j]))
+                    {
+                        _rectanglePanels[i].BackColor = Color.FromArgb(127, 255, 127, 127);
+                        _rectanglePanels[j].BackColor = Color.FromArgb(127, 255, 127, 127);
+                    }
+                }
+            }
+        }
+
+        // Classes
         private void RatingTextBox_TextChanged(object? sender, EventArgs e)
         {
             try

@@ -58,12 +58,24 @@ namespace Programming.Model
             Random rand = new Random();
             int colorCount = Enum.GetNames(typeof(Colors)).Length;
 
-            double length = 1 + rand.NextDouble() * 19;
-            double width = 1 + rand.NextDouble() * 19;
+            double length = 30 + rand.NextDouble() * 90;
+            double width = 30 + rand.NextDouble() * 90;
             string randomColor = ((Colors)rand.Next(colorCount)).ToString();
-            Point2D center = new Point2D(rand.NextDouble() * 100, rand.NextDouble() * 100);
+
+            double panelWidth = 555;
+            double panelHeight = 474;
+
+            double minX = width / 2 + 15;
+            double maxX = panelWidth - width / 2 - 15;
+            double minY = length / 2 + 15;
+            double maxY = panelHeight - length / 2 - 15;
+
+            Point2D center = new Point2D(
+                minX + rand.NextDouble() * (maxX - minX),
+                minY + rand.NextDouble() * (maxY - minY)
+            );
+
             Rectangles rectangle = new Rectangles("", length, width, randomColor, center);
-          
             return rectangle;
         }
         public static Rectangles[] RandomRectanglesArray(int cnt)
