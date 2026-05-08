@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Programming.Model
+namespace Programming.Model.Geometry
 {
     internal static class CollisionManager
     {
@@ -13,8 +13,8 @@ namespace Programming.Model
             double deltaX = Math.Abs(rectangle1.Center.X - rectangle2.Center.X);
             double deltaY = Math.Abs(rectangle1.Center.Y - rectangle2.Center.Y);
 
-            double sumHalfWidths = (rectangle1.Width / 2) + (rectangle2.Width / 2);
-            double sumHalfLengths = (rectangle1.Length / 2) + (rectangle2.Length / 2);
+            double sumHalfWidths = rectangle1.Width / 2 + rectangle2.Width / 2;
+            double sumHalfLengths = rectangle1.Length / 2 + rectangle2.Length / 2;
 
             bool isCollidingX = deltaX < sumHalfWidths;
             bool isCollidingY = deltaY < sumHalfLengths;

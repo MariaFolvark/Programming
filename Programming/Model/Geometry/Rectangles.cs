@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Programming.Model
+namespace Programming.Model.Geometry
 {
     internal class Rectangles
     {
@@ -17,7 +17,7 @@ namespace Programming.Model
         private string colour = "Undefined"; //Цвет
         private Point2D center;
 
-        public int Id {get { return _id; } }
+        public int Id { get { return _id; } }
         public string Name { get { return name; } set { name = value; } }
         public double Length
         {
@@ -40,11 +40,11 @@ namespace Programming.Model
 
         public Rectangles(string name, double length, double width, string colour, Point2D center)
         {
-            this.Name = name;
-            this.Length = length;
-            this.Width = width;
-            this.Colour = colour;
-            this.Center = center;
+            Name = name;
+            Length = length;
+            Width = width;
+            Colour = colour;
+            Center = center;
             _allRectanglesCount += 1;
             _id = AllRectanglesCount();
         }
@@ -53,22 +53,19 @@ namespace Programming.Model
             _allRectanglesCount += 1;
             _id = AllRectanglesCount();
         }
-        public static Rectangles RandomRectangle()
+        public static Rectangles RandomRectangle(double minWidth, double maxWidth, double minLength, double maxLength, double minX, double maxX, double minY, double maxY)
         {
             Random rand = new Random();
             int colorCount = Enum.GetNames(typeof(Colors)).Length;
 
-            double length = 30 + rand.NextDouble() * 90;
-            double width = 30 + rand.NextDouble() * 90;
+            double width = minWidth + rand.NextDouble() * (maxWidth - minWidth);
+            double length = minLength + rand.NextDouble() * (maxLength - minLength);
             string randomColor = ((Colors)rand.Next(colorCount)).ToString();
 
-            double panelWidth = 555;
-            double panelHeight = 474;
-
-            double minX = width / 2 + 15;
-            double maxX = panelWidth - width / 2 - 15;
-            double minY = length / 2 + 15;
-            double maxY = panelHeight - length / 2 - 15;
+            minX += width / 2;
+            maxX -= width / 2;
+            minY += length / 2;
+            maxY -= length / 2;
 
             Point2D center = new Point2D(
                 minX + rand.NextDouble() * (maxX - minX),

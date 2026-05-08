@@ -1,6 +1,8 @@
 using Programming.Model;
 using Programming.Model.Enums;
+using Programming.Model.Geometry;
 using System.Collections;
+using System.Drawing;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
@@ -18,6 +20,8 @@ namespace Programming
         private Rectangles _currentRectangle;
         private List<Rectangles> _rectangles = new List<Rectangles>();
         private List<Panel> _rectanglePanels = new List<Panel>();
+        private static double panelWidth_in_Rectangles = 555;
+        private static double panelHeight_in_Rectangles = 474;
 
         public void MainForm_Load(object sender, EventArgs e)
         {
@@ -29,7 +33,7 @@ namespace Programming
             SeasonComboBox.SelectedIndex = 0;
             ///
             ///
-            _rectangles_in_classes = Model.Rectangles.RandomRectanglesArray(5);
+            _rectangles_in_classes = Model.Geometry.Rectangles.RandomRectanglesArray(5);
             for (int i = 0; i < _rectangles_in_classes.Length; i++)
             {
                 RectanglesListBox_in_Classes.Items.Add(_rectangles_in_classes[i].Name);
@@ -71,7 +75,47 @@ namespace Programming
             XTextBox_in_Rectangles.TextChanged += XTextBox_in_Rectangles_TextChanged;
             YTextBox_in_Rectangles.TextChanged += YTextBox_in_Rectangles_TextChanged;
         }
+        private void ClearRectangleInfo()
+        {
+            IdTextBox_in_Rectangles.Text = "";
+            XTextBox_in_Rectangles.Text = "";
+            YTextBox_in_Rectangles.Text = "";
+            WidthTextBox_in_Rectangles.Text = "";
+            HeightTextBox_in_Rectangles.Text = "";
+        }
+        private void UpdateRectangleInfo(Rectangles rectangle)
+        {
+            if (rectangle == null) return;
 
+            IdTextBox_in_Rectangles.Text = _currentRectangle.Id.ToString();
+            XTextBox_in_Rectangles.Text = _currentRectangle.Center.X.ToString("F2");
+            YTextBox_in_Rectangles.Text = _currentRectangle.Center.Y.ToString("F2");
+            WidthTextBox_in_Rectangles.Text = _currentRectangle.Width.ToString("F2");
+            HeightTextBox_in_Rectangles.Text = _currentRectangle.Length.ToString("F2");
+        }
+        private void UpdatePanel()
+        {
+            int index = _rectangles.IndexOf(_currentRectangle);
+            int canvasHeight = RectanglesPanel.Height;
+            int left = (int)(_currentRectangle.Center.X - _currentRectangle.Width / 2);
+            int top = (int)(canvasHeight - (_currentRectangle.Center.Y + _currentRectangle.Length / 2));
+            _rectanglePanels[index].Location = new Point(left, top);
+            _rectanglePanels[index].Size = new Size((int)_currentRectangle.Width, (int)_currentRectangle.Length);
+            FindCollisions();
+            _rectanglePanels[ListBox_in_Rectangles.SelectedIndex].BackColor = Color.FromArgb(200, 255, 255, 0);
+        }
+        private void UpdateRectangleInListBox()
+        {
+            if (_currentRectangle == null) return;
+
+            int selectedIndex = ListBox_in_Rectangles.SelectedIndex;
+            string _rectangle_str = _currentRectangle.Id.ToString() + ": (" +
+                                "X= " + _currentRectangle.Center.X.ToString("F2") +
+                                "; Y= " + _currentRectangle.Center.Y.ToString("F2") +
+                                "; W= " + _currentRectangle.Width.ToString("F2") +
+                                "; H= " + _currentRectangle.Length.ToString("F2") + ")";
+            ListBox_in_Rectangles.Items[selectedIndex] = _rectangle_str;
+        }
         private void XTextBox_in_Rectangles_TextChanged(object sender, EventArgs e)
         {
             if (_currentRectangle == null)
@@ -85,8 +129,20 @@ namespace Programming
                 {
                     throw new ArgumentException();
                 }
+                double minX = _currentRectangle.Width / 2 + 15;
+                double maxX = panelWidth_in_Rectangles - _currentRectangle.Width / 2 - 15;
+                if (value < minX)
+                {
+                    value = minX;
+                }
+                else if (value > maxX)
+                {
+                    value = maxX;
+                }
                 _currentRectangle.Center.SetX(value);
                 UpdateRectangleInListBox();
+                UpdatePanel();
+
             }
             catch
             {
@@ -106,41 +162,24 @@ namespace Programming
                 {
                     throw new ArgumentException();
                 }
+                double minY = _currentRectangle.Length / 2 + 15;
+                double maxY = panelHeight_in_Rectangles - _currentRectangle.Length / 2 - 15;
+                if (value < minY)
+                {
+                    value = minY;
+                }
+                else if (value > maxY)
+                {
+                    value = maxY;
+                }
                 _currentRectangle.Center.SetY(value);
                 UpdateRectangleInListBox();
+                UpdatePanel();
             }
             catch
             {
                 YTextBox_in_Rectangles.Text = _currentRectangle.Center.Y.ToString("F2");
             }
-            /*try
-            {
-                string input = YTextBox_in_Rectangles.Text;
-                if (!double.TryParse(input, out double value) || value < 0 || value > 100)
-                {
-                    throw new ArgumentException();
-                }
-
-                _currentRectangle.Center.SetY(value);
-                YTextBox_in_Rectangles.BackColor = Color.White;
-                UpdateRectangleInListBox();
-            }
-            catch
-            {
-                YTextBox_in_Rectangles.BackColor = Color.LightPink;
-            }*/
-        }
-        private void UpdateRectangleInListBox()
-        {
-            if (_currentRectangle == null) return;
-
-            int selectedIndex = ListBox_in_Rectangles.SelectedIndex;
-            string _rectangle_str = _currentRectangle.Id.ToString() + ": (" +
-                                "X= " + _currentRectangle.Center.X.ToString("F2") +
-                                "; Y= " + _currentRectangle.Center.Y.ToString("F2") +
-                                "; W= " + _currentRectangle.Width.ToString("F2") +
-                                "; H= " + _currentRectangle.Length.ToString("F2") + ")";
-            ListBox_in_Rectangles.Items[selectedIndex] = _rectangle_str;
         }
         private void WidthTextBox_in_Rectangles_TextChanged(object sender, EventArgs e)
         {
@@ -157,6 +196,7 @@ namespace Programming
                 }
                 _currentRectangle.Width = value;
                 UpdateRectangleInListBox();
+                UpdatePanel();
             }
             catch
             {
@@ -178,6 +218,7 @@ namespace Programming
                 }
                 _currentRectangle.Length = value;
                 UpdateRectangleInListBox();
+                UpdatePanel();
             }
             catch
             {
@@ -197,22 +238,13 @@ namespace Programming
             if (selectedIndex >= 0 && selectedIndex < _rectangles.Count)
             {
                 _currentRectangle = _rectangles[selectedIndex];
-
-                IdTextBox_in_Rectangles.Text = _currentRectangle.Id.ToString();
-                XTextBox_in_Rectangles.Text = _currentRectangle.Center.X.ToString("F2");
-                YTextBox_in_Rectangles.Text = _currentRectangle.Center.Y.ToString("F2");
-                WidthTextBox_in_Rectangles.Text = _currentRectangle.Width.ToString("F2");
-                HeightTextBox_in_Rectangles.Text = _currentRectangle.Length.ToString("F2");
+                UpdateRectangleInfo(_currentRectangle);
                 _rectanglePanels[selectedIndex].BackColor = Color.FromArgb(200, 255, 255, 0);
             }
             else
             {
                 _currentRectangle = null;
-                IdTextBox_in_Rectangles.Text = "";
-                XTextBox_in_Rectangles.Text = "";
-                YTextBox_in_Rectangles.Text = "";
-                WidthTextBox_in_Rectangles.Text = "";
-                HeightTextBox_in_Rectangles.Text = "";
+                ClearRectangleInfo();
             }
         }
         private void DeleteButton_in_Rectangles_Click(object? sender, EventArgs e)
@@ -232,7 +264,7 @@ namespace Programming
         }
         private void AddButton_in_Rectangles_Click(object? sender, EventArgs e)
         {
-            Rectangles _rectangle = Model.Rectangles.RandomRectangle();
+            Rectangles _rectangle = Model.Geometry.Rectangles.RandomRectangle(30, 100, 30, 100, 15, panelWidth_in_Rectangles, 15, panelHeight_in_Rectangles);
             _rectangles.Add(_rectangle);
             string _rectangle_str = _rectangle.Id.ToString() + ": (" +
                 "X= " + _rectangle.Center.X.ToString("F2") + "; Y= " + _rectangle.Center.Y.ToString("F2") + 
@@ -536,8 +568,6 @@ namespace Programming
             {
                 ValuesListBox.Items.Add(value.ToString());
             }
-            //string selected_item = EnumsListBox.SelectedItem.ToString();
-            //Type enumType = Type.GetType(selected_item);
         }
         void ValuesListBox_SelectedIndexChanged(object? sender, EventArgs e)
         {
@@ -569,4 +599,20 @@ for (int i = 0; i < 5; i++)
     string randomColor = ((Colors)rand.Next(colorCount)).ToString();
     _rectangles[i] = new Rectangles(name, length, width, randomColor);
     RectanglesListBox.Items.Add(name);
+}*/
+/*try
+{
+    string input = YTextBox_in_Rectangles.Text;
+    if (!double.TryParse(input, out double value) || value < 0 || value > 100)
+    {
+        throw new ArgumentException();
+    }
+
+    _currentRectangle.Center.SetY(value);
+    YTextBox_in_Rectangles.BackColor = Color.White;
+    UpdateRectangleInListBox();
+}
+catch
+{
+    YTextBox_in_Rectangles.BackColor = Color.LightPink;
 }*/
