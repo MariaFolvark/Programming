@@ -1,4 +1,5 @@
-﻿using Programming.Model.Geometry;
+﻿using Programming.Model;
+using Programming.Model.Geometry;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -56,7 +57,7 @@ namespace Programming.View.Panels
             _rectanglePanels[index].Location = new Point(left, top);
             _rectanglePanels[index].Size = new Size((int)_currentRectangle.Width, (int)_currentRectangle.Length);
             FindCollisions();
-            _rectanglePanels[ListBox_in_Rectangles.SelectedIndex].BackColor = Color.FromArgb(200, 255, 255, 0);
+            _rectanglePanels[ListBox_in_Rectangles.SelectedIndex].BackColor = AppColors.RectangleOk;//Color.FromArgb(200, 255, 255, 0);
         }
         private void UpdateRectangleInListBox()
         {
@@ -102,6 +103,7 @@ namespace Programming.View.Panels
             {
                 XTextBox_in_Rectangles.Text = _currentRectangle.Center.X.ToString("F2");
             }
+            _rectanglePanels[ListBox_in_Rectangles.SelectedIndex].BackColor = AppColors.RectangleIsSelected;
         }
         private void YTextBox_in_Rectangles_TextChanged(object sender, EventArgs e)
         {
@@ -134,6 +136,7 @@ namespace Programming.View.Panels
             {
                 YTextBox_in_Rectangles.Text = _currentRectangle.Center.Y.ToString("F2");
             }
+            _rectanglePanels[ListBox_in_Rectangles.SelectedIndex].BackColor = AppColors.RectangleIsSelected;
         }
         private void WidthTextBox_in_Rectangles_TextChanged(object sender, EventArgs e)
         {
@@ -156,6 +159,7 @@ namespace Programming.View.Panels
             {
                 WidthTextBox_in_Rectangles.Text = _currentRectangle.Width.ToString("F2");
             }
+            _rectanglePanels[ListBox_in_Rectangles.SelectedIndex].BackColor = AppColors.RectangleIsSelected;
         }
         private void HeightTextBox_in_Rectangles_TextChanged(object sender, EventArgs e)
         {
@@ -178,6 +182,7 @@ namespace Programming.View.Panels
             {
                 HeightTextBox_in_Rectangles.Text = _currentRectangle.Length.ToString("F2");
             }
+            _rectanglePanels[ListBox_in_Rectangles.SelectedIndex].BackColor = AppColors.RectangleIsSelected;
         }
         private void ListBox_in_Rectangles_SelectedIndexChanged(object? sender, EventArgs e)
         {
@@ -185,7 +190,7 @@ namespace Programming.View.Panels
 
             for (int i = 0; i < _rectanglePanels.Count; i++)
             {
-                _rectanglePanels[i].BackColor = Color.FromArgb(127, 127, 255, 127);
+                _rectanglePanels[i].BackColor = AppColors.RectangleOk;//Color.FromArgb(127, 127, 255, 127);
             }
             FindCollisions();
 
@@ -193,7 +198,7 @@ namespace Programming.View.Panels
             {
                 _currentRectangle = _rectangles[selectedIndex];
                 UpdateRectangleInfo(_currentRectangle);
-                _rectanglePanels[selectedIndex].BackColor = Color.FromArgb(200, 255, 255, 0);
+                _rectanglePanels[selectedIndex].BackColor = AppColors.RectangleIsSelected;// Color.FromArgb(200, 255, 255, 0);
             }
             else
             {
@@ -243,7 +248,7 @@ namespace Programming.View.Panels
         {
             for (int i = 0; i < _rectanglePanels.Count; i++)
             {
-                _rectanglePanels[i].BackColor = Color.FromArgb(127, 127, 255, 127); // зелёный
+                _rectanglePanels[i].BackColor = AppColors.RectangleOk;
             }
             for (int i = 0; i < _rectangles.Count; i++)
             {
@@ -253,8 +258,8 @@ namespace Programming.View.Panels
 
                     if (CollisionManager.IsCollision(_rectangles[i], _rectangles[j]))
                     {
-                        _rectanglePanels[i].BackColor = Color.FromArgb(127, 255, 127, 127);
-                        _rectanglePanels[j].BackColor = Color.FromArgb(127, 255, 127, 127);
+                        _rectanglePanels[i].BackColor = AppColors.RectanglesIntersect;
+                        _rectanglePanels[j].BackColor = AppColors.RectanglesIntersect;
                     }
                 }
             }
