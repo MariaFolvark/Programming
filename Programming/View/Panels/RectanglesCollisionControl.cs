@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace Programming.View.Panels
 {
@@ -151,6 +152,14 @@ namespace Programming.View.Panels
                 {
                     throw new ArgumentException();
                 }
+                if (value < 30)
+                {
+                    value = 30;
+                }
+                else if (value > 100)
+                {
+                    value = 100;
+                }
                 _currentRectangle.Width = value;
                 UpdateRectangleInListBox();
                 UpdatePanel();
@@ -173,6 +182,14 @@ namespace Programming.View.Panels
                 if (!double.TryParse(input, out double value))
                 {
                     throw new ArgumentException();
+                }
+                if (value < 30)
+                {
+                    value = 30;
+                }
+                else if (value > 100)
+                {
+                    value = 100;
                 }
                 _currentRectangle.Length = value;
                 UpdateRectangleInListBox();
