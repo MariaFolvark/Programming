@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Programming.Model.Enums
 {
+    /// <summary>
+    /// Содержит список производителей электроники.
+    /// </summary>
     public enum Manufactures
     {
         Samsung,

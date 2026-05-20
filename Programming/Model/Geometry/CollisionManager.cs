@@ -6,8 +6,18 @@ using System.Threading.Tasks;
 
 namespace Programming.Model.Geometry
 {
+    /// <summary>
+    /// Проверяет, пересекаются ли геометрические фигуры.
+    /// </summary>
     internal static class CollisionManager
     {
+        /// <summary>
+        /// Проверяет, пересекаются ли два прямоугольника.
+        /// </summary>
+        /// <param name="rectangle1">Первый прямоугольник.</param>
+        /// <param name="rectangle2">Второй прямоугольник.</param>
+        /// <returns>Возвращает true, если прямоугольники пересекаются. И false, если прямоугольники не пересекаются.</returns>
+
         public static bool IsCollision(Rectangles rectangle1, Rectangles rectangle2)
         {
             double deltaX = Math.Abs(rectangle1.Center.X - rectangle2.Center.X);
@@ -23,6 +33,12 @@ namespace Programming.Model.Geometry
 
         }
 
+        /// <summary>
+        /// Проверяет, пересекаются ли два кольца.
+        /// </summary>
+        /// <param name="ring1">Первое кольцо.</param>
+        /// <param name="ring2">Второе кольцо.</param>
+        /// <returns>Возвращает true, если кольца пересекаются. И false, если кольца не пересекаются.</returns>
         public static bool IsCollision(Ring ring1, Ring ring2)
         {
             double deltaX = Math.Abs(ring1.Center.X - ring2.Center.X);
@@ -33,14 +49,14 @@ namespace Programming.Model.Geometry
             {
                 return true;
             }
+
+            return false;
+        }
+    }
+}
             /*
             if (distanceCenters < (ring1.OuterRadius + ring2.OuterRadius))
             {
                 if (ring1.OuterRadius < ring2.InnerRadius || ring2.OuterRadius < ring1.InnerRadius)
                 return true;
             }*/
-
-            return false;
-        }
-    }
-}

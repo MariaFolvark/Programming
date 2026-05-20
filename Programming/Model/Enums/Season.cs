@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Programming.Model.Enums
 {
+    /// <summary>
+    /// Содержит времена года.
+    /// </summary>
     public enum Season
     {
         Winter,

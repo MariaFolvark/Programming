@@ -6,13 +6,31 @@ using System.Threading.Tasks;
 
 namespace Programming.Model.Geometry
 {
+    /// <summary>
+    /// Хранит данные о кольце.
+    /// </summary>
     internal class Ring
     {
+        /// <summary>
+        /// Координаты центра кольцаа.
+        /// </summary>
         private Point2D center;
+        /// <summary>
+        /// Внешний радиус.
+        /// </summary>
         private double outer_radius;
+        /// <summary>
+        /// Внутренний радиус.
+        /// </summary>
         private double inner_radius;
 
+        /// <summary>
+        /// Возвращает и задает координаты центра кольца.
+        /// </summary>
         public Point2D Center { get { return center; } set { center = value; } }
+        /// <summary>
+        /// Возвращает и задает внешний радиус.
+        /// </summary>
         public double OuterRadius
         {
             get { return outer_radius; }
@@ -21,6 +39,9 @@ namespace Programming.Model.Geometry
                 outer_radius = Validator.AssertValueInRange(value, InnerRadius, 100, nameof(outer_radius));
             }
         }
+        /// <summary>
+        /// Возвращает и задает внутренний радиус.
+        /// </summary>
         public double InnerRadius
         {
             get { return inner_radius; }
@@ -30,6 +51,12 @@ namespace Programming.Model.Geometry
             }
         }
 
+        /// <summary>
+        /// Создаёт экземпляр класса <see cref="Ring"/>.
+        /// </summary>
+        /// <param name="center">Координаты центра кольца.</param>
+        /// <param name="outer_radius">Внешний радиус.</param>
+        /// <param name="inner_radius">Внутренний радиус.</param>
         public Ring(Point2D center, double outer_radius, double inner_radius)
         {
             Center = center;
@@ -37,6 +64,9 @@ namespace Programming.Model.Geometry
             InnerRadius = inner_radius;
         }
 
+        /// <summary>
+        /// Возвращает площадь кольца.
+        /// </summary>
         public double Area
         {
             get

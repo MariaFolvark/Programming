@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Programming.Model.Enums
 {
+    /// <summary>
+    /// Содержит цвета.
+    /// </summary>
     public enum Colors
     {
         Red,

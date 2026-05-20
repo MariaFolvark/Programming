@@ -7,8 +7,14 @@ using System.Threading.Tasks;
 
 namespace Programming.Model
 {
+    /// <summary>
+    /// Хранит данные фильма.
+    /// </summary>
     internal class Film
     {
+        /// <summary>
+        /// Содержит список названий фильмов.
+        /// </summary>
         private static string[] movieNames = {
             "Побег из Шоушенка",
             "Крестный отец",
@@ -21,14 +27,34 @@ namespace Programming.Model
             "Матрица",
             "Леон"
         };
+        /// <summary>
+        /// Название.
+        /// </summary>
+        private string title = "Undefined";
+        /// <summary>
+        /// Продолжительность в минутах.
+        /// </summary>
+        private int duration_in_minutes;
+        /// <summary>
+        /// Год выпуска (от 1900 до текущего года).
+        /// </summary>
+        private int year_of_release;
+        /// <summary>
+        /// Жанр.
+        /// </summary>
+        private string genre = "Undefined";
+        /// <summary>
+        /// Рейтинг (от 0 до 10).
+        /// </summary>
+        private double rating;
 
-        private string title = "Undefined"; //Название
-        private int duration_in_minutes; //Продолжительность в минутах
-        private int year_of_release; //Год выпуска (от 1900 до текущего года)
-        private string genre = "Undefined"; //Жанр
-        private double rating; //Рейтинг (от 0 до 10)
-
+        /// <summary>
+        /// Возвращает и задает название.
+        /// </summary>
         public string Title { get { return title; } set { title = value; } }
+        /// <summary>
+        /// Возвращает и задает продолжительность в минутах. Значение должно быть положительным.
+        /// </summary>
         public int DurationInMinutes
         {
             get { return duration_in_minutes; }
@@ -37,6 +63,9 @@ namespace Programming.Model
                 duration_in_minutes = Validator.AssertOnPositiveValue(value, nameof(duration_in_minutes));
             }
         }
+        /// <summary>
+        /// Возвращает и задает год выпуска. Значение должно быть в диапазоне от 1900 до текущего года.
+        /// </summary>
         public int YearOfRelease
         {
             get { return year_of_release; }
@@ -46,7 +75,13 @@ namespace Programming.Model
                 year_of_release = Validator.AssertValueInRange(value, 1900, current_year, nameof(year_of_release));
             }
         }
+        /// <summary>
+        /// Возвращает и задает жанр.
+        /// </summary>
         public string Genre { get { return genre; } set { genre = value; } }
+        /// <summary>
+        /// Возвращает и задает рейтинг. Значение должно быть в диапазоне от 0 до 10.
+        /// </summary>
         public double Rating
         {
             get { return rating; }
@@ -56,6 +91,14 @@ namespace Programming.Model
             }
         }
 
+        /// <summary>
+        /// Создаёт экземпляр класса <see cref="Film"/>.
+        /// </summary>
+        /// <param name="title">Название.</param>
+        /// <param name="duration_in_minutes">Продолжительность в минутах.</param>
+        /// <param name="year_of_release">Год выпуска.</param>
+        /// <param name="genre">Жанр.</param>
+        /// <param name="rating">Рейтинг.</param>
         public Film(string title, int duration_in_minutes, int year_of_release, string genre, double rating)
         {
             this.Title = title;
@@ -64,8 +107,16 @@ namespace Programming.Model
             this.Genre = genre;
             this.Rating = rating;
         }
+        /// <summary>
+        /// Создаёт экземпляр класса <see cref="Film"/>.
+        /// </summary>
         public Film() { }
 
+        /// <summary>
+        /// Создаёт массив фильмов со случайными продолжительностью, годом выпуска и рейтингом.
+        /// </summary>
+        /// <param name="length">Длина массива.</param>
+        /// <returns></returns>
         public static Film[] RandomFilmsArray(int length)
         {
             Film[] movies = new Film[length];

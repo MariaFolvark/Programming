@@ -6,8 +6,17 @@ using System.Threading.Tasks;
 
 namespace Programming.Model
 {
+    /// <summary>
+    /// Валидатор. Проверяет значения.
+    /// </summary>
     internal class Validator
     {
+        /// <summary>
+        /// Проверяет, является ли значение положительным.
+        /// </summary>
+        /// <param name="value">Проверяемое значение.</param>
+        /// <param name="name">Проверяемая переменная.</param>
+        /// <returns>Возвращает значение, если оно положительное.</returns>
         public static int AssertOnPositiveValue(int value, string name)
         {
             try
@@ -24,6 +33,13 @@ namespace Programming.Model
                 throw;
             }
         }
+
+        /// <summary>
+        /// Проверяет, является ли значение положительным.
+        /// </summary>
+        /// <param name="value">Проверяемое значение.</param>
+        /// <param name="name">Проверяемая переменная.</param>
+        /// <returns>Возвращает значение, если оно положительное.</returns>
         public static double AssertOnPositiveValue(double value, string name)
         {
             try
@@ -40,6 +56,15 @@ namespace Programming.Model
                 throw;
             }
         }
+
+        /// <summary>
+        /// Проверяет, находится ли значение в заданном диапазоне.
+        /// </summary>
+        /// <param name="value">Значение.</param>
+        /// <param name="min">Нижняя граница диапазона.</param>
+        /// <param name="max">Верхняя граница диапазона.</param>
+        /// <param name="name">Переменная.</param>
+        /// <returns></returns>
         public static int AssertValueInRange(int value, int min, int max, string name)
         {
             try
@@ -57,6 +82,14 @@ namespace Programming.Model
             }
         }
 
+        /// <summary>
+        /// Проверяет, находится ли значение в заданном диапазоне.
+        /// </summary>
+        /// <param name="value">Значение.</param>
+        /// <param name="min">Нижняя граница диапазона.</param>
+        /// <param name="max">Верхняя граница диапазона.</param>
+        /// <param name="name">Переменная.</param>
+        /// <returns></returns>
         public static double AssertValueInRange(double value, double min, double max, string name)
         {
             try
