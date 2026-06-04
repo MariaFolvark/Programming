@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,53 +13,108 @@ namespace FlightsApp.Model
     internal class Flight
     {
         /// <summary>
+        /// Счётчик количества рейсов в программе.
+        /// </summary>
+        private static int _allFlightsCount = 0;
+        /// <summary>
+        /// Уникальный идентификатор для всех объектов данного класса.
+        /// </summary>
+        private readonly int _id;
+        /// <summary>
+        /// Название.
+        /// </summary>
+        private string name = "Undefined";
+        /// <summary>
         /// Пункт вылета.
         /// </summary>
-        private string departure_point = "Undefined";
+        private string departure = "Undefined";
         /// <summary>
         /// Пункт назначения.
         /// </summary>
         private string destination = "Undefined";
         /// <summary>
+        /// Время прибытия.
+        /// </summary>
+        private Time departure_time = new Time();
+        /// <summary>
         /// Время полета в минутах.
         /// </summary>
-        private int flight_time_minutes;
+        private Time flight_time = new Time();
+        /// <summary>
+        /// Тип рейса: внутренний/международный.
+        /// </summary>
+        private string flight_type = "Undefined";
+
+        /// <summary>
+        /// Задает Уникальный идентификатор.
+        /// </summary>
+        public int Id { get { return _id; } }
+        /// <summary>
+        /// Возвращает и задает название.
+        /// </summary>
+        public string Name { get { return name; } set { name = value; } }
 
         /// <summary>
         /// Возвращает и задает пункт вылета.
         /// </summary>
-        public string DeparturePoint { get { return departure_point; } set { destination = value; } }
+        public string Departure { get { return departure; } set { destination = value; } }
         /// <summary>
         /// Возвращает и задает пункт назначения.
         /// </summary>
         public string Destination { get { return destination; } set { destination = value; } }
         /// <summary>
-        /// Возвращает и задает Время полета в минутах. Значение должно быть положительным.
+        /// Возвращает и задает время прибытия.
         /// </summary>
-        public int FlightTimeMinutes
+        public Time DepartureTime { get { return departure_time; } set {  departure_time = value; } }
+        /// <summary>
+        /// Возвращает и задает время полёта. Значение должно быть положительным.
+        /// </summary>
+        public Time FlightTime
+        { get { return flight_time; } set { flight_time = value; } }
+        /// <summary>
+        /// Возвращает и задает тип полёта: внутренний или международный.
+        /// </summary>
+        public string FlightType { get { return flight_type; } set { flight_type=value; } }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name">Название рейса.</param>
+        /// <param name="departure">Пункт вылета.</param>
+        /// <param name="destination">Пункт назначения.</param>
+        /// <param name="departure_time">Время прибытия.</param>
+        /// <param name="flight_time">Время полёта.></param>
+        /// <param name="fligth_type">Тип рейса.</param>
+
+        public Flight(string name, string departure, string destination, 
+            Time departure_time, Time flight_time, string fligth_type)
         {
-            get { return flight_time_minutes; }
-            set
-            {
-                flight_time_minutes = Validator.AssertOnPositiveValue(value, nameof(flight_time_minutes));
-            }
+            Name = name;
+            Departure = departure;
+            Destination = destination;
+            DepartureTime = departure_time;
+            FlightTime = flight_time;
+            FlightType = fligth_type;
+            _allFlightsCount += 1;
+            _id = AllFlightsCount();
+        }
+        /// <summary>
+        /// Создаёт экземпляр класса <see cref="Flight"/>.
+        /// </summary>
+        public Flight()
+        {
+            _allFlightsCount += 1;
+            _id = AllFlightsCount();
         }
 
         /// <summary>
-        /// Создаёт экземпляр класса <see cref="Flight"/>.
+        /// Считает количество прямоугольников в программе.
         /// </summary>
-        /// <param name="departure_point">Пункт вылета.</param>
-        /// <param name="destination">Пункт назначения.</param>
-        /// <param name="flight_time_minutes">Время полёта в минутах.</param>
-        public Flight(string departure_point, string destination, int flight_time_minutes)
+        /// <returns>Возвращает количество прямоугольников в программе.</returns>
+        public static int AllFlightsCount()
         {
-            this.DeparturePoint = departure_point;
-            this.Destination = destination;
-            this.FlightTimeMinutes = flight_time_minutes;
+            return _allFlightsCount;
         }
-        /// <summary>
-        /// Создаёт экземпляр класса <see cref="Flight"/>.
-        /// </summary>
-        public Flight() { }
+
     }
 }

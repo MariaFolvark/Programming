@@ -13,7 +13,7 @@ namespace Programming.Model.Geometry
     internal class Rectangles
     {
         /// <summary>
-        /// Счётчик колическтва прямоугольников в программе.
+        /// Счётчик количества прямоугольников в программе.
         /// </summary>
         private static int _allRectanglesCount = 0;
         /// <summary>
