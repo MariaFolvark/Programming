@@ -53,7 +53,6 @@ namespace FlightsApp.Model
         /// Возвращает и задает название.
         /// </summary>
         public string Name { get { return name; } set { name = value; } }
-
         /// <summary>
         /// Возвращает и задает пункт вылета.
         /// </summary>
@@ -69,15 +68,14 @@ namespace FlightsApp.Model
         /// <summary>
         /// Возвращает и задает время полёта. Значение должно быть положительным.
         /// </summary>
-        public Time FlightTime
-        { get { return flight_time; } set { flight_time = value; } }
+        public Time FlightTime { get { return flight_time; } set { flight_time = value; } }
         /// <summary>
         /// Возвращает и задает тип полёта: внутренний или международный.
         /// </summary>
         public string FlightType { get { return flight_type; } set { flight_type=value; } }
 
         /// <summary>
-        /// 
+        /// Создаёт экземпляр класса <see cref="Flight"/>.
         /// </summary>
         /// <param name="name">Название рейса.</param>
         /// <param name="departure">Пункт вылета.</param>
@@ -108,9 +106,9 @@ namespace FlightsApp.Model
         }
 
         /// <summary>
-        /// Считает количество прямоугольников в программе.
+        /// Считает количество рейсов в программе.
         /// </summary>
-        /// <returns>Возвращает количество прямоугольников в программе.</returns>
+        /// <returns>Возвращает количество рейсов в программе.</returns>
         public static int AllFlightsCount()
         {
             return _allFlightsCount;
