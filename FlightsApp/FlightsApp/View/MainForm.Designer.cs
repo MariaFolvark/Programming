@@ -30,6 +30,22 @@
         {
             FlightsListBox = new ListBox();
             SelectedFlightGroupBox = new GroupBox();
+            DestinationLabel = new Label();
+            DepartureLabel = new Label();
+            FlightNameLabel = new Label();
+            AddButton = new Button();
+            EditButton = new Button();
+            DeleteButton = new Button();
+            FlightNameTextBox = new TextBox();
+            DepartureTextBox = new TextBox();
+            DestinationTextBox = new TextBox();
+            DepartureTimeTextBox = new TextBox();
+            DepartureTimeLabel = new Label();
+            FlightTimeTextBox = new TextBox();
+            FlightTimeLabel = new Label();
+            FlightTypeComboBox = new ComboBox();
+            FlightTypeLabel = new Label();
+            SelectedFlightGroupBox.SuspendLayout();
             SuspendLayout();
             // 
             // FlightsListBox
@@ -44,26 +60,167 @@
             // 
             // SelectedFlightGroupBox
             // 
+            SelectedFlightGroupBox.Controls.Add(FlightTypeLabel);
+            SelectedFlightGroupBox.Controls.Add(FlightTypeComboBox);
+            SelectedFlightGroupBox.Controls.Add(FlightTimeLabel);
+            SelectedFlightGroupBox.Controls.Add(FlightTimeTextBox);
+            SelectedFlightGroupBox.Controls.Add(DepartureTimeLabel);
+            SelectedFlightGroupBox.Controls.Add(DepartureTimeTextBox);
+            SelectedFlightGroupBox.Controls.Add(DestinationTextBox);
+            SelectedFlightGroupBox.Controls.Add(DepartureTextBox);
+            SelectedFlightGroupBox.Controls.Add(FlightNameTextBox);
+            SelectedFlightGroupBox.Controls.Add(DestinationLabel);
+            SelectedFlightGroupBox.Controls.Add(DepartureLabel);
+            SelectedFlightGroupBox.Controls.Add(FlightNameLabel);
             SelectedFlightGroupBox.Location = new Point(264, 12);
-            SelectedFlightGroupBox.MaximumSize = new Size(569, 424);
-            SelectedFlightGroupBox.MinimumSize = new Size(569, 424);
+            SelectedFlightGroupBox.MaximumSize = new Size(569, 245);
+            SelectedFlightGroupBox.MinimumSize = new Size(569, 245);
             SelectedFlightGroupBox.Name = "SelectedFlightGroupBox";
-            SelectedFlightGroupBox.Size = new Size(569, 424);
+            SelectedFlightGroupBox.Size = new Size(569, 245);
             SelectedFlightGroupBox.TabIndex = 1;
             SelectedFlightGroupBox.TabStop = false;
             SelectedFlightGroupBox.Text = "Selected Flight";
+            // 
+            // DestinationLabel
+            // 
+            DestinationLabel.AutoSize = true;
+            DestinationLabel.Location = new Point(34, 100);
+            DestinationLabel.Name = "DestinationLabel";
+            DestinationLabel.Size = new Size(88, 20);
+            DestinationLabel.TabIndex = 2;
+            DestinationLabel.Text = "Destination:";
+            // 
+            // DepartureLabel
+            // 
+            DepartureLabel.AutoSize = true;
+            DepartureLabel.Location = new Point(43, 67);
+            DepartureLabel.Name = "DepartureLabel";
+            DepartureLabel.Size = new Size(79, 20);
+            DepartureLabel.TabIndex = 1;
+            DepartureLabel.Text = "Departure:";
+            // 
+            // FlightNameLabel
+            // 
+            FlightNameLabel.AutoSize = true;
+            FlightNameLabel.Location = new Point(29, 34);
+            FlightNameLabel.Name = "FlightNameLabel";
+            FlightNameLabel.Size = new Size(93, 20);
+            FlightNameLabel.TabIndex = 0;
+            FlightNameLabel.Text = "Flight Name:";
+            // 
+            // AddButton
+            // 
+            AddButton.Location = new Point(270, 280);
+            AddButton.Name = "AddButton";
+            AddButton.Size = new Size(94, 29);
+            AddButton.TabIndex = 2;
+            AddButton.Text = "Add";
+            AddButton.UseVisualStyleBackColor = true;
+            // 
+            // EditButton
+            // 
+            EditButton.Location = new Point(270, 315);
+            EditButton.Name = "EditButton";
+            EditButton.Size = new Size(94, 29);
+            EditButton.TabIndex = 3;
+            EditButton.Text = "Edit";
+            EditButton.UseVisualStyleBackColor = true;
+            // 
+            // DeleteButton
+            // 
+            DeleteButton.Location = new Point(270, 350);
+            DeleteButton.Name = "DeleteButton";
+            DeleteButton.Size = new Size(94, 29);
+            DeleteButton.TabIndex = 4;
+            DeleteButton.Text = "Delete";
+            DeleteButton.UseVisualStyleBackColor = true;
+            // 
+            // FlightNameTextBox
+            // 
+            FlightNameTextBox.Location = new Point(128, 31);
+            FlightNameTextBox.Name = "FlightNameTextBox";
+            FlightNameTextBox.Size = new Size(209, 27);
+            FlightNameTextBox.TabIndex = 3;
+            // 
+            // DepartureTextBox
+            // 
+            DepartureTextBox.Location = new Point(128, 64);
+            DepartureTextBox.Name = "DepartureTextBox";
+            DepartureTextBox.Size = new Size(209, 27);
+            DepartureTextBox.TabIndex = 4;
+            // 
+            // DestinationTextBox
+            // 
+            DestinationTextBox.Location = new Point(128, 97);
+            DestinationTextBox.Name = "DestinationTextBox";
+            DestinationTextBox.Size = new Size(209, 27);
+            DestinationTextBox.TabIndex = 5;
+            // 
+            // DepartureTimeTextBox
+            // 
+            DepartureTimeTextBox.Location = new Point(128, 130);
+            DepartureTimeTextBox.Name = "DepartureTimeTextBox";
+            DepartureTimeTextBox.Size = new Size(209, 27);
+            DepartureTimeTextBox.TabIndex = 6;
+            // 
+            // DepartureTimeLabel
+            // 
+            DepartureTimeLabel.AutoSize = true;
+            DepartureTimeLabel.Location = new Point(6, 133);
+            DepartureTimeLabel.Name = "DepartureTimeLabel";
+            DepartureTimeLabel.Size = new Size(116, 20);
+            DepartureTimeLabel.TabIndex = 7;
+            DepartureTimeLabel.Text = "Departure Time:";
+            // 
+            // FlightTimeTextBox
+            // 
+            FlightTimeTextBox.Location = new Point(128, 163);
+            FlightTimeTextBox.Name = "FlightTimeTextBox";
+            FlightTimeTextBox.Size = new Size(209, 27);
+            FlightTimeTextBox.TabIndex = 8;
+            // 
+            // FlightTimeLabel
+            // 
+            FlightTimeLabel.AutoSize = true;
+            FlightTimeLabel.Location = new Point(36, 166);
+            FlightTimeLabel.Name = "FlightTimeLabel";
+            FlightTimeLabel.Size = new Size(86, 20);
+            FlightTimeLabel.TabIndex = 9;
+            FlightTimeLabel.Text = "Flight Time:";
+            // 
+            // FlightTypeComboBox
+            // 
+            FlightTypeComboBox.FormattingEnabled = true;
+            FlightTypeComboBox.Location = new Point(128, 196);
+            FlightTypeComboBox.Name = "FlightTypeComboBox";
+            FlightTypeComboBox.Size = new Size(209, 28);
+            FlightTypeComboBox.TabIndex = 10;
+            // 
+            // FlightTypeLabel
+            // 
+            FlightTypeLabel.AutoSize = true;
+            FlightTypeLabel.Location = new Point(38, 199);
+            FlightTypeLabel.Name = "FlightTypeLabel";
+            FlightTypeLabel.Size = new Size(84, 20);
+            FlightTypeLabel.TabIndex = 11;
+            FlightTypeLabel.Text = "Flight Type:";
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(848, 453);
+            ClientSize = new Size(848, 576);
+            Controls.Add(DeleteButton);
+            Controls.Add(EditButton);
+            Controls.Add(AddButton);
             Controls.Add(SelectedFlightGroupBox);
             Controls.Add(FlightsListBox);
             MaximumSize = new Size(1000, 700);
             MinimumSize = new Size(866, 500);
             Name = "MainForm";
             Text = "FlightsApp";
+            SelectedFlightGroupBox.ResumeLayout(false);
+            SelectedFlightGroupBox.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -71,5 +228,20 @@
 
         private ListBox FlightsListBox;
         private GroupBox SelectedFlightGroupBox;
+        private Button AddButton;
+        private Button EditButton;
+        private Button DeleteButton;
+        private Label FlightNameLabel;
+        private Label DestinationLabel;
+        private Label DepartureLabel;
+        private TextBox FlightNameTextBox;
+        private TextBox DepartureTextBox;
+        private TextBox DestinationTextBox;
+        private TextBox DepartureTimeTextBox;
+        private Label DepartureTimeLabel;
+        private TextBox FlightTimeTextBox;
+        private Label FlightTimeLabel;
+        private ComboBox FlightTypeComboBox;
+        private Label FlightTypeLabel;
     }
 }
