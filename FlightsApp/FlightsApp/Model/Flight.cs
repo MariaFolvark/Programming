@@ -145,7 +145,7 @@ namespace FlightsApp.Model
             }
 
             string name = departure + " - " + destination;
-            DateTime departure_time = DateTime.Today.AddDays(rand.Next(1)).AddHours(rand.Next(24)).AddMinutes(rand.Next(60));
+            DateTime departure_time = DateTime.Today.AddDays(rand.Next(0, 2)).AddHours(rand.Next(24)).AddMinutes(rand.Next(60));
             int flight_time = rand.Next(1, 1001);
 
             Flight flight = new Flight(name, departure, destination, departure_time, flight_time, flightType);
