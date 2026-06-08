@@ -1,14 +1,16 @@
-﻿using System;
+﻿using FlightsApp.Model.Enums;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace FlightsApp.Model
 {
     /// <summary>
-    /// Хранит данные дисциплины.
+    /// Хранит данные о рейсе.
     /// </summary>
     internal class Flight
     {
@@ -33,17 +35,17 @@ namespace FlightsApp.Model
         /// </summary>
         private string destination = "Undefined";
         /// <summary>
-        /// Время прибытия.
+        /// Время вылета.
         /// </summary>
-        private Time departure_time = new Time();
+        private DateTime departure_time = new DateTime();
         /// <summary>
         /// Время полета в минутах.
         /// </summary>
-        private Time flight_time = new Time();
+        private int flight_time = 0;
         /// <summary>
         /// Тип рейса: внутренний/международный.
         /// </summary>
-        private string flight_type = "Undefined";
+        private FlightType flight_type;
 
         /// <summary>
         /// Задает Уникальный идентификатор.
@@ -62,17 +64,21 @@ namespace FlightsApp.Model
         /// </summary>
         public string Destination { get { return destination; } set { destination = value; } }
         /// <summary>
-        /// Возвращает и задает время прибытия.
+        /// Возвращает и задает время вылета.
         /// </summary>
-        public Time DepartureTime { get { return departure_time; } set {  departure_time = value; } }
+        public DateTime DepartureTime { get { return departure_time; } set { departure_time = value; } }
         /// <summary>
         /// Возвращает и задает время полёта. Значение должно быть положительным.
         /// </summary>
-        public Time FlightTime { get { return flight_time; } set { flight_time = value; } }
+        public int FlightTime
+        {
+            get { return flight_time; }
+            set { flight_time = Validator.AssertValueInRange(value, 0, 1000, nameof(value)); }
+        }
         /// <summary>
         /// Возвращает и задает тип полёта: внутренний или международный.
         /// </summary>
-        public string FlightType { get { return flight_type; } set { flight_type=value; } }
+        public FlightType FlightType { get { return flight_type; } set { flight_type = value; } }
 
         /// <summary>
         /// Создаёт экземпляр класса <see cref="Flight"/>.
@@ -84,8 +90,8 @@ namespace FlightsApp.Model
         /// <param name="flight_time">Время полёта.></param>
         /// <param name="fligth_type">Тип рейса.</param>
 
-        public Flight(string name, string departure, string destination, 
-            Time departure_time, Time flight_time, string fligth_type)
+        public Flight(string name, string departure, string destination,
+            DateTime departure_time, int flight_time, FlightType fligth_type)
         {
             Name = name;
             Departure = departure;
@@ -112,6 +118,39 @@ namespace FlightsApp.Model
         public static int AllFlightsCount()
         {
             return _allFlightsCount;
+        }
+
+        public static Flight RandomFlight(FlightType flightType)
+        {
+            Random rand = new Random();
+            string departure;
+            string destination;
+
+            if (flightType == FlightType.DomesticFlight)
+            {
+                int RussianCitiesCount = Enum.GetNames(typeof(RussianСities)).Length;
+                departure = ((RussianСities)rand.Next(RussianCitiesCount)).ToString();
+                do
+                {
+                    destination = ((RussianСities)rand.Next(RussianCitiesCount)).ToString();
+                } while (departure == destination);
+            }
+            else
+            {
+                int ForeignCitiesCount = Enum.GetNames(typeof(ForeignCities)).Length;
+                departure = ((ForeignCities)rand.Next(ForeignCitiesCount)).ToString();
+                do
+                {
+                    destination = ((ForeignCities)rand.Next(ForeignCitiesCount)).ToString();
+                } while (departure == destination);
+            }
+
+            string name = departure + " - " + destination;
+            DateTime departure_time = DateTime.Today.AddDays(rand.Next(1)).AddHours(rand.Next(24)).AddMinutes(rand.Next(60));
+            int flight_time = rand.Next(1, 1001);
+
+            Flight flight = new Flight(name, departure, destination, departure_time, flight_time, flightType);
+            return flight;
         }
 
     }
