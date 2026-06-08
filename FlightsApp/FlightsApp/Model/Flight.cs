@@ -58,7 +58,7 @@ namespace FlightsApp.Model
         /// <summary>
         /// Возвращает и задает пункт вылета.
         /// </summary>
-        public string Departure { get { return departure; } set { destination = value; } }
+        public string Departure { get { return departure; } set { departure = value; } }
         /// <summary>
         /// Возвращает и задает пункт назначения.
         /// </summary>
@@ -123,13 +123,13 @@ namespace FlightsApp.Model
         public static Flight RandomFlight(FlightType flightType)
         {
             Random rand = new Random();
-            string departure;
+            
+            int RussianCitiesCount = Enum.GetNames(typeof(RussianСities)).Length;
+            string departure = ((RussianСities)rand.Next(RussianCitiesCount)).ToString();
             string destination;
 
             if (flightType == FlightType.DomesticFlight)
             {
-                int RussianCitiesCount = Enum.GetNames(typeof(RussianСities)).Length;
-                departure = ((RussianСities)rand.Next(RussianCitiesCount)).ToString();
                 do
                 {
                     destination = ((RussianСities)rand.Next(RussianCitiesCount)).ToString();
@@ -138,7 +138,6 @@ namespace FlightsApp.Model
             else
             {
                 int ForeignCitiesCount = Enum.GetNames(typeof(ForeignCities)).Length;
-                departure = ((ForeignCities)rand.Next(ForeignCitiesCount)).ToString();
                 do
                 {
                     destination = ((ForeignCities)rand.Next(ForeignCitiesCount)).ToString();
@@ -151,6 +150,24 @@ namespace FlightsApp.Model
 
             Flight flight = new Flight(name, departure, destination, departure_time, flight_time, flightType);
             return flight;
+        }
+
+        public static Flight[] RandomFlightsArray(int cnt)
+        {
+            Flight[] flights = new Flight[cnt];
+            Random rand = new Random();
+            for (int i = 0; i < cnt; i++)
+            {
+                var flightType = (FlightType)rand.Next(Enum.GetNames(typeof(FlightType)).Length);
+                flights[i] = Flight.RandomFlight(flightType);
+            }
+            SortFlightsByDepartureTime(flights);
+            return flights;
+        }
+
+        public static void SortFlightsByDepartureTime(Flight[] flights)
+        {
+            Array.Sort(flights, (f1, f2) => DateTime.Compare(f1.DepartureTime, f2.DepartureTime));
         }
 
     }

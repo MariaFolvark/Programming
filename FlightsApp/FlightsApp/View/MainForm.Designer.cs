@@ -30,21 +30,21 @@
         {
             FlightsListBox = new ListBox();
             SelectedFlightGroupBox = new GroupBox();
+            DepartureTimeDateTimePicker = new DateTimePicker();
+            FlightTypeLabel = new Label();
+            FlightTypeComboBox = new ComboBox();
+            FlightTimeLabel = new Label();
+            FlightTimeTextBox = new TextBox();
+            DepartureTimeLabel = new Label();
+            DestinationTextBox = new TextBox();
+            DepartureTextBox = new TextBox();
+            FlightNameTextBox = new TextBox();
             DestinationLabel = new Label();
             DepartureLabel = new Label();
             FlightNameLabel = new Label();
             AddButton = new Button();
             EditButton = new Button();
             DeleteButton = new Button();
-            FlightNameTextBox = new TextBox();
-            DepartureTextBox = new TextBox();
-            DestinationTextBox = new TextBox();
-            DepartureTimeTextBox = new TextBox();
-            DepartureTimeLabel = new Label();
-            FlightTimeTextBox = new TextBox();
-            FlightTimeLabel = new Label();
-            FlightTypeComboBox = new ComboBox();
-            FlightTypeLabel = new Label();
             SelectedFlightGroupBox.SuspendLayout();
             SuspendLayout();
             // 
@@ -60,12 +60,12 @@
             // 
             // SelectedFlightGroupBox
             // 
+            SelectedFlightGroupBox.Controls.Add(DepartureTimeDateTimePicker);
             SelectedFlightGroupBox.Controls.Add(FlightTypeLabel);
             SelectedFlightGroupBox.Controls.Add(FlightTypeComboBox);
             SelectedFlightGroupBox.Controls.Add(FlightTimeLabel);
             SelectedFlightGroupBox.Controls.Add(FlightTimeTextBox);
             SelectedFlightGroupBox.Controls.Add(DepartureTimeLabel);
-            SelectedFlightGroupBox.Controls.Add(DepartureTimeTextBox);
             SelectedFlightGroupBox.Controls.Add(DestinationTextBox);
             SelectedFlightGroupBox.Controls.Add(DepartureTextBox);
             SelectedFlightGroupBox.Controls.Add(FlightNameTextBox);
@@ -80,6 +80,78 @@
             SelectedFlightGroupBox.TabIndex = 1;
             SelectedFlightGroupBox.TabStop = false;
             SelectedFlightGroupBox.Text = "Selected Flight";
+            // 
+            // DepartureTimeDateTimePicker
+            // 
+            DepartureTimeDateTimePicker.CustomFormat = "HH:mm dd.MM.yyyy";
+            DepartureTimeDateTimePicker.Format = DateTimePickerFormat.Custom;
+            DepartureTimeDateTimePicker.Location = new Point(128, 130);
+            DepartureTimeDateTimePicker.Name = "DepartureTimeDateTimePicker";
+            DepartureTimeDateTimePicker.Size = new Size(231, 27);
+            DepartureTimeDateTimePicker.TabIndex = 12;
+            // 
+            // FlightTypeLabel
+            // 
+            FlightTypeLabel.AutoSize = true;
+            FlightTypeLabel.Location = new Point(38, 199);
+            FlightTypeLabel.Name = "FlightTypeLabel";
+            FlightTypeLabel.Size = new Size(84, 20);
+            FlightTypeLabel.TabIndex = 11;
+            FlightTypeLabel.Text = "Flight Type:";
+            // 
+            // FlightTypeComboBox
+            // 
+            FlightTypeComboBox.FormattingEnabled = true;
+            FlightTypeComboBox.Location = new Point(128, 196);
+            FlightTypeComboBox.Name = "FlightTypeComboBox";
+            FlightTypeComboBox.Size = new Size(231, 28);
+            FlightTypeComboBox.TabIndex = 10;
+            // 
+            // FlightTimeLabel
+            // 
+            FlightTimeLabel.AutoSize = true;
+            FlightTimeLabel.Location = new Point(36, 166);
+            FlightTimeLabel.Name = "FlightTimeLabel";
+            FlightTimeLabel.Size = new Size(86, 20);
+            FlightTimeLabel.TabIndex = 9;
+            FlightTimeLabel.Text = "Flight Time:";
+            // 
+            // FlightTimeTextBox
+            // 
+            FlightTimeTextBox.Location = new Point(128, 163);
+            FlightTimeTextBox.Name = "FlightTimeTextBox";
+            FlightTimeTextBox.Size = new Size(231, 27);
+            FlightTimeTextBox.TabIndex = 8;
+            // 
+            // DepartureTimeLabel
+            // 
+            DepartureTimeLabel.AutoSize = true;
+            DepartureTimeLabel.Location = new Point(6, 133);
+            DepartureTimeLabel.Name = "DepartureTimeLabel";
+            DepartureTimeLabel.Size = new Size(116, 20);
+            DepartureTimeLabel.TabIndex = 7;
+            DepartureTimeLabel.Text = "Departure Time:";
+            // 
+            // DestinationTextBox
+            // 
+            DestinationTextBox.Location = new Point(128, 97);
+            DestinationTextBox.Name = "DestinationTextBox";
+            DestinationTextBox.Size = new Size(231, 27);
+            DestinationTextBox.TabIndex = 5;
+            // 
+            // DepartureTextBox
+            // 
+            DepartureTextBox.Location = new Point(128, 64);
+            DepartureTextBox.Name = "DepartureTextBox";
+            DepartureTextBox.Size = new Size(231, 27);
+            DepartureTextBox.TabIndex = 4;
+            // 
+            // FlightNameTextBox
+            // 
+            FlightNameTextBox.Location = new Point(128, 31);
+            FlightNameTextBox.Name = "FlightNameTextBox";
+            FlightNameTextBox.Size = new Size(231, 27);
+            FlightNameTextBox.TabIndex = 3;
             // 
             // DestinationLabel
             // 
@@ -135,76 +207,6 @@
             DeleteButton.Text = "Delete";
             DeleteButton.UseVisualStyleBackColor = true;
             // 
-            // FlightNameTextBox
-            // 
-            FlightNameTextBox.Location = new Point(128, 31);
-            FlightNameTextBox.Name = "FlightNameTextBox";
-            FlightNameTextBox.Size = new Size(209, 27);
-            FlightNameTextBox.TabIndex = 3;
-            // 
-            // DepartureTextBox
-            // 
-            DepartureTextBox.Location = new Point(128, 64);
-            DepartureTextBox.Name = "DepartureTextBox";
-            DepartureTextBox.Size = new Size(209, 27);
-            DepartureTextBox.TabIndex = 4;
-            // 
-            // DestinationTextBox
-            // 
-            DestinationTextBox.Location = new Point(128, 97);
-            DestinationTextBox.Name = "DestinationTextBox";
-            DestinationTextBox.Size = new Size(209, 27);
-            DestinationTextBox.TabIndex = 5;
-            // 
-            // DepartureTimeTextBox
-            // 
-            DepartureTimeTextBox.Location = new Point(128, 130);
-            DepartureTimeTextBox.Name = "DepartureTimeTextBox";
-            DepartureTimeTextBox.Size = new Size(209, 27);
-            DepartureTimeTextBox.TabIndex = 6;
-            // 
-            // DepartureTimeLabel
-            // 
-            DepartureTimeLabel.AutoSize = true;
-            DepartureTimeLabel.Location = new Point(6, 133);
-            DepartureTimeLabel.Name = "DepartureTimeLabel";
-            DepartureTimeLabel.Size = new Size(116, 20);
-            DepartureTimeLabel.TabIndex = 7;
-            DepartureTimeLabel.Text = "Departure Time:";
-            // 
-            // FlightTimeTextBox
-            // 
-            FlightTimeTextBox.Location = new Point(128, 163);
-            FlightTimeTextBox.Name = "FlightTimeTextBox";
-            FlightTimeTextBox.Size = new Size(209, 27);
-            FlightTimeTextBox.TabIndex = 8;
-            // 
-            // FlightTimeLabel
-            // 
-            FlightTimeLabel.AutoSize = true;
-            FlightTimeLabel.Location = new Point(36, 166);
-            FlightTimeLabel.Name = "FlightTimeLabel";
-            FlightTimeLabel.Size = new Size(86, 20);
-            FlightTimeLabel.TabIndex = 9;
-            FlightTimeLabel.Text = "Flight Time:";
-            // 
-            // FlightTypeComboBox
-            // 
-            FlightTypeComboBox.FormattingEnabled = true;
-            FlightTypeComboBox.Location = new Point(128, 196);
-            FlightTypeComboBox.Name = "FlightTypeComboBox";
-            FlightTypeComboBox.Size = new Size(209, 28);
-            FlightTypeComboBox.TabIndex = 10;
-            // 
-            // FlightTypeLabel
-            // 
-            FlightTypeLabel.AutoSize = true;
-            FlightTypeLabel.Location = new Point(38, 199);
-            FlightTypeLabel.Name = "FlightTypeLabel";
-            FlightTypeLabel.Size = new Size(84, 20);
-            FlightTypeLabel.TabIndex = 11;
-            FlightTypeLabel.Text = "Flight Type:";
-            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -237,11 +239,11 @@
         private TextBox FlightNameTextBox;
         private TextBox DepartureTextBox;
         private TextBox DestinationTextBox;
-        private TextBox DepartureTimeTextBox;
         private Label DepartureTimeLabel;
         private TextBox FlightTimeTextBox;
         private Label FlightTimeLabel;
         private ComboBox FlightTypeComboBox;
         private Label FlightTypeLabel;
+        private DateTimePicker DepartureTimeDateTimePicker;
     }
 }
