@@ -36,6 +36,33 @@ namespace FlightsApp
             DepartureTextBox.TextChanged += DepartureTextBox_TextChanged;
             DestinationTextBox.TextChanged += DestinationTextBox_TextChanged;
             DepartureTimeDateTimePicker.ValueChanged += DepartureTimeDateTimePicker_ValueChanged;
+            FlightTimeTextBox.TextChanged += FlightTimeTextBox_TextChanged;
+            FlightTypeComboBox.SelectedIndexChanged += FlightTypeComboBox_SelectedIndexChanged;
+        }
+
+        private void FlightTypeComboBox_SelectedIndexChanged(object? sender, EventArgs e)
+        {
+            if (current_flight == null) return;
+            int selectedIndex = FlightTypeComboBox.SelectedIndex;
+            if (selectedIndex < 0 || selectedIndex > FlightTypeComboBox.Items.Count) return;
+            string selectedType = FlightTypeComboBox.SelectedItem.ToString();
+            if (Enum.TryParse<FlightType>(selectedType, out var flightType))
+            {
+                current_flight.FlightType = flightType;
+            }
+        }
+
+        private void FlightTimeTextBox_TextChanged(object? sender, EventArgs e)
+        {
+            if (current_flight == null) return;
+            string input = FlightTimeTextBox.Text;
+            try
+            {
+                if (!int.TryParse(input, out int value) || value < 0 || value > 1000)
+                    { throw new ArgumentException(); }
+                current_flight.FlightTime = value;
+            }
+            catch { FlightTimeTextBox.Text = current_flight.FlightTime.ToString(); }
         }
 
         private void DepartureTimeDateTimePicker_ValueChanged(object? sender, EventArgs e)
@@ -46,7 +73,6 @@ namespace FlightsApp
             {
                 if(input < DateTime.Today || input > DateTime.Today.AddDays(2)) { throw new ArgumentException(); }
                 current_flight.DepartureTime = input;
-                UpdateFlightInListBox();
             }
             catch { DepartureTimeDateTimePicker.Value = current_flight.DepartureTime; }          
         }
