@@ -43,7 +43,7 @@
             DepartureLabel = new Label();
             FlightNameLabel = new Label();
             AddButton = new Button();
-            EditButton = new Button();
+            EditDateButton = new Button();
             DeleteButton = new Button();
             SelectedFlightGroupBox.SuspendLayout();
             SuspendLayout();
@@ -84,6 +84,7 @@
             // DepartureTimeDateTimePicker
             // 
             DepartureTimeDateTimePicker.CustomFormat = "HH:mm dd.MM.yyyy";
+            DepartureTimeDateTimePicker.Enabled = false;
             DepartureTimeDateTimePicker.Format = DateTimePickerFormat.Custom;
             DepartureTimeDateTimePicker.Location = new Point(128, 130);
             DepartureTimeDateTimePicker.Name = "DepartureTimeDateTimePicker";
@@ -189,14 +190,14 @@
             AddButton.Text = "Add";
             AddButton.UseVisualStyleBackColor = true;
             // 
-            // EditButton
+            // EditDateButton
             // 
-            EditButton.Location = new Point(270, 315);
-            EditButton.Name = "EditButton";
-            EditButton.Size = new Size(94, 29);
-            EditButton.TabIndex = 3;
-            EditButton.Text = "Edit";
-            EditButton.UseVisualStyleBackColor = true;
+            EditDateButton.Location = new Point(270, 315);
+            EditDateButton.Name = "EditDateButton";
+            EditDateButton.Size = new Size(94, 29);
+            EditDateButton.TabIndex = 3;
+            EditDateButton.Text = "Edit date";
+            EditDateButton.UseVisualStyleBackColor = true;
             // 
             // DeleteButton
             // 
@@ -213,7 +214,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(848, 576);
             Controls.Add(DeleteButton);
-            Controls.Add(EditButton);
+            Controls.Add(EditDateButton);
             Controls.Add(AddButton);
             Controls.Add(SelectedFlightGroupBox);
             Controls.Add(FlightsListBox);
@@ -231,7 +232,7 @@
         private ListBox FlightsListBox;
         private GroupBox SelectedFlightGroupBox;
         private Button AddButton;
-        private Button EditButton;
+        private Button EditDateButton;
         private Button DeleteButton;
         private Label FlightNameLabel;
         private Label DestinationLabel;

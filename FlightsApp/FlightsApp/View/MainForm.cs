@@ -9,6 +9,7 @@ namespace FlightsApp
 
         Flight[] flights;
         Flight current_flight;
+        public DateTime CurrentDateTime { get { return current_flight.DepartureTime; } }
 
         public void MainForm_Load(object? sender, EventArgs e)
         {
@@ -35,9 +36,26 @@ namespace FlightsApp
             FlightNameTextBox.TextChanged += FlightNameTextBox_TextChanged;
             DepartureTextBox.TextChanged += DepartureTextBox_TextChanged;
             DestinationTextBox.TextChanged += DestinationTextBox_TextChanged;
-            DepartureTimeDateTimePicker.ValueChanged += DepartureTimeDateTimePicker_ValueChanged;
             FlightTimeTextBox.TextChanged += FlightTimeTextBox_TextChanged;
             FlightTypeComboBox.SelectedIndexChanged += FlightTypeComboBox_SelectedIndexChanged;
+            EditDateButton.Click += EditDateButton_Click;
+        }
+
+        private void EditDateButton_Click(object? sender, EventArgs e)
+        {
+            using (var inputForm = new FlightsApp.View.InputDateTimeForm(this))
+            {
+                if (inputForm.ShowDialog() == DialogResult.OK)
+                {
+                    DateTime input = inputForm.InputDateTime;
+                    current_flight.DepartureTime = input;
+                    flights[FlightsListBox.SelectedIndex].DepartureTime = input;
+                    ClearFlightInfo();
+                    Flight.SortFlightsByDepartureTime(flights);
+                    UpdateListBox();
+                    UpdateFlightInfo(current_flight);
+                }
+            }
         }
 
         private void FlightTypeComboBox_SelectedIndexChanged(object? sender, EventArgs e)
@@ -67,22 +85,6 @@ namespace FlightsApp
             catch { FlightTimeTextBox.Text = current_flight.FlightTime.ToString(); }
         }
 
-        private void DepartureTimeDateTimePicker_ValueChanged(object? sender, EventArgs e)
-        {
-            if (current_flight == null) return;
-            DateTime input = DepartureTimeDateTimePicker.Value;
-            try
-            {
-                if(input < DateTime.Today || input > DateTime.Today.AddDays(2)) { throw new ArgumentException(); }
-                current_flight.DepartureTime = input;
-                flights[FlightsListBox.SelectedIndex].DepartureTime = input;
-                /*ClearFlightInfo();                
-                Flight.SortFlightsByDepartureTime(flights);                
-                UpdateListBox();
-                UpdateFlightInfo(current_flight);*/
-            }
-            catch { DepartureTimeDateTimePicker.Value = current_flight.DepartureTime; }          
-        }
 
         /*private void DepartureTimeDateTimePicker_ValueChanged(object? sender, EventArgs e)
         {
@@ -141,6 +143,7 @@ namespace FlightsApp
 
         private void DestinationTextBox_TextChanged(object? sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(DepartureTextBox.Text)) return;
             if (current_flight == null) return;
             string input = DestinationTextBox.Text;
             try
@@ -161,6 +164,7 @@ namespace FlightsApp
 
         private void DepartureTextBox_TextChanged(object? sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(DepartureTextBox.Text)) return;
             if (current_flight == null) return;
             string input = DepartureTextBox.Text;
             try
@@ -200,7 +204,6 @@ namespace FlightsApp
         private void FlightsListBox_SelectedIndexChanged(object? sender, EventArgs e)
         {
             int selectedIndex = FlightsListBox.SelectedIndex;
-
             if (selectedIndex >= 0 && selectedIndex < flights.Length)
             {
                 current_flight = flights[selectedIndex];
@@ -211,20 +214,12 @@ namespace FlightsApp
                 current_flight = null;
                 ClearFlightInfo();
             }
-
         }
 
         private void UpdateListBox()
         {
-            FlightsListBox.Items.Clear();
-            /*for (int i = 0; i < flights.Length; i++)
-            {
-                FlightsListBox.Items.Add(flights[i].Name);
-            }
-            FlightsListBox.SelectedIndex = 0;
-            current_flight = flights[0];*/
-
-            current_flight = flights[0];
+            int ind = FlightsListBox.SelectedIndex;
+            FlightsListBox.Items.Clear();       
             for (int i = 0; i < flights.Length; i++)
             {
                 FlightsListBox.Items.Add(flights[i].Name);
@@ -233,7 +228,8 @@ namespace FlightsApp
             {
                 FlightTypeComboBox.Items.Add(ft);
             }
-            FlightsListBox.SelectedIndex = 0;
+            //current_flight = flights[0];
+            FlightsListBox.SelectedIndex = ind;
         }
         private void UpdateFlightInListBox()
         {
@@ -245,9 +241,9 @@ namespace FlightsApp
             FlightNameTextBox.Text = "";
             DepartureTextBox.Text = "";
             DestinationTextBox.Text = "";
-            DepartureTimeDateTimePicker.Value = DateTime.Now;
+            //DepartureTimeDateTimePicker.Value = DateTime.Now;
             FlightTimeTextBox.Text = "";
-            FlightTypeComboBox.SelectedIndex = -1;
+            //FlightTypeComboBox.SelectedIndex = -1;
         }
         private void UpdateFlightInfo(Flight flight)
         {
