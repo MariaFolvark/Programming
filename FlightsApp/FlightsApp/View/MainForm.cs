@@ -70,7 +70,6 @@ namespace FlightsApp
             FlightsListBox.Items.Add((string)new_flight.Name);
             FlightsListBox.SelectedIndex = flights.Count()-1;
         }
-
         private void EditDateButton_Click(object? sender, EventArgs e)
         {
             using (var inputForm = new View.InputDateTimeForm(this))
