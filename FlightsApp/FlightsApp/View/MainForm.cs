@@ -17,7 +17,7 @@ namespace FlightsApp
             current_flight = flights[0];
             for (int i = 0; i < flights.Count; i++)
             {
-                FlightsListBox.Items.Add(flights[i].Name);
+                FlightsListBox.Items.Add(Item(flights[i]));
             }
             foreach (FlightType ft in Enum.GetValues(typeof(FlightType)))
             {
@@ -39,6 +39,14 @@ namespace FlightsApp
             EditDateButton.Click += EditDateButton_Click;
             AddButton.Click += AddButton_Click;
             DeleteButton.Click += DeleteButton_Click;
+        }
+
+        private string Item(Flight flight)
+        {
+            if (flight == null) { return ""; }
+            string name = flight.Name.PadRight(35);
+            string item = $"{name}\t{flight.DepartureTime:HH:mm dd.MM}";
+            return item;
         }
 
         private void DeleteButton_Click(object? sender, EventArgs e)
@@ -67,7 +75,7 @@ namespace FlightsApp
             Flight new_flight = new Flight();
             new_flight.DepartureTime = DateTime.Now;
             flights.Add(new_flight);
-            FlightsListBox.Items.Add((string)new_flight.Name);
+            FlightsListBox.Items.Add(Item(new_flight));
             FlightsListBox.SelectedIndex = flights.Count()-1;
         }
         private void EditDateButton_Click(object? sender, EventArgs e)
@@ -204,14 +212,14 @@ namespace FlightsApp
             FlightsListBox.Items.Clear();       
             for (int i = 0; i < flights.Count; i++)
             {
-                FlightsListBox.Items.Add(flights[i].Name);
+                FlightsListBox.Items.Add(Item(flights[i]));
             }
             FlightsListBox.SelectedIndex = ind;
         }
         private void UpdateFlightInListBox()
         {
             if (current_flight == null) return;
-            FlightsListBox.Items[FlightsListBox.SelectedIndex] = current_flight.Name;
+            FlightsListBox.Items[FlightsListBox.SelectedIndex] = Item(current_flight);
         }
         private void ClearFlightInfo()
         {

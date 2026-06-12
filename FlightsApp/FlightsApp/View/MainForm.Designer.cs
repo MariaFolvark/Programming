@@ -52,10 +52,10 @@
             // 
             FlightsListBox.FormattingEnabled = true;
             FlightsListBox.Location = new Point(12, 12);
-            FlightsListBox.MaximumSize = new Size(246, 424);
+            FlightsListBox.MaximumSize = new Size(351, 424);
             FlightsListBox.MinimumSize = new Size(246, 424);
             FlightsListBox.Name = "FlightsListBox";
-            FlightsListBox.Size = new Size(246, 424);
+            FlightsListBox.Size = new Size(351, 424);
             FlightsListBox.TabIndex = 0;
             // 
             // SelectedFlightGroupBox
@@ -72,11 +72,11 @@
             SelectedFlightGroupBox.Controls.Add(DestinationLabel);
             SelectedFlightGroupBox.Controls.Add(DepartureLabel);
             SelectedFlightGroupBox.Controls.Add(FlightNameLabel);
-            SelectedFlightGroupBox.Location = new Point(264, 12);
+            SelectedFlightGroupBox.Location = new Point(369, 12);
             SelectedFlightGroupBox.MaximumSize = new Size(569, 245);
-            SelectedFlightGroupBox.MinimumSize = new Size(569, 245);
+            SelectedFlightGroupBox.MinimumSize = new Size(389, 245);
             SelectedFlightGroupBox.Name = "SelectedFlightGroupBox";
-            SelectedFlightGroupBox.Size = new Size(569, 245);
+            SelectedFlightGroupBox.Size = new Size(389, 245);
             SelectedFlightGroupBox.TabIndex = 1;
             SelectedFlightGroupBox.TabStop = false;
             SelectedFlightGroupBox.Text = "Selected Flight";
@@ -183,7 +183,7 @@
             // 
             // AddButton
             // 
-            AddButton.Location = new Point(270, 280);
+            AddButton.Location = new Point(369, 263);
             AddButton.Name = "AddButton";
             AddButton.Size = new Size(94, 29);
             AddButton.TabIndex = 2;
@@ -192,7 +192,7 @@
             // 
             // EditDateButton
             // 
-            EditDateButton.Location = new Point(270, 315);
+            EditDateButton.Location = new Point(369, 298);
             EditDateButton.Name = "EditDateButton";
             EditDateButton.Size = new Size(94, 29);
             EditDateButton.TabIndex = 3;
@@ -201,7 +201,7 @@
             // 
             // DeleteButton
             // 
-            DeleteButton.Location = new Point(270, 350);
+            DeleteButton.Location = new Point(369, 333);
             DeleteButton.Name = "DeleteButton";
             DeleteButton.Size = new Size(94, 29);
             DeleteButton.TabIndex = 4;
@@ -212,14 +212,14 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(848, 576);
+            ClientSize = new Size(802, 576);
             Controls.Add(DeleteButton);
             Controls.Add(EditDateButton);
             Controls.Add(AddButton);
             Controls.Add(SelectedFlightGroupBox);
             Controls.Add(FlightsListBox);
             MaximumSize = new Size(1000, 700);
-            MinimumSize = new Size(866, 500);
+            MinimumSize = new Size(820, 500);
             Name = "MainForm";
             Text = "FlightsApp";
             SelectedFlightGroupBox.ResumeLayout(false);

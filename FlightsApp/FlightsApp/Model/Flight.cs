@@ -143,9 +143,9 @@ namespace FlightsApp.Model
                     destination = ((ForeignCities)rand.Next(ForeignCitiesCount)).ToString();
                 } while (departure == destination);
             }
-
+            
+            DateTime departure_time = DateTime.Today.AddDays(rand.Next(0, 2)).AddHours(rand.Next(24)).AddMinutes(rand.Next(60));           
             string name = departure + " - " + destination;
-            DateTime departure_time = DateTime.Today.AddDays(rand.Next(0, 2)).AddHours(rand.Next(24)).AddMinutes(rand.Next(60));
             int flight_time = rand.Next(1, 1001);
 
             Flight flight = new Flight(name, departure, destination, departure_time, flight_time, flightType);
