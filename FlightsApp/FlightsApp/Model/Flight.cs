@@ -152,22 +152,22 @@ namespace FlightsApp.Model
             return flight;
         }
 
-        public static Flight[] RandomFlightsArray(int cnt)
+        public static List<Flight> RandomFlightsList(int cnt)
         {
-            Flight[] flights = new Flight[cnt];
+            List<Flight> flights = new List<Flight>(cnt);
             Random rand = new Random();
             for (int i = 0; i < cnt; i++)
             {
                 var flightType = (FlightType)rand.Next(Enum.GetNames(typeof(FlightType)).Length);
-                flights[i] = Flight.RandomFlight(flightType);
+                flights.Add(Flight.RandomFlight(flightType));
             }
             SortFlightsByDepartureTime(flights);
             return flights;
         }
 
-        public static void SortFlightsByDepartureTime(Flight[] flights)
+        public static void SortFlightsByDepartureTime(List<Flight> flights)
         {
-            Array.Sort(flights, (f1, f2) => DateTime.Compare(f1.DepartureTime, f2.DepartureTime));
+            flights.Sort((f1, f2) => DateTime.Compare(f1.DepartureTime, f2.DepartureTime));
         }
 
     }
