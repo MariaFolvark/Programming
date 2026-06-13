@@ -13,6 +13,12 @@ namespace FlightsApp
         public void MainForm_Load(object? sender, EventArgs e)
         {
             //string[] enums = { "FlightType", "Russian—ities", "ForeignCities" };
+            /*LoadFlightsFromFile();
+            List<Flight> randomflights = Flight.RandomFlightsList(5);
+            for (int i = 0; i < randomflights.Count; i++)
+            {
+                flights.Add(randomflights[i]);
+            }*/
             flights = Flight.RandomFlightsList(5);
             current_flight = flights[0];
             for (int i = 0; i < flights.Count; i++)
@@ -30,6 +36,7 @@ namespace FlightsApp
         {
             InitializeComponent();
             this.Load += MainForm_Load;
+            //LoadFlightsFromFile()
             FlightsListBox.SelectedIndexChanged += FlightsListBox_SelectedIndexChanged;
             FlightNameTextBox.TextChanged += FlightNameTextBox_TextChanged;
             DepartureTextBox.TextChanged += DepartureTextBox_TextChanged;
@@ -40,7 +47,33 @@ namespace FlightsApp
             AddButton.Click += AddButton_Click;
             DeleteButton.Click += DeleteButton_Click;
         }
-
+        /*private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            SaveFlightsToFile();
+        }
+        private void LoadFlightsFromFile()
+        {
+            if (File.Exists("flights.xml"))
+            {
+                var serializer = new System.Xml.Serialization.XmlSerializer(typeof(List<Flight>));
+                using (var reader = new StreamReader("flights.xml"))
+                {
+                    flights = (List<Flight>)serializer.Deserialize(reader);
+                }
+            }
+            else
+            {
+                flights = new List<Flight>();
+            }
+        }
+        private void SaveFlightsToFile()
+        {
+            var serializer = new System.Xml.Serialization.XmlSerializer(typeof(List<Flight>));
+            using (var writer = new StreamWriter("flights.xml"))
+            {
+                serializer.Serialize(writer, flights);
+            }
+        }*/
         private string Item(Flight flight)
         {
             if (flight == null) { return ""; }

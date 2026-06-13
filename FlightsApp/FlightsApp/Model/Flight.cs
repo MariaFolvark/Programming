@@ -12,7 +12,8 @@ namespace FlightsApp.Model
     /// <summary>
     /// Хранит данные о рейсе.
     /// </summary>
-    internal class Flight
+    [Serializable]
+    public class Flight
     {
         /// <summary>
         /// Счётчик количества рейсов в программе.
