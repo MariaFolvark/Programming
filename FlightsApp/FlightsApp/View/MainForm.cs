@@ -18,8 +18,15 @@ namespace FlightsApp
             for (int i = 0; i < randomflights.Count; i++)
             {
                 flights.Add(randomflights[i]);
-            }*/
-            flights = Flight.RandomFlightsList(5);
+            }
+            flights = Flight.RandomFlightsList(5);*/
+
+            LoadFlightsFromFile();
+            if (flights == null || flights.Count == 0)
+            {
+                flights = Flight.RandomFlightsList(5);
+            }
+            
             current_flight = flights[0];
             for (int i = 0; i < flights.Count; i++)
             {
@@ -36,7 +43,8 @@ namespace FlightsApp
         {
             InitializeComponent();
             this.Load += MainForm_Load;
-            //LoadFlightsFromFile()
+            //LoadFlightsFromFile();
+            this.FormClosing += MainForm_FormClosing;
             FlightsListBox.SelectedIndexChanged += FlightsListBox_SelectedIndexChanged;
             FlightNameTextBox.TextChanged += FlightNameTextBox_TextChanged;
             DepartureTextBox.TextChanged += DepartureTextBox_TextChanged;
@@ -47,7 +55,7 @@ namespace FlightsApp
             AddButton.Click += AddButton_Click;
             DeleteButton.Click += DeleteButton_Click;
         }
-        /*private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             SaveFlightsToFile();
         }
@@ -73,7 +81,7 @@ namespace FlightsApp
             {
                 serializer.Serialize(writer, flights);
             }
-        }*/
+        }
         private string Item(Flight flight)
         {
             if (flight == null) { return ""; }
