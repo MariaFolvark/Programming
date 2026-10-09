@@ -16,7 +16,7 @@ namespace ObjectOrientedPractics.Model
         /// <param name="value">Строка.</param>
         /// <param name="max">Максимальная допустимая длина строки.</param>
         /// <param name="name">Переменная.</param>
-        /// <returns></returns>
+        /// <returns>Возвращает строку, если она корректна.</returns>
         public static string AssertStringLength(string value, int max, string name)
         {
             try
@@ -51,7 +51,7 @@ namespace ObjectOrientedPractics.Model
         /// <param name="min">Нижняя граница диапазона.</param>
         /// <param name="max">Верхняя граница диапазона.</param>
         /// <param name="name">Переменная.</param>
-        /// <returns></returns>
+        /// <returns>Возвращает значение, если оно корректно.</returns>
         public static double AssertValueInRange(double value, double min, double max, string name)
         {
             try
