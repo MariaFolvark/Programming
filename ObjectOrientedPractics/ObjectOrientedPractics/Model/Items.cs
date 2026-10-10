@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ObjectOrientedPractics.Model.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,7 @@ namespace ObjectOrientedPractics.Model
     /// <summary>
     /// Хранит данные о товаре.
     /// </summary>
-    internal class Item
+    internal class Items
     {
         /// <summary>
         /// Счётчик кол-ва товаров в программе.
@@ -78,7 +79,7 @@ namespace ObjectOrientedPractics.Model
         /// <param name="name">Название.</param>
         /// <param name="info">Информация о товаре.</param>
         /// <param name="cost">Стоимость.</param>
-        public Item(string name, string info, double cost)
+        public Items(string name, string info, double cost)
         {
             _allItemsCount++;
             _id = AllItemsCount();
@@ -86,5 +87,18 @@ namespace ObjectOrientedPractics.Model
             Info = info;
             Cost = cost;
         }
+
+        public static Items RandomItem()
+        {
+            Random rand = new Random();
+            int ItemNamesCount = Enum.GetNames(typeof(ItemNames)).Length;
+            string itemName = ((ItemNames)rand.Next(ItemNamesCount)).ToString();
+            string articleNumber = ((char)rand.Next('A', 'Z' + 1)).ToString() + rand.Next(1, 11).ToString();
+            itemName +=  " " + articleNumber;
+            string info = "Info";
+            double cost = rand.Next(1, 1000);
+            return new Items(itemName, info, cost);
+        }
+
     }
 }
