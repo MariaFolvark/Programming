@@ -52,7 +52,7 @@
             this.ItemsGroupBox.Controls.Add(this.RemoveButton);
             this.ItemsGroupBox.Controls.Add(this.AddButton);
             this.ItemsGroupBox.Controls.Add(this.ItemsListBox);
-            this.ItemsGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ItemsGroupBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.ItemsGroupBox.Location = new System.Drawing.Point(4, 4);
             this.ItemsGroupBox.Name = "ItemsGroupBox";
             this.ItemsGroupBox.Size = new System.Drawing.Size(260, 327);
@@ -63,7 +63,7 @@
             // RemoveButton
             // 
             this.RemoveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.RemoveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.RemoveButton.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.RemoveButton.Location = new System.Drawing.Point(132, 266);
             this.RemoveButton.Name = "RemoveButton";
             this.RemoveButton.Size = new System.Drawing.Size(119, 51);
@@ -75,7 +75,7 @@
             // AddButton
             // 
             this.AddButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.AddButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AddButton.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.AddButton.Location = new System.Drawing.Point(7, 266);
             this.AddButton.Name = "AddButton";
             this.AddButton.Size = new System.Drawing.Size(119, 51);
@@ -89,12 +89,12 @@
             this.ItemsListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ItemsListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ItemsListBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.ItemsListBox.FormattingEnabled = true;
-            this.ItemsListBox.ItemHeight = 25;
+            this.ItemsListBox.ItemHeight = 20;
             this.ItemsListBox.Location = new System.Drawing.Point(7, 30);
             this.ItemsListBox.Name = "ItemsListBox";
-            this.ItemsListBox.Size = new System.Drawing.Size(244, 204);
+            this.ItemsListBox.Size = new System.Drawing.Size(244, 224);
             this.ItemsListBox.TabIndex = 0;
             this.ItemsListBox.SelectedIndexChanged += new System.EventHandler(this.ItemsListBox_SelectedIndexChanged);
             // 
@@ -111,7 +111,7 @@
             this.SelectedItemGroupBox.Controls.Add(this.CostLabel);
             this.SelectedItemGroupBox.Controls.Add(this.IdTextBox);
             this.SelectedItemGroupBox.Controls.Add(this.IdLabel);
-            this.SelectedItemGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.SelectedItemGroupBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.SelectedItemGroupBox.Location = new System.Drawing.Point(270, 4);
             this.SelectedItemGroupBox.Name = "SelectedItemGroupBox";
             this.SelectedItemGroupBox.Size = new System.Drawing.Size(284, 327);
@@ -133,10 +133,10 @@
             // DescriptionLabel
             // 
             this.DescriptionLabel.AutoSize = true;
-            this.DescriptionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.DescriptionLabel.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.DescriptionLabel.Location = new System.Drawing.Point(7, 196);
             this.DescriptionLabel.Name = "DescriptionLabel";
-            this.DescriptionLabel.Size = new System.Drawing.Size(100, 20);
+            this.DescriptionLabel.Size = new System.Drawing.Size(88, 20);
             this.DescriptionLabel.TabIndex = 6;
             this.DescriptionLabel.Text = "Description:";
             // 
@@ -153,46 +153,46 @@
             // NameLabel
             // 
             this.NameLabel.AutoSize = true;
-            this.NameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.NameLabel.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.NameLabel.Location = new System.Drawing.Point(6, 118);
             this.NameLabel.Name = "NameLabel";
-            this.NameLabel.Size = new System.Drawing.Size(58, 20);
+            this.NameLabel.Size = new System.Drawing.Size(52, 20);
             this.NameLabel.TabIndex = 4;
             this.NameLabel.Text = "Name:";
             // 
             // CostTextBox
             // 
-            this.CostTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CostTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.CostTextBox.Location = new System.Drawing.Point(67, 70);
             this.CostTextBox.Name = "CostTextBox";
-            this.CostTextBox.Size = new System.Drawing.Size(204, 26);
+            this.CostTextBox.Size = new System.Drawing.Size(204, 27);
             this.CostTextBox.TabIndex = 3;
             // 
             // CostLabel
             // 
             this.CostLabel.AutoSize = true;
-            this.CostLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CostLabel.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.CostLabel.Location = new System.Drawing.Point(6, 77);
             this.CostLabel.Name = "CostLabel";
-            this.CostLabel.Size = new System.Drawing.Size(49, 20);
+            this.CostLabel.Size = new System.Drawing.Size(41, 20);
             this.CostLabel.TabIndex = 2;
             this.CostLabel.Text = "Cost:";
             // 
             // IdTextBox
             // 
-            this.IdTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.IdTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.IdTextBox.Location = new System.Drawing.Point(67, 30);
             this.IdTextBox.Name = "IdTextBox";
-            this.IdTextBox.Size = new System.Drawing.Size(204, 26);
+            this.IdTextBox.Size = new System.Drawing.Size(204, 27);
             this.IdTextBox.TabIndex = 1;
             // 
             // IdLabel
             // 
             this.IdLabel.AutoSize = true;
-            this.IdLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.IdLabel.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.IdLabel.Location = new System.Drawing.Point(6, 37);
             this.IdLabel.Name = "IdLabel";
-            this.IdLabel.Size = new System.Drawing.Size(31, 20);
+            this.IdLabel.Size = new System.Drawing.Size(27, 20);
             this.IdLabel.TabIndex = 0;
             this.IdLabel.Text = "ID:";
             // 
