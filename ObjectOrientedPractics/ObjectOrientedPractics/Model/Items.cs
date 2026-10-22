@@ -61,7 +61,11 @@ namespace ObjectOrientedPractics.Model
         public double Cost
         {
             get { return _cost; }
-            set { _cost = Validator.AssertValueInRange(value, 0, 100000, nameof(value)); }
+            set
+            {
+                _cost = Validator.AssertValueInRange(value, 0, 100000, nameof(value));
+                _cost = Math.Truncate(_cost * 100) / 100;
+            }
         }
 
         /// <summary>

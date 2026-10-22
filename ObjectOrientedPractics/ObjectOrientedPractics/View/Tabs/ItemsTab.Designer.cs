@@ -167,6 +167,8 @@
             this.CostTextBox.Name = "CostTextBox";
             this.CostTextBox.Size = new System.Drawing.Size(204, 27);
             this.CostTextBox.TabIndex = 3;
+            this.CostTextBox.TextChanged += new System.EventHandler(this.CostTextBox_TextChanged);
+            this.CostTextBox.Leave += new System.EventHandler(this.CostTextBox_Leave);
             // 
             // CostLabel
             // 
@@ -183,6 +185,7 @@
             this.IdTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.IdTextBox.Location = new System.Drawing.Point(67, 30);
             this.IdTextBox.Name = "IdTextBox";
+            this.IdTextBox.ReadOnly = true;
             this.IdTextBox.Size = new System.Drawing.Size(204, 27);
             this.IdTextBox.TabIndex = 1;
             // 

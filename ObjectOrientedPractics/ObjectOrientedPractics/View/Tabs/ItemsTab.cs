@@ -80,7 +80,7 @@ namespace ObjectOrientedPractics.View.Tabs
             int selected_ind = ItemsListBox.SelectedIndex;
             IdTextBox.Text = _items[selected_ind].Id.ToString();
             NameTextBox.Text = _items[selected_ind].Name;
-            CostTextBox.Text = _items[selected_ind].Cost.ToString();
+            CostTextBox.Text = _items[selected_ind].Cost.ToString("F2");
             DescriptionTextBox.Text = _items[selected_ind].Info;
         }
 
@@ -95,5 +95,55 @@ namespace ObjectOrientedPractics.View.Tabs
                 ItemsListBox.SelectedIndex = Math.Min(selectedIndex, ItemsListBox.Items.Count - 1);
             }               
         }
+
+        private void CostTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(CostTextBox.Text)) return;
+            if (_currentItem == null) return;
+            string input = CostTextBox.Text;
+            bool isInputCorrect = false;
+            int cursorPosition = CostTextBox.SelectionStart;
+            isInputCorrect = double.TryParse(input, out double res);
+            if (isInputCorrect == true)
+            {
+                _currentItem.Cost = res;
+                _items[ItemsListBox.SelectedIndex].Cost = res;
+                UpdateItemInfo();
+            }
+            else
+            {
+                CostTextBox.Text = _currentItem.Cost.ToString("F2");
+                cursorPosition -= 1;
+            }
+            CostTextBox.SelectionStart = cursorPosition;
+            CostTextBox.SelectionLength = 0;
+        }
+
+        private void CostTextBox_Leave(object sender, EventArgs e)
+        {
+            if (_currentItem == null) return;
+            CostTextBox.Text = _currentItem.Cost.ToString("F2");
+        }
+
+        /*private void DestinationTextBox_TextChanged(object? sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(DepartureTextBox.Text)) return;
+            if (current_flight == null) return;
+            string input = DestinationTextBox.Text;
+            try
+            {
+                if (input.Length > 1000) { throw new ArgumentException(); }
+                foreach (char c in input)
+                {
+                    if (!(char.IsLetter(c) || c == '-' || c == ' ')) { throw new ArgumentException(); }
+                }
+                current_flight.Destination = input;
+                flights[FlightsListBox.SelectedIndex].Destination = input;
+                UpdateFlightInListBox();
+                DestinationTextBox.SelectionStart = DestinationTextBox.Text.Length;
+                DestinationTextBox.SelectionLength = 0;
+            }
+            catch { DestinationTextBox.Text = current_flight.Destination; }
+        }*/
     }
 }
