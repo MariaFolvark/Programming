@@ -176,7 +176,7 @@
             // 
             this.CostLabel.AutoSize = true;
             this.CostLabel.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.CostLabel.Location = new System.Drawing.Point(6, 77);
+            this.CostLabel.Location = new System.Drawing.Point(7, 73);
             this.CostLabel.Name = "CostLabel";
             this.CostLabel.Size = new System.Drawing.Size(41, 20);
             this.CostLabel.TabIndex = 2;
@@ -195,7 +195,7 @@
             // 
             this.IdLabel.AutoSize = true;
             this.IdLabel.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.IdLabel.Location = new System.Drawing.Point(6, 37);
+            this.IdLabel.Location = new System.Drawing.Point(7, 33);
             this.IdLabel.Name = "IdLabel";
             this.IdLabel.Size = new System.Drawing.Size(27, 20);
             this.IdLabel.TabIndex = 0;
