@@ -56,17 +56,11 @@ namespace ObjectOrientedPractics.View.Tabs
             ItemsListBox.Items.Clear();
             for (int i = 0; i < _items.Count; i++)
             {
-                ItemsListBox.Items.Add(item: (_items[i]));
+                ItemsListBox.Items.Add(item: (_items[i].Name));
             }
             ItemsListBox.SelectedIndex = ind;
         }
-        private void UpdateItemsInListBox()
-        {
-            int index = ItemsListBox.SelectedIndex;
-            if (_currentItem == null || index < 0) { return; }
-            _items[index] = _currentItem;
-            ItemsListBox.Items[index] = _currentItem;
-        }
+
         private void ClearItemInfo()
         {
             IdTextBox.Text = "";
@@ -108,7 +102,7 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 _currentItem.Cost = res;
                 _items[ItemsListBox.SelectedIndex].Cost = res;
-                UpdateItemInfo();
+                CostTextBox.Text = _items[ItemsListBox.SelectedIndex].Cost.ToString("F2");
             }
             else
             {
@@ -123,6 +117,39 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             if (_currentItem == null) return;
             CostTextBox.Text = _currentItem.Cost.ToString("F2");
+        }
+
+        private void NameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(NameTextBox.Text)) return;
+            if (_currentItem == null) return;
+            string input = NameTextBox.Text;
+            try
+            {                
+                _currentItem.Name = input;
+                _items[ItemsListBox.SelectedIndex].Name = input;
+                NameTextBox.Text = _items[ItemsListBox.SelectedIndex].Name;
+                NameTextBox.SelectionStart = NameTextBox.Text.Length;
+                NameTextBox.SelectionLength = 0;
+                ItemsListBox.Items[ItemsListBox.SelectedIndex] = input;
+            }
+            catch { NameTextBox.Text = _currentItem.Name; }
+        }
+
+        private void DescriptionTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(DescriptionTextBox.Text)) return;
+            if (_currentItem == null) return;
+            string input = DescriptionTextBox.Text;
+            try
+            {
+                _currentItem.Info = input;
+                _items[ItemsListBox.SelectedIndex].Info = input;
+                DescriptionTextBox.Text = _items[ItemsListBox.SelectedIndex].Info;
+                DescriptionTextBox.SelectionStart = DescriptionTextBox.Text.Length;
+                DescriptionTextBox.SelectionLength = 0;
+            }
+            catch { DescriptionTextBox.Text = _currentItem.Info; }
         }
 
         /*private void DestinationTextBox_TextChanged(object? sender, EventArgs e)
@@ -144,6 +171,13 @@ namespace ObjectOrientedPractics.View.Tabs
                 DestinationTextBox.SelectionLength = 0;
             }
             catch { DestinationTextBox.Text = current_flight.Destination; }
+        }*/
+        /*private void UpdateItemsInListBox()
+        {
+            int index = ItemsListBox.SelectedIndex;
+            if (_currentItem == null || index < 0) { return; }
+            _items[index] = _currentItem;
+            ItemsListBox.Items[index] = _currentItem;
         }*/
     }
 }
