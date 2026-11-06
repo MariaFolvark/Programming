@@ -87,7 +87,7 @@ namespace ObjectOrientedPractics.View.Tabs
             if (ItemsListBox.Items.Count > 0)
             {
                 ItemsListBox.SelectedIndex = Math.Min(selectedIndex, ItemsListBox.Items.Count - 1);
-            }               
+            }
         }
 
         private void CostTextBox_TextChanged(object sender, EventArgs e)

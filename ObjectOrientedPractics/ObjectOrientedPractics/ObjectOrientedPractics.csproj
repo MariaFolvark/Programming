@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Customer.cs" />
+    <Compile Include="Model\Enums\CustomerNames.cs" />
     <Compile Include="Model\Enums\ItemNames.cs" />
     <Compile Include="Model\Items.cs" />
     <Compile Include="Model\Validator.cs" />

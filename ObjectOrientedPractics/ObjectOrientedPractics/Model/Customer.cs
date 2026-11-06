@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ObjectOrientedPractics.Model.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,7 +24,7 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Адрес доставки.
         /// </summary>
-        private string _adress;
+        private string _address;
 
         /// <summary>
         /// Задает Уникальный идентификатор.
@@ -32,7 +33,7 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Возвращает и задает
         /// </summary>
-        public string FulName
+        public string FullName
         {
             get { return _fullname; }
             set { _fullname = Validator.AssertStringLength(value, 200, nameof(value)); }
@@ -40,10 +41,10 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Возвращает и задает
         /// </summary>
-        public string Adress
+        public string Address
         {
-            get { return _adress; }
-            set { _adress = Validator.AssertStringLength(value, 500, nameof(value)); }
+            get { return _address; }
+            set { _address = Validator.AssertStringLength(value, 500, nameof(value)); }
         }
 
         /// <summary>
@@ -59,13 +60,22 @@ namespace ObjectOrientedPractics.Model
         /// Создаёт экземпляр класса.
         /// </summary>
         /// <param name="fullname">Полное имя покупателя.</param>
-        /// <param name="adress">Адрес доставки.</param>
-        public Customer(string fullname, string adress)
+        /// <param name="address">Адрес доставки.</param>
+        public Customer(string fullname, string address)
         {
             _allCustomersCount++;
             _id = AllCustomersCount();
             _fullname = fullname;
-            Adress = adress;
+            Address = address;
+        }
+
+        public static Customer RandomCustomer()
+        {
+            Random rand = new Random();
+            int CustomerNamesCount = Enum.GetNames(typeof(CustomerNames)).Length;
+            string customerName = ((CustomerNames)rand.Next(CustomerNamesCount)).ToString();
+            string address = "Адрес клиента " + customerName + ".";
+            return new Customer(customerName, address);
         }
     }
 }
