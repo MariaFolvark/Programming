@@ -27,7 +27,7 @@ namespace ObjectOrientedPractics.Model
         private string _address;
 
         /// <summary>
-        /// Задает Уникальный идентификатор.
+        /// Возвращает уникальный идентификатор.
         /// </summary>
         public int Id { get { return _id; } }
         /// <summary>
