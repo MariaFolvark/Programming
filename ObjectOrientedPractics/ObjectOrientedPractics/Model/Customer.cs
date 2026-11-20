@@ -27,14 +27,14 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Адрес доставки.
         /// </summary>
-        private string _address;
+        private Address _address;
 
         /// <summary>
         /// Возвращает уникальный идентификатор.
         /// </summary>
         public int Id { get { return _id; } }
         /// <summary>
-        /// Возвращает и задает
+        /// Возвращает и задает имя.
         /// </summary>
         public string FullName
         {
@@ -42,12 +42,12 @@ namespace ObjectOrientedPractics.Model
             set { _fullname = Validator.AssertStringLength(value, 200, nameof(value)); }
         }
         /// <summary>
-        /// Возвращает и задает
+        /// Возвращает и задает адрес.
         /// </summary>
-        public string Address
+        public Address Address
         {
             get { return _address; }
-            set { _address = Validator.AssertStringLength(value, 500, nameof(value)); }
+            set { _address = value; }
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         /// <param name="fullname">Полное имя покупателя.</param>
         /// <param name="address">Адрес доставки.</param>
-        public Customer(string fullname, string address)
+        public Customer(string fullname, Address address)
         {
             _allCustomersCount++;
             _id = AllCustomersCount();
@@ -77,7 +77,9 @@ namespace ObjectOrientedPractics.Model
             Random rand = new Random();
             int CustomerNamesCount = Enum.GetNames(typeof(CustomerNames)).Length;
             string customerName = ((CustomerNames)rand.Next(CustomerNamesCount)).ToString();
-            string address = "Адрес клиента " + customerName + ".";
+            string current = (AllCustomersCount() + 1).ToString();
+            Address address = new Address(111111, "Country " + current, "City " + current,
+                "Street " + current, current, current);
             return new Customer(customerName, address);
         }
     }
