@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ObjectOrientedPractics.Model;
+using ObjectOrientedPractics.Model.Enums;
 
 namespace ObjectOrientedPractics.View.Tabs
 {
@@ -18,14 +19,18 @@ namespace ObjectOrientedPractics.View.Tabs
         public ItemsTab()
         {
             InitializeComponent();
+
+            //CategoryComboBox.DataSource = Enum.GetValues(typeof(Category));
+            CategoryComboBox.SelectedIndex = -1;
         }
 
         private void AddButton_Click(object sender, EventArgs e)
         {
             Items item = Items.RandomItem();
             _items.Add(item);
-            int addedIndex = ItemsListBox.Items.Add(item.Name);
-            ItemsListBox.SelectedIndex = addedIndex;
+            _currentItem = item;
+            ItemsListBox.SelectedIndex = ItemsListBox.Items.Add(item.Name);
+            CategoryComboBox.SelectedItem = item.Category;
         }
 
         private void ItemsListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -44,27 +49,11 @@ namespace ObjectOrientedPractics.View.Tabs
 
         }
 
-        private void UpdateListBox()
-        {
-            if (_items.Count == 0)
-            {
-                ClearItemInfo();
-                ItemsListBox.Items.Clear();
-                return;
-            }
-            int ind = ItemsListBox.SelectedIndex;
-            ItemsListBox.Items.Clear();
-            for (int i = 0; i < _items.Count; i++)
-            {
-                ItemsListBox.Items.Add(item: (_items[i].Name));
-            }
-            ItemsListBox.SelectedIndex = ind;
-        }
-
         private void ClearItemInfo()
         {
             IdTextBox.Text = "";
             CostTextBox.Text = "";
+            CategoryComboBox.SelectedIndex = -1;
             NameTextBox.Text = "";
             DescriptionTextBox.Text = "";
         }
@@ -75,7 +64,17 @@ namespace ObjectOrientedPractics.View.Tabs
             IdTextBox.Text = _items[selected_ind].Id.ToString();
             NameTextBox.Text = _items[selected_ind].Name;
             CostTextBox.Text = _items[selected_ind].Cost.ToString("F2");
+            CategoryComboBox.SelectedItem = _items[selected_ind].Category;
             DescriptionTextBox.Text = _items[selected_ind].Info;
+        }
+
+        private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_currentItem == null) return;
+            if (CategoryComboBox.SelectedItem == null) return;
+
+            _items[ItemsListBox.SelectedIndex].Category = (Category)CategoryComboBox.SelectedItem;
+            _currentItem = _items[ItemsListBox.SelectedIndex];
         }
 
         private void RemoveButton_Click(object sender, EventArgs e)
@@ -125,7 +124,7 @@ namespace ObjectOrientedPractics.View.Tabs
             if (_currentItem == null) return;
             string input = NameTextBox.Text;
             try
-            {                
+            {
                 _currentItem.Name = input;
                 _items[ItemsListBox.SelectedIndex].Name = input;
                 NameTextBox.Text = _items[ItemsListBox.SelectedIndex].Name;
@@ -178,6 +177,22 @@ namespace ObjectOrientedPractics.View.Tabs
             if (_currentItem == null || index < 0) { return; }
             _items[index] = _currentItem;
             ItemsListBox.Items[index] = _currentItem;
+        }
+                private void UpdateListBox()
+        {
+            if (_items.Count == 0)
+            {
+                ClearItemInfo();
+                ItemsListBox.Items.Clear();
+                return;
+            }
+            int ind = ItemsListBox.SelectedIndex;
+            ItemsListBox.Items.Clear();
+            for (int i = 0; i < _items.Count; i++)
+            {
+                ItemsListBox.Items.Add(item: (_items[i].Name));
+            }
+            ItemsListBox.SelectedIndex = ind;
         }*/
     }
 }

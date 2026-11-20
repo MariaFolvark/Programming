@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ObjectOrientedPractics.Model.Enums
 {
+    /// <summary>
+    /// Определяет имя покупателя.
+    /// </summary>
     public enum CustomerNames
     {
         Иванов_Александр,

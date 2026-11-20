@@ -67,6 +67,10 @@ namespace ObjectOrientedPractics.Model
                 _cost = Math.Truncate(_cost * 100) / 100;
             }
         }
+        /// <summary>
+        /// Возвращает или задаёт категорию товара.
+        /// </summary>
+        public Category Category { get; set; }
 
         /// <summary>
         /// Считает кол-во товаров в программе.
@@ -83,13 +87,15 @@ namespace ObjectOrientedPractics.Model
         /// <param name="name">Название.</param>
         /// <param name="info">Информация о товаре.</param>
         /// <param name="cost">Стоимость.</param>
-        public Items(string name, string info, double cost)
+        /// <param name="category">Категория товара.</param>
+        public Items(string name, string info, double cost, Category category)
         {
             _allItemsCount++;
             _id = AllItemsCount();
             Name = name;
             Info = info;
             Cost = cost;
+            Category = category;
         }
 
         public static Items RandomItem()
@@ -101,7 +107,9 @@ namespace ObjectOrientedPractics.Model
             itemName +=  " " + articleNumber;
             string info = "Info";
             double cost = rand.Next(1, 1000);
-            return new Items(itemName, info, cost);
+            int CategoryCount = Enum.GetNames(typeof(Category)).Length;
+            Category category = ((Category)rand.Next(ItemNamesCount));
+            return new Items(itemName, info, cost, category);
         }
 
     }

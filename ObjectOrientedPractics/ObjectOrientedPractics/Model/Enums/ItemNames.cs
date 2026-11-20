@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ObjectOrientedPractics.Model.Enums
 {
+    /// <summary>
+    /// Определяет название товара.
+    /// </summary>
     public enum ItemNames
     {
         Smartphone,
