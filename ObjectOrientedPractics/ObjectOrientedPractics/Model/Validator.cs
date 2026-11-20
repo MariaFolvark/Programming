@@ -7,6 +7,9 @@ using System.Windows.Forms;
 
 namespace ObjectOrientedPractics.Model
 {
+    /// <summary>
+    /// Валидация.
+    /// </summary>
     internal class Validator
     {
 

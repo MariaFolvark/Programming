@@ -30,9 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.ItemsTabPage = new System.Windows.Forms.TabPage();
+            this.ItemsTab = new ObjectOrientedPractics.View.Tabs.ItemsTab();
             this.TabControl = new System.Windows.Forms.TabControl();
             this.CustomersTabPage = new System.Windows.Forms.TabPage();
-            this.ItemsTab = new ObjectOrientedPractics.View.Tabs.ItemsTab();
             this.CustomersTab = new ObjectOrientedPractics.View.Tabs.CustomersTab();
             this.ItemsTabPage.SuspendLayout();
             this.TabControl.SuspendLayout();
@@ -50,6 +50,16 @@
             this.ItemsTabPage.TabIndex = 0;
             this.ItemsTabPage.Text = "Items";
             this.ItemsTabPage.UseVisualStyleBackColor = true;
+            // 
+            // ItemsTab
+            // 
+            this.ItemsTab.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ItemsTab.Location = new System.Drawing.Point(4, 4);
+            this.ItemsTab.Margin = new System.Windows.Forms.Padding(5);
+            this.ItemsTab.MinimumSize = new System.Drawing.Size(700, 400);
+            this.ItemsTab.Name = "ItemsTab";
+            this.ItemsTab.Size = new System.Drawing.Size(760, 422);
+            this.ItemsTab.TabIndex = 0;
             // 
             // TabControl
             // 
@@ -74,16 +84,6 @@
             this.CustomersTabPage.TabIndex = 1;
             this.CustomersTabPage.Text = "Customers";
             this.CustomersTabPage.UseVisualStyleBackColor = true;
-            // 
-            // ItemsTab
-            // 
-            this.ItemsTab.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ItemsTab.Location = new System.Drawing.Point(4, 4);
-            this.ItemsTab.Margin = new System.Windows.Forms.Padding(5);
-            this.ItemsTab.MinimumSize = new System.Drawing.Size(700, 400);
-            this.ItemsTab.Name = "ItemsTab";
-            this.ItemsTab.Size = new System.Drawing.Size(760, 422);
-            this.ItemsTab.TabIndex = 0;
             // 
             // CustomersTab
             // 

@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace ObjectOrientedPractics.Model
 {
+    /// <summary>
+    /// Данные о покупателе.
+    /// </summary>
     internal class Customer
     {
         /// <summary>
