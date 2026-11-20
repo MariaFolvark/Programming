@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ObjectOrientedPractics.View.Controls
 {
@@ -20,7 +21,19 @@ namespace ObjectOrientedPractics.View.Controls
         /// </summary>
         public Address Address
         {
-            get { return _address; }
+            get
+            {
+                if ((string.IsNullOrWhiteSpace(PostIndexTextBox.Text) || PostIndexTextBox.BackColor == Color.Red) ||
+                    (string.IsNullOrWhiteSpace(CountryTextBox.Text) || CountryTextBox.BackColor == Color.Red) ||
+                    (string.IsNullOrWhiteSpace(CityTextBox.Text) || CityTextBox.BackColor == Color.Red) ||
+                    (string.IsNullOrWhiteSpace(StreetTextBox.Text) || StreetTextBox.BackColor == Color.Red) ||
+                    (string.IsNullOrWhiteSpace(BuildingTextBox.Text) || BuildingTextBox.BackColor == Color.Red) ||
+                    (string.IsNullOrWhiteSpace(ApartmentTextBox.Text) || ApartmentTextBox.BackColor == Color.Red))
+                {
+                    throw new ArgumentNullException(nameof(Address), $"Значение свойства '{nameof(Address)}' не может быть пустым или некорректным.");
+                }
+                else { return _address; }
+            }
             set { _address = value; }
         }
 
