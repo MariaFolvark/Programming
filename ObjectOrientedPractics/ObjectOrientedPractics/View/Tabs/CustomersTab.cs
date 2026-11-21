@@ -1,4 +1,5 @@
 ﻿using ObjectOrientedPractics.Model;
+using ObjectOrientedPractics.View.Controls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -48,15 +49,21 @@ namespace ObjectOrientedPractics.View.Tabs
             IdTextBox.Text = "";
             FullNameTextBox.Text = "";
             //AddressTextBox.Text = "";
+            addressControl1.Address = new Address();
         }
 
         private void UpdateCustomerInfo()
         {
             if (CustomersListBox.SelectedIndex == -1) return;
-            int selected_ind = CustomersListBox.SelectedIndex;
+            /*int selected_ind = CustomersListBox.SelectedIndex;
             IdTextBox.Text = _customers[selected_ind].Id.ToString();
             FullNameTextBox.Text = _customers[selected_ind].FullName;
             //AddressTextBox.Text = _customers[selected_ind].Address;
+            addressControl1.Address = _customers[selected_ind].Address;*/
+            IdTextBox.Text = _currentCustomer.Id.ToString();
+            FullNameTextBox.Text = _currentCustomer.FullName;
+            //AddressTextBox.Text = _customers[selected_ind].Address;
+            addressControl1.Address = _currentCustomer.Address;
         }
 
         private void RemoveButton_Click(object sender, EventArgs e)

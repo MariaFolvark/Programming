@@ -35,7 +35,16 @@ namespace ObjectOrientedPractics.View.Controls
                 else { return _address; }*/
                 return _address;
             }
-            set { _address = value; }
+            set
+            {
+                _address = value ?? new Address();
+                PostIndexTextBox.Text = _address.PostIndex.ToString();
+                CountryTextBox.Text = _address.Country;
+                CityTextBox.Text = _address.City;
+                StreetTextBox.Text = _address.Street;
+                BuildingTextBox.Text = _address.Building;
+                ApartmentTextBox.Text = _address.Apartment;
+            }
         }
 
         public AddressControl()
@@ -48,7 +57,7 @@ namespace ObjectOrientedPractics.View.Controls
             if (string.IsNullOrEmpty(PostIndexTextBox.Text)) return;
             int cursorPosition = PostIndexTextBox.SelectionStart;
             int.TryParse(PostIndexTextBox.Text, out int res);
-            if (res > 99999 & res < 1000000)
+            if (res > 99999 && res < 1000000)
             {
                 _address.PostIndex = res;
                 PostIndexTextBox.Text = _address.PostIndex.ToString();

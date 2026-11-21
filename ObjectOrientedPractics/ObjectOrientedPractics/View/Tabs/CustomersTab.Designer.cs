@@ -17,7 +17,6 @@
         private void InitializeComponent()
         {
             ObjectOrientedPractics.Model.Address address1 = new ObjectOrientedPractics.Model.Address();
-            ObjectOrientedPractics.Model.Address address2 = new ObjectOrientedPractics.Model.Address();
             this.CustomersGroupBox = new System.Windows.Forms.GroupBox();
             this.CustomersLayoutTable = new System.Windows.Forms.TableLayoutPanel();
             this.CustomersListBox = new System.Windows.Forms.ListBox();
@@ -31,7 +30,6 @@
             this.FullNameLabel = new System.Windows.Forms.Label();
             this.FullNameTextBox = new System.Windows.Forms.TextBox();
             this.Panel2 = new System.Windows.Forms.Panel();
-            this.addressControl2 = new ObjectOrientedPractics.View.Controls.AddressControl();
             this.MainLayoutTable = new System.Windows.Forms.TableLayoutPanel();
             this.addressControl1 = new ObjectOrientedPractics.View.Controls.AddressControl();
             this.CustomersGroupBox.SuspendLayout();
@@ -47,7 +45,7 @@
             // 
             this.CustomersGroupBox.Controls.Add(this.CustomersLayoutTable);
             this.CustomersGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CustomersGroupBox.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.CustomersGroupBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.CustomersGroupBox.Location = new System.Drawing.Point(3, 3);
             this.CustomersGroupBox.Name = "CustomersGroupBox";
             this.CustomersGroupBox.Padding = new System.Windows.Forms.Padding(6);
@@ -132,7 +130,7 @@
             // 
             this.SelectedCustomerGroupBox.Controls.Add(this.CustomerDetailsPanel);
             this.SelectedCustomerGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SelectedCustomerGroupBox.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.SelectedCustomerGroupBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.SelectedCustomerGroupBox.Location = new System.Drawing.Point(3, 3);
             this.SelectedCustomerGroupBox.Name = "SelectedCustomerGroupBox";
             this.SelectedCustomerGroupBox.Padding = new System.Windows.Forms.Padding(6);
@@ -200,27 +198,12 @@
             // 
             // Panel2
             // 
-            this.Panel2.Controls.Add(this.addressControl2);
+            this.Panel2.Controls.Add(this.addressControl1);
             this.Panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel2.Location = new System.Drawing.Point(3, 113);
             this.Panel2.Name = "Panel2";
             this.Panel2.Size = new System.Drawing.Size(407, 344);
             this.Panel2.TabIndex = 4;
-            // 
-            // addressControl2
-            // 
-            address1.Apartment = ".";
-            address1.Building = ".";
-            address1.City = ".";
-            address1.Country = ".";
-            address1.PostIndex = 100000;
-            address1.Street = ".";
-            this.addressControl2.Address = address1;
-            this.addressControl2.Location = new System.Drawing.Point(4, 4);
-            this.addressControl2.Margin = new System.Windows.Forms.Padding(2);
-            this.addressControl2.Name = "addressControl2";
-            this.addressControl2.Size = new System.Drawing.Size(357, 139);
-            this.addressControl2.TabIndex = 0;
             // 
             // MainLayoutTable
             // 
@@ -240,17 +223,17 @@
             // 
             // addressControl1
             // 
-            address2.Apartment = ".";
-            address2.Building = ".";
-            address2.City = ".";
-            address2.Country = ".";
-            address2.PostIndex = 100000;
-            address2.Street = ".";
-            this.addressControl1.Address = address2;
+            address1.Apartment = ".";
+            address1.Building = ".";
+            address1.City = ".";
+            address1.Country = ".";
+            address1.PostIndex = 100000;
+            address1.Street = ".";
+            this.addressControl1.Address = address1;
             this.addressControl1.Location = new System.Drawing.Point(4, 4);
             this.addressControl1.Margin = new System.Windows.Forms.Padding(2);
             this.addressControl1.Name = "addressControl1";
-            this.addressControl1.Size = new System.Drawing.Size(321, 120);
+            this.addressControl1.Size = new System.Drawing.Size(357, 139);
             this.addressControl1.TabIndex = 0;
             // 
             // CustomersTab
@@ -289,6 +272,5 @@
         private System.Windows.Forms.TableLayoutPanel RightLayoutTable;
         private System.Windows.Forms.Panel CustomerDetailsPanel;
         private Controls.AddressControl addressControl1;
-        private Controls.AddressControl addressControl2;
     }
 }

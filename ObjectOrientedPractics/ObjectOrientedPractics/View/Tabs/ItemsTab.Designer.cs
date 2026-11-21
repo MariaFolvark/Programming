@@ -48,7 +48,7 @@ namespace ObjectOrientedPractics.View.Tabs
             // 
             this.ItemsGroupBox.Controls.Add(this.ItemsLayoutTable);
             this.ItemsGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ItemsGroupBox.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.ItemsGroupBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.ItemsGroupBox.Location = new System.Drawing.Point(4, 4);
             this.ItemsGroupBox.Margin = new System.Windows.Forms.Padding(4);
             this.ItemsGroupBox.Name = "ItemsGroupBox";
@@ -120,7 +120,7 @@ namespace ObjectOrientedPractics.View.Tabs
             // 
             this.SelectedItemGroupBox.Controls.Add(this.ItemDetailsPanel);
             this.SelectedItemGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SelectedItemGroupBox.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.SelectedItemGroupBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.SelectedItemGroupBox.Location = new System.Drawing.Point(284, 4);
             this.SelectedItemGroupBox.Margin = new System.Windows.Forms.Padding(4);
             this.SelectedItemGroupBox.Name = "SelectedItemGroupBox";
