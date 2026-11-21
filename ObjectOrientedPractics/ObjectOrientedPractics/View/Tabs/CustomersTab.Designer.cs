@@ -16,6 +16,8 @@
 
         private void InitializeComponent()
         {
+            ObjectOrientedPractics.Model.Address address1 = new ObjectOrientedPractics.Model.Address();
+            ObjectOrientedPractics.Model.Address address2 = new ObjectOrientedPractics.Model.Address();
             this.CustomersGroupBox = new System.Windows.Forms.GroupBox();
             this.CustomersLayoutTable = new System.Windows.Forms.TableLayoutPanel();
             this.CustomersListBox = new System.Windows.Forms.ListBox();
@@ -28,15 +30,16 @@
             this.IdTextBox = new System.Windows.Forms.TextBox();
             this.FullNameLabel = new System.Windows.Forms.Label();
             this.FullNameTextBox = new System.Windows.Forms.TextBox();
-            this.AddressLabel = new System.Windows.Forms.Label();
-            this.AddressTextBox = new System.Windows.Forms.TextBox();
             this.Panel2 = new System.Windows.Forms.Panel();
+            this.addressControl2 = new ObjectOrientedPractics.View.Controls.AddressControl();
             this.MainLayoutTable = new System.Windows.Forms.TableLayoutPanel();
+            this.addressControl1 = new ObjectOrientedPractics.View.Controls.AddressControl();
             this.CustomersGroupBox.SuspendLayout();
             this.CustomersLayoutTable.SuspendLayout();
             this.RightLayoutTable.SuspendLayout();
             this.SelectedCustomerGroupBox.SuspendLayout();
             this.CustomerDetailsPanel.SuspendLayout();
+            this.Panel2.SuspendLayout();
             this.MainLayoutTable.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,11 +48,10 @@
             this.CustomersGroupBox.Controls.Add(this.CustomersLayoutTable);
             this.CustomersGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CustomersGroupBox.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.CustomersGroupBox.Location = new System.Drawing.Point(4, 4);
-            this.CustomersGroupBox.Margin = new System.Windows.Forms.Padding(4);
+            this.CustomersGroupBox.Location = new System.Drawing.Point(3, 3);
             this.CustomersGroupBox.Name = "CustomersGroupBox";
-            this.CustomersGroupBox.Padding = new System.Windows.Forms.Padding(8);
-            this.CustomersGroupBox.Size = new System.Drawing.Size(358, 558);
+            this.CustomersGroupBox.Padding = new System.Windows.Forms.Padding(6);
+            this.CustomersGroupBox.Size = new System.Drawing.Size(269, 454);
             this.CustomersGroupBox.TabIndex = 0;
             this.CustomersGroupBox.TabStop = false;
             this.CustomersGroupBox.Text = "Customers";
@@ -63,13 +65,13 @@
             this.CustomersLayoutTable.Controls.Add(this.AddButton, 0, 1);
             this.CustomersLayoutTable.Controls.Add(this.RemoveButton, 1, 1);
             this.CustomersLayoutTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CustomersLayoutTable.Location = new System.Drawing.Point(8, 28);
+            this.CustomersLayoutTable.Location = new System.Drawing.Point(6, 26);
             this.CustomersLayoutTable.Margin = new System.Windows.Forms.Padding(0);
             this.CustomersLayoutTable.Name = "CustomersLayoutTable";
             this.CustomersLayoutTable.RowCount = 2;
             this.CustomersLayoutTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.CustomersLayoutTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 58F));
-            this.CustomersLayoutTable.Size = new System.Drawing.Size(342, 522);
+            this.CustomersLayoutTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47F));
+            this.CustomersLayoutTable.Size = new System.Drawing.Size(257, 422);
             this.CustomersLayoutTable.TabIndex = 0;
             // 
             // CustomersListBox
@@ -79,10 +81,10 @@
             this.CustomersListBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.CustomersListBox.FormattingEnabled = true;
             this.CustomersListBox.ItemHeight = 20;
-            this.CustomersListBox.Location = new System.Drawing.Point(4, 4);
-            this.CustomersListBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 8);
+            this.CustomersListBox.Location = new System.Drawing.Point(3, 3);
+            this.CustomersListBox.Margin = new System.Windows.Forms.Padding(3, 3, 3, 6);
             this.CustomersListBox.Name = "CustomersListBox";
-            this.CustomersListBox.Size = new System.Drawing.Size(334, 452);
+            this.CustomersListBox.Size = new System.Drawing.Size(251, 366);
             this.CustomersListBox.TabIndex = 0;
             this.CustomersListBox.SelectedIndexChanged += new System.EventHandler(this.CustomersListBox_SelectedIndexChanged);
             // 
@@ -90,10 +92,9 @@
             // 
             this.AddButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AddButton.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.AddButton.Location = new System.Drawing.Point(4, 468);
-            this.AddButton.Margin = new System.Windows.Forms.Padding(4);
+            this.AddButton.Location = new System.Drawing.Point(3, 378);
             this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(163, 50);
+            this.AddButton.Size = new System.Drawing.Size(122, 41);
             this.AddButton.TabIndex = 1;
             this.AddButton.Text = "Add";
             this.AddButton.UseVisualStyleBackColor = true;
@@ -103,10 +104,9 @@
             // 
             this.RemoveButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.RemoveButton.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.RemoveButton.Location = new System.Drawing.Point(175, 468);
-            this.RemoveButton.Margin = new System.Windows.Forms.Padding(4);
+            this.RemoveButton.Location = new System.Drawing.Point(131, 378);
             this.RemoveButton.Name = "RemoveButton";
-            this.RemoveButton.Size = new System.Drawing.Size(163, 50);
+            this.RemoveButton.Size = new System.Drawing.Size(123, 41);
             this.RemoveButton.TabIndex = 2;
             this.RemoveButton.Text = "Remove";
             this.RemoveButton.UseVisualStyleBackColor = true;
@@ -119,13 +119,13 @@
             this.RightLayoutTable.Controls.Add(this.SelectedCustomerGroupBox, 0, 0);
             this.RightLayoutTable.Controls.Add(this.Panel2, 0, 1);
             this.RightLayoutTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.RightLayoutTable.Location = new System.Drawing.Point(366, 0);
+            this.RightLayoutTable.Location = new System.Drawing.Point(275, 0);
             this.RightLayoutTable.Margin = new System.Windows.Forms.Padding(0);
             this.RightLayoutTable.Name = "RightLayoutTable";
             this.RightLayoutTable.RowCount = 2;
-            this.RightLayoutTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45F));
-            this.RightLayoutTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55F));
-            this.RightLayoutTable.Size = new System.Drawing.Size(551, 566);
+            this.RightLayoutTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 24.13043F));
+            this.RightLayoutTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 75.86957F));
+            this.RightLayoutTable.Size = new System.Drawing.Size(413, 460);
             this.RightLayoutTable.TabIndex = 1;
             // 
             // SelectedCustomerGroupBox
@@ -133,11 +133,10 @@
             this.SelectedCustomerGroupBox.Controls.Add(this.CustomerDetailsPanel);
             this.SelectedCustomerGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SelectedCustomerGroupBox.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.SelectedCustomerGroupBox.Location = new System.Drawing.Point(4, 4);
-            this.SelectedCustomerGroupBox.Margin = new System.Windows.Forms.Padding(4);
+            this.SelectedCustomerGroupBox.Location = new System.Drawing.Point(3, 3);
             this.SelectedCustomerGroupBox.Name = "SelectedCustomerGroupBox";
-            this.SelectedCustomerGroupBox.Padding = new System.Windows.Forms.Padding(8);
-            this.SelectedCustomerGroupBox.Size = new System.Drawing.Size(543, 246);
+            this.SelectedCustomerGroupBox.Padding = new System.Windows.Forms.Padding(6);
+            this.SelectedCustomerGroupBox.Size = new System.Drawing.Size(407, 104);
             this.SelectedCustomerGroupBox.TabIndex = 0;
             this.SelectedCustomerGroupBox.TabStop = false;
             this.SelectedCustomerGroupBox.Text = "Selected Customer";
@@ -148,21 +147,19 @@
             this.CustomerDetailsPanel.Controls.Add(this.IdTextBox);
             this.CustomerDetailsPanel.Controls.Add(this.FullNameLabel);
             this.CustomerDetailsPanel.Controls.Add(this.FullNameTextBox);
-            this.CustomerDetailsPanel.Controls.Add(this.AddressLabel);
-            this.CustomerDetailsPanel.Controls.Add(this.AddressTextBox);
             this.CustomerDetailsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CustomerDetailsPanel.Location = new System.Drawing.Point(8, 28);
+            this.CustomerDetailsPanel.Location = new System.Drawing.Point(6, 26);
             this.CustomerDetailsPanel.Margin = new System.Windows.Forms.Padding(0);
             this.CustomerDetailsPanel.Name = "CustomerDetailsPanel";
-            this.CustomerDetailsPanel.Size = new System.Drawing.Size(527, 210);
+            this.CustomerDetailsPanel.Size = new System.Drawing.Size(395, 72);
             this.CustomerDetailsPanel.TabIndex = 0;
             // 
             // IdLabel
             // 
             this.IdLabel.AutoSize = true;
             this.IdLabel.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.IdLabel.Location = new System.Drawing.Point(4, 9);
-            this.IdLabel.Margin = new System.Windows.Forms.Padding(4);
+            this.IdLabel.Location = new System.Drawing.Point(3, 7);
+            this.IdLabel.Margin = new System.Windows.Forms.Padding(3);
             this.IdLabel.Name = "IdLabel";
             this.IdLabel.Size = new System.Drawing.Size(27, 20);
             this.IdLabel.TabIndex = 0;
@@ -173,19 +170,18 @@
             this.IdTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.IdTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.IdTextBox.Location = new System.Drawing.Point(91, 5);
-            this.IdTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.IdTextBox.Location = new System.Drawing.Point(88, 4);
             this.IdTextBox.Name = "IdTextBox";
             this.IdTextBox.ReadOnly = true;
-            this.IdTextBox.Size = new System.Drawing.Size(432, 27);
+            this.IdTextBox.Size = new System.Drawing.Size(304, 27);
             this.IdTextBox.TabIndex = 1;
             // 
             // FullNameLabel
             // 
             this.FullNameLabel.AutoSize = true;
             this.FullNameLabel.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.FullNameLabel.Location = new System.Drawing.Point(4, 49);
-            this.FullNameLabel.Margin = new System.Windows.Forms.Padding(4);
+            this.FullNameLabel.Location = new System.Drawing.Point(3, 40);
+            this.FullNameLabel.Margin = new System.Windows.Forms.Padding(3);
             this.FullNameLabel.Name = "FullNameLabel";
             this.FullNameLabel.Size = new System.Drawing.Size(79, 20);
             this.FullNameLabel.TabIndex = 2;
@@ -196,46 +192,35 @@
             this.FullNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.FullNameTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.FullNameTextBox.Location = new System.Drawing.Point(91, 45);
-            this.FullNameTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.FullNameTextBox.Location = new System.Drawing.Point(88, 37);
             this.FullNameTextBox.Name = "FullNameTextBox";
-            this.FullNameTextBox.Size = new System.Drawing.Size(432, 27);
+            this.FullNameTextBox.Size = new System.Drawing.Size(304, 27);
             this.FullNameTextBox.TabIndex = 3;
             this.FullNameTextBox.TextChanged += new System.EventHandler(this.FullNameTextBox_TextChanged);
             // 
-            // AddressLabel
-            // 
-            this.AddressLabel.AutoSize = true;
-            this.AddressLabel.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.AddressLabel.Location = new System.Drawing.Point(4, 84);
-            this.AddressLabel.Margin = new System.Windows.Forms.Padding(4);
-            this.AddressLabel.Name = "AddressLabel";
-            this.AddressLabel.Size = new System.Drawing.Size(65, 20);
-            this.AddressLabel.TabIndex = 4;
-            this.AddressLabel.Text = "Address:";
-            // 
-            // AddressTextBox
-            // 
-            this.AddressTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddressTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.AddressTextBox.Location = new System.Drawing.Point(4, 111);
-            this.AddressTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.AddressTextBox.Multiline = true;
-            this.AddressTextBox.Name = "AddressTextBox";
-            this.AddressTextBox.Size = new System.Drawing.Size(519, 95);
-            this.AddressTextBox.TabIndex = 5;
-            this.AddressTextBox.TextChanged += new System.EventHandler(this.AddressTextBox_TextChanged);
-            // 
             // Panel2
             // 
+            this.Panel2.Controls.Add(this.addressControl2);
             this.Panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Panel2.Location = new System.Drawing.Point(4, 258);
-            this.Panel2.Margin = new System.Windows.Forms.Padding(4);
+            this.Panel2.Location = new System.Drawing.Point(3, 113);
             this.Panel2.Name = "Panel2";
-            this.Panel2.Size = new System.Drawing.Size(543, 304);
+            this.Panel2.Size = new System.Drawing.Size(407, 344);
             this.Panel2.TabIndex = 4;
+            // 
+            // addressControl2
+            // 
+            address1.Apartment = ".";
+            address1.Building = ".";
+            address1.City = ".";
+            address1.Country = ".";
+            address1.PostIndex = 100000;
+            address1.Street = ".";
+            this.addressControl2.Address = address1;
+            this.addressControl2.Location = new System.Drawing.Point(4, 4);
+            this.addressControl2.Margin = new System.Windows.Forms.Padding(2);
+            this.addressControl2.Name = "addressControl2";
+            this.addressControl2.Size = new System.Drawing.Size(357, 139);
+            this.addressControl2.TabIndex = 0;
             // 
             // MainLayoutTable
             // 
@@ -250,31 +235,46 @@
             this.MainLayoutTable.Name = "MainLayoutTable";
             this.MainLayoutTable.RowCount = 1;
             this.MainLayoutTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.MainLayoutTable.Size = new System.Drawing.Size(917, 566);
+            this.MainLayoutTable.Size = new System.Drawing.Size(688, 460);
             this.MainLayoutTable.TabIndex = 0;
+            // 
+            // addressControl1
+            // 
+            address2.Apartment = ".";
+            address2.Building = ".";
+            address2.City = ".";
+            address2.Country = ".";
+            address2.PostIndex = 100000;
+            address2.Street = ".";
+            this.addressControl1.Address = address2;
+            this.addressControl1.Location = new System.Drawing.Point(4, 4);
+            this.addressControl1.Margin = new System.Windows.Forms.Padding(2);
+            this.addressControl1.Name = "addressControl1";
+            this.addressControl1.Size = new System.Drawing.Size(321, 120);
+            this.addressControl1.TabIndex = 0;
             // 
             // CustomersTab
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.MainLayoutTable);
-            this.MinimumSize = new System.Drawing.Size(700, 400);
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.MinimumSize = new System.Drawing.Size(525, 325);
             this.Name = "CustomersTab";
-            this.Size = new System.Drawing.Size(917, 566);
+            this.Size = new System.Drawing.Size(688, 460);
             this.CustomersGroupBox.ResumeLayout(false);
             this.CustomersLayoutTable.ResumeLayout(false);
             this.RightLayoutTable.ResumeLayout(false);
             this.SelectedCustomerGroupBox.ResumeLayout(false);
             this.CustomerDetailsPanel.ResumeLayout(false);
             this.CustomerDetailsPanel.PerformLayout();
+            this.Panel2.ResumeLayout(false);
             this.MainLayoutTable.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         private System.Windows.Forms.GroupBox SelectedCustomerGroupBox;
-        private System.Windows.Forms.TextBox AddressTextBox;
-        private System.Windows.Forms.Label AddressLabel;
         private System.Windows.Forms.TextBox FullNameTextBox;
         private System.Windows.Forms.Label FullNameLabel;
         private System.Windows.Forms.TextBox IdTextBox;
@@ -288,5 +288,7 @@
         private System.Windows.Forms.TableLayoutPanel CustomersLayoutTable;
         private System.Windows.Forms.TableLayoutPanel RightLayoutTable;
         private System.Windows.Forms.Panel CustomerDetailsPanel;
+        private Controls.AddressControl addressControl1;
+        private Controls.AddressControl addressControl2;
     }
 }

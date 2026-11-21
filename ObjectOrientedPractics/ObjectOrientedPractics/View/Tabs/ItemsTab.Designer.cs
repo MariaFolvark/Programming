@@ -49,11 +49,11 @@ namespace ObjectOrientedPractics.View.Tabs
             this.ItemsGroupBox.Controls.Add(this.ItemsLayoutTable);
             this.ItemsGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ItemsGroupBox.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.ItemsGroupBox.Location = new System.Drawing.Point(5, 5);
-            this.ItemsGroupBox.Margin = new System.Windows.Forms.Padding(5);
+            this.ItemsGroupBox.Location = new System.Drawing.Point(4, 4);
+            this.ItemsGroupBox.Margin = new System.Windows.Forms.Padding(4);
             this.ItemsGroupBox.Name = "ItemsGroupBox";
-            this.ItemsGroupBox.Padding = new System.Windows.Forms.Padding(11, 10, 11, 10);
-            this.ItemsGroupBox.Size = new System.Drawing.Size(363, 482);
+            this.ItemsGroupBox.Padding = new System.Windows.Forms.Padding(8);
+            this.ItemsGroupBox.Size = new System.Drawing.Size(272, 392);
             this.ItemsGroupBox.TabIndex = 0;
             this.ItemsGroupBox.TabStop = false;
             this.ItemsGroupBox.Text = "Items";
@@ -67,13 +67,13 @@ namespace ObjectOrientedPractics.View.Tabs
             this.ItemsLayoutTable.Controls.Add(this.AddButton, 0, 1);
             this.ItemsLayoutTable.Controls.Add(this.RemoveButton, 1, 1);
             this.ItemsLayoutTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ItemsLayoutTable.Location = new System.Drawing.Point(11, 30);
+            this.ItemsLayoutTable.Location = new System.Drawing.Point(8, 28);
             this.ItemsLayoutTable.Margin = new System.Windows.Forms.Padding(0);
             this.ItemsLayoutTable.Name = "ItemsLayoutTable";
             this.ItemsLayoutTable.RowCount = 2;
             this.ItemsLayoutTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.ItemsLayoutTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 71F));
-            this.ItemsLayoutTable.Size = new System.Drawing.Size(341, 442);
+            this.ItemsLayoutTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 58F));
+            this.ItemsLayoutTable.Size = new System.Drawing.Size(256, 356);
             this.ItemsLayoutTable.TabIndex = 0;
             // 
             // ItemsListBox
@@ -83,10 +83,10 @@ namespace ObjectOrientedPractics.View.Tabs
             this.ItemsListBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.ItemsListBox.FormattingEnabled = true;
             this.ItemsListBox.ItemHeight = 20;
-            this.ItemsListBox.Location = new System.Drawing.Point(5, 5);
-            this.ItemsListBox.Margin = new System.Windows.Forms.Padding(5, 5, 5, 10);
+            this.ItemsListBox.Location = new System.Drawing.Point(4, 4);
+            this.ItemsListBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 8);
             this.ItemsListBox.Name = "ItemsListBox";
-            this.ItemsListBox.Size = new System.Drawing.Size(331, 356);
+            this.ItemsListBox.Size = new System.Drawing.Size(248, 286);
             this.ItemsListBox.TabIndex = 0;
             this.ItemsListBox.SelectedIndexChanged += new System.EventHandler(this.ItemsListBox_SelectedIndexChanged);
             // 
@@ -94,10 +94,10 @@ namespace ObjectOrientedPractics.View.Tabs
             // 
             this.AddButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AddButton.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.AddButton.Location = new System.Drawing.Point(5, 376);
-            this.AddButton.Margin = new System.Windows.Forms.Padding(5);
+            this.AddButton.Location = new System.Drawing.Point(4, 302);
+            this.AddButton.Margin = new System.Windows.Forms.Padding(4);
             this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(160, 61);
+            this.AddButton.Size = new System.Drawing.Size(120, 50);
             this.AddButton.TabIndex = 1;
             this.AddButton.Text = "Add";
             this.AddButton.UseVisualStyleBackColor = true;
@@ -107,10 +107,10 @@ namespace ObjectOrientedPractics.View.Tabs
             // 
             this.RemoveButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.RemoveButton.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.RemoveButton.Location = new System.Drawing.Point(175, 376);
-            this.RemoveButton.Margin = new System.Windows.Forms.Padding(5);
+            this.RemoveButton.Location = new System.Drawing.Point(132, 302);
+            this.RemoveButton.Margin = new System.Windows.Forms.Padding(4);
             this.RemoveButton.Name = "RemoveButton";
-            this.RemoveButton.Size = new System.Drawing.Size(161, 61);
+            this.RemoveButton.Size = new System.Drawing.Size(120, 50);
             this.RemoveButton.TabIndex = 2;
             this.RemoveButton.Text = "Remove";
             this.RemoveButton.UseVisualStyleBackColor = true;
@@ -121,11 +121,11 @@ namespace ObjectOrientedPractics.View.Tabs
             this.SelectedItemGroupBox.Controls.Add(this.ItemDetailsPanel);
             this.SelectedItemGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SelectedItemGroupBox.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.SelectedItemGroupBox.Location = new System.Drawing.Point(378, 5);
-            this.SelectedItemGroupBox.Margin = new System.Windows.Forms.Padding(5);
+            this.SelectedItemGroupBox.Location = new System.Drawing.Point(284, 4);
+            this.SelectedItemGroupBox.Margin = new System.Windows.Forms.Padding(4);
             this.SelectedItemGroupBox.Name = "SelectedItemGroupBox";
-            this.SelectedItemGroupBox.Padding = new System.Windows.Forms.Padding(11, 10, 11, 10);
-            this.SelectedItemGroupBox.Size = new System.Drawing.Size(550, 482);
+            this.SelectedItemGroupBox.Padding = new System.Windows.Forms.Padding(8);
+            this.SelectedItemGroupBox.Size = new System.Drawing.Size(412, 392);
             this.SelectedItemGroupBox.TabIndex = 1;
             this.SelectedItemGroupBox.TabStop = false;
             this.SelectedItemGroupBox.Text = "Selected Item";
@@ -143,18 +143,17 @@ namespace ObjectOrientedPractics.View.Tabs
             this.ItemDetailsPanel.Controls.Add(this.DescriptionLabel);
             this.ItemDetailsPanel.Controls.Add(this.DescriptionTextBox);
             this.ItemDetailsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ItemDetailsPanel.Location = new System.Drawing.Point(11, 30);
+            this.ItemDetailsPanel.Location = new System.Drawing.Point(8, 28);
             this.ItemDetailsPanel.Margin = new System.Windows.Forms.Padding(0);
             this.ItemDetailsPanel.Name = "ItemDetailsPanel";
-            this.ItemDetailsPanel.Size = new System.Drawing.Size(528, 442);
+            this.ItemDetailsPanel.Size = new System.Drawing.Size(396, 356);
             this.ItemDetailsPanel.TabIndex = 0;
             // 
             // IdLabel
             // 
             this.IdLabel.AutoSize = true;
             this.IdLabel.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.IdLabel.Location = new System.Drawing.Point(9, 15);
-            this.IdLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.IdLabel.Location = new System.Drawing.Point(7, 12);
             this.IdLabel.Name = "IdLabel";
             this.IdLabel.Size = new System.Drawing.Size(27, 20);
             this.IdLabel.TabIndex = 0;
@@ -165,19 +164,17 @@ namespace ObjectOrientedPractics.View.Tabs
             this.IdTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.IdTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.IdTextBox.Location = new System.Drawing.Point(91, 11);
-            this.IdTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.IdTextBox.Location = new System.Drawing.Point(85, 9);
             this.IdTextBox.Name = "IdTextBox";
             this.IdTextBox.ReadOnly = true;
-            this.IdTextBox.Size = new System.Drawing.Size(431, 27);
+            this.IdTextBox.Size = new System.Drawing.Size(307, 27);
             this.IdTextBox.TabIndex = 1;
             // 
             // CostLabel
             // 
             this.CostLabel.AutoSize = true;
             this.CostLabel.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.CostLabel.Location = new System.Drawing.Point(9, 64);
-            this.CostLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.CostLabel.Location = new System.Drawing.Point(7, 45);
             this.CostLabel.Name = "CostLabel";
             this.CostLabel.Size = new System.Drawing.Size(41, 20);
             this.CostLabel.TabIndex = 2;
@@ -188,10 +185,9 @@ namespace ObjectOrientedPractics.View.Tabs
             this.CostTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.CostTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.CostTextBox.Location = new System.Drawing.Point(91, 60);
-            this.CostTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.CostTextBox.Location = new System.Drawing.Point(85, 42);
             this.CostTextBox.Name = "CostTextBox";
-            this.CostTextBox.Size = new System.Drawing.Size(431, 27);
+            this.CostTextBox.Size = new System.Drawing.Size(307, 27);
             this.CostTextBox.TabIndex = 3;
             this.CostTextBox.TextChanged += new System.EventHandler(this.CostTextBox_TextChanged);
             this.CostTextBox.Leave += new System.EventHandler(this.CostTextBox_Leave);
@@ -200,8 +196,7 @@ namespace ObjectOrientedPractics.View.Tabs
             // 
             this.CategoryLabel.AutoSize = true;
             this.CategoryLabel.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.CategoryLabel.Location = new System.Drawing.Point(9, 105);
-            this.CategoryLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.CategoryLabel.Location = new System.Drawing.Point(7, 78);
             this.CategoryLabel.Name = "CategoryLabel";
             this.CategoryLabel.Size = new System.Drawing.Size(72, 20);
             this.CategoryLabel.TabIndex = 4;
@@ -214,20 +209,25 @@ namespace ObjectOrientedPractics.View.Tabs
             this.CategoryComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CategoryComboBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.CategoryComboBox.FormattingEnabled = true;
-            this.CategoryComboBox.Location = new System.Drawing.Point(91, 102);
-            this.CategoryComboBox.Margin = new System.Windows.Forms.Padding(4);
+            this.CategoryComboBox.Items.AddRange(new object[] {
+            ObjectOrientedPractics.Model.Enums.Category.Food,
+            ObjectOrientedPractics.Model.Enums.Category.Electronics,
+            ObjectOrientedPractics.Model.Enums.Category.Clothing,
+            ObjectOrientedPractics.Model.Enums.Category.Furniture,
+            ObjectOrientedPractics.Model.Enums.Category.HouseholdGoods,
+            ObjectOrientedPractics.Model.Enums.Category.Toys,
+            ObjectOrientedPractics.Model.Enums.Category.SportsEquipment});
+            this.CategoryComboBox.Location = new System.Drawing.Point(85, 75);
             this.CategoryComboBox.Name = "CategoryComboBox";
-            this.CategoryComboBox.Size = new System.Drawing.Size(431, 28);
+            this.CategoryComboBox.Size = new System.Drawing.Size(307, 28);
             this.CategoryComboBox.TabIndex = 5;
-            this.CategoryComboBox.DataSource = Enum.GetValues(typeof(Category));
             this.CategoryComboBox.SelectedIndexChanged += new System.EventHandler(this.CategoryComboBox_SelectedIndexChanged);
             // 
             // NameLabel
             // 
             this.NameLabel.AutoSize = true;
             this.NameLabel.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.NameLabel.Location = new System.Drawing.Point(9, 135);
-            this.NameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.NameLabel.Location = new System.Drawing.Point(7, 110);
             this.NameLabel.Name = "NameLabel";
             this.NameLabel.Size = new System.Drawing.Size(52, 20);
             this.NameLabel.TabIndex = 6;
@@ -238,11 +238,10 @@ namespace ObjectOrientedPractics.View.Tabs
             this.NameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.NameTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.NameTextBox.Location = new System.Drawing.Point(13, 159);
-            this.NameTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.NameTextBox.Location = new System.Drawing.Point(10, 133);
             this.NameTextBox.Multiline = true;
             this.NameTextBox.Name = "NameTextBox";
-            this.NameTextBox.Size = new System.Drawing.Size(509, 67);
+            this.NameTextBox.Size = new System.Drawing.Size(382, 51);
             this.NameTextBox.TabIndex = 7;
             this.NameTextBox.TextChanged += new System.EventHandler(this.NameTextBox_TextChanged);
             // 
@@ -250,8 +249,7 @@ namespace ObjectOrientedPractics.View.Tabs
             // 
             this.DescriptionLabel.AutoSize = true;
             this.DescriptionLabel.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.DescriptionLabel.Location = new System.Drawing.Point(9, 230);
-            this.DescriptionLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.DescriptionLabel.Location = new System.Drawing.Point(7, 187);
             this.DescriptionLabel.Name = "DescriptionLabel";
             this.DescriptionLabel.Size = new System.Drawing.Size(88, 20);
             this.DescriptionLabel.TabIndex = 8;
@@ -263,11 +261,10 @@ namespace ObjectOrientedPractics.View.Tabs
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DescriptionTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.DescriptionTextBox.Location = new System.Drawing.Point(13, 253);
-            this.DescriptionTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.DescriptionTextBox.Location = new System.Drawing.Point(10, 210);
             this.DescriptionTextBox.Multiline = true;
             this.DescriptionTextBox.Name = "DescriptionTextBox";
-            this.DescriptionTextBox.Size = new System.Drawing.Size(509, 184);
+            this.DescriptionTextBox.Size = new System.Drawing.Size(382, 143);
             this.DescriptionTextBox.TabIndex = 9;
             this.DescriptionTextBox.TextChanged += new System.EventHandler(this.DescriptionTextBox_TextChanged);
             // 
@@ -284,18 +281,17 @@ namespace ObjectOrientedPractics.View.Tabs
             this.MainLayoutTable.Name = "MainLayoutTable";
             this.MainLayoutTable.RowCount = 1;
             this.MainLayoutTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.MainLayoutTable.Size = new System.Drawing.Size(933, 492);
+            this.MainLayoutTable.Size = new System.Drawing.Size(700, 400);
             this.MainLayoutTable.TabIndex = 0;
             // 
             // ItemsTab
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.MainLayoutTable);
-            this.Margin = new System.Windows.Forms.Padding(4);
-            this.MinimumSize = new System.Drawing.Size(933, 492);
+            this.MinimumSize = new System.Drawing.Size(700, 400);
             this.Name = "ItemsTab";
-            this.Size = new System.Drawing.Size(933, 492);
+            this.Size = new System.Drawing.Size(700, 400);
             this.ItemsGroupBox.ResumeLayout(false);
             this.ItemsLayoutTable.ResumeLayout(false);
             this.SelectedItemGroupBox.ResumeLayout(false);

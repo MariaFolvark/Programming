@@ -101,11 +101,11 @@ namespace ObjectOrientedPractics.Model
         public Address()
         {
             PostIndex = 100000;
-            Country = "";
-            City = "";
-            Street = "";
-            Building = "";
-            Apartment = "";
+            Country = ".";
+            City = ".";
+            Street = ".";
+            Building = ".";
+            Apartment = ".";
         }
 
         /// <summary>

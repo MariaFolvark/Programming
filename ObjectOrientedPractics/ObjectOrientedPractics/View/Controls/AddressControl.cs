@@ -23,7 +23,7 @@ namespace ObjectOrientedPractics.View.Controls
         {
             get
             {
-                if ((string.IsNullOrWhiteSpace(PostIndexTextBox.Text) || PostIndexTextBox.BackColor == Color.Red) ||
+                /*if ((string.IsNullOrWhiteSpace(PostIndexTextBox.Text) || PostIndexTextBox.BackColor == Color.Red) ||
                     (string.IsNullOrWhiteSpace(CountryTextBox.Text) || CountryTextBox.BackColor == Color.Red) ||
                     (string.IsNullOrWhiteSpace(CityTextBox.Text) || CityTextBox.BackColor == Color.Red) ||
                     (string.IsNullOrWhiteSpace(StreetTextBox.Text) || StreetTextBox.BackColor == Color.Red) ||
@@ -32,7 +32,8 @@ namespace ObjectOrientedPractics.View.Controls
                 {
                     throw new ArgumentNullException(nameof(Address), $"Значение свойства '{nameof(Address)}' не может быть пустым или некорректным.");
                 }
-                else { return _address; }
+                else { return _address; }*/
+                return _address;
             }
             set { _address = value; }
         }

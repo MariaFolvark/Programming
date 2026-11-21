@@ -47,7 +47,7 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             IdTextBox.Text = "";
             FullNameTextBox.Text = "";
-            AddressTextBox.Text = "";
+            //AddressTextBox.Text = "";
         }
 
         private void UpdateCustomerInfo()
@@ -56,7 +56,7 @@ namespace ObjectOrientedPractics.View.Tabs
             int selected_ind = CustomersListBox.SelectedIndex;
             IdTextBox.Text = _customers[selected_ind].Id.ToString();
             FullNameTextBox.Text = _customers[selected_ind].FullName;
-            AddressTextBox.Text = _customers[selected_ind].Address;
+            //AddressTextBox.Text = _customers[selected_ind].Address;
         }
 
         private void RemoveButton_Click(object sender, EventArgs e)
@@ -88,8 +88,9 @@ namespace ObjectOrientedPractics.View.Tabs
             catch { FullNameTextBox.Text = _currentCustomer.FullName; }
         }
 
-        private void AddressTextBox_TextChanged(object sender, EventArgs e)
+        /*private void AddressTextBox_TextChanged(object sender, EventArgs e)
         {
+            AddressTextBox.Text = "";
             if (string.IsNullOrWhiteSpace(AddressTextBox.Text)) return;
             if (_currentCustomer == null) return;
             string input = AddressTextBox.Text;
@@ -102,6 +103,6 @@ namespace ObjectOrientedPractics.View.Tabs
                 AddressTextBox.SelectionLength = 0;
             }
             catch { AddressTextBox.Text = _currentCustomer.Address; }
-        }
+        }*/
     }
 }
