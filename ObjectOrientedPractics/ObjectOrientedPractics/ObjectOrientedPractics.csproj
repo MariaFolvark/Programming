@@ -52,6 +52,7 @@
     <Compile Include="Model\Enums\CustomerNames.cs" />
     <Compile Include="Model\Enums\ItemNames.cs" />
     <Compile Include="Model\Items.cs" />
+    <Compile Include="Model\Store.cs" />
     <Compile Include="Model\Validator.cs" />
     <Compile Include="View\Controls\AddressControl.cs">
       <SubType>UserControl</SubType>

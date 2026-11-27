@@ -16,6 +16,24 @@ namespace ObjectOrientedPractics.View.Tabs
     {
         private List<Customer> _customers = new List<Customer>();
         private Customer _currentCustomer;
+        public List<Customer> Customers
+        {
+            get { return _customers; }
+            set
+            {
+                if (value == null)
+                {
+                    throw new ArgumentNullException(nameof(value));
+                }
+                _customers = value;
+                CustomersListBox.Items.Clear();
+                foreach (Customer customer in _customers)
+                {
+                    CustomersListBox.Items.Add(customer);
+                }
+                //CustomersListBox.SelectedIndex = 0;
+            }
+        }
         public CustomersTab()
         {
             InitializeComponent();
@@ -76,6 +94,7 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 CustomersListBox.SelectedIndex = Math.Min(selectedIndex, CustomersListBox.Items.Count - 1);
             }
+            UpdateCustomerInfo();
         }
 
         private void FullNameTextBox_TextChanged(object sender, EventArgs e)

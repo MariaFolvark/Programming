@@ -16,6 +16,24 @@ namespace ObjectOrientedPractics.View.Tabs
     {
         private List<Items> _items = new List<Items>();
         private Items _currentItem;
+        public List<Items> ItemsInItemsTab
+        {
+            get { return _items; }
+            set
+            {
+                if (value == null)
+                {
+                    throw new ArgumentNullException(nameof(value));
+                }
+                _items = value;
+                ItemsListBox.Items.Clear();
+                foreach (Items item in _items)
+                {
+                    ItemsListBox.Items.Add(item);
+                }
+                //ItemsListBox.SelectedIndex = 0;
+            }
+        }
         public ItemsTab()
         {
             InitializeComponent();
@@ -87,6 +105,7 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 ItemsListBox.SelectedIndex = Math.Min(selectedIndex, ItemsListBox.Items.Count - 1);
             }
+            UpdateItemInfo();
         }
 
         private void CostTextBox_TextChanged(object sender, EventArgs e)

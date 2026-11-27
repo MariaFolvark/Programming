@@ -11,7 +11,7 @@ namespace ObjectOrientedPractics.Model
     /// <summary>
     /// Хранит данные о товаре.
     /// </summary>
-    internal class Items
+    public class Items
     {
         /// <summary>
         /// Счётчик кол-ва товаров в программе.
